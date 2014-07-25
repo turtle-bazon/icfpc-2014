@@ -1,8 +1,10 @@
-
 (in-package :gcc)
 
-(defun translate (ast)
-  (unlabel (translate-walker ast '())))
+(defun translate (ast &key unlabel)
+  (let ((ast (translate-walker ast '())))
+    (if unlable
+        (unlabel ast)
+        ast)))
 
 (defun unlabel (opcode-list)
   (let ((label-map (iter (for op-code in opcode-list)
