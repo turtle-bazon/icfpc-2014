@@ -1,4 +1,4 @@
-((define (body x)
-     (+ x x))
- 21)
+(let ((body (lambda (x)
+              (+ x x))))
+  (body 21)))
 
