@@ -21,11 +21,12 @@
 	  (collect (unlabel-op-code op-code label-map)))))
 
 (defun unlabel-op-code (op-code label-map)
-  (iter (for op-code-part in op-code)
-	(collect (let ((label-place (find op-code-part label-map :key #'car)))
-		   (if label-place
-		       (second label-place)
-		       op-code-part)))))
+  (cons 'unlabeled
+	(iter (for op-code-part in op-code)
+	      (collect (let ((label-place (find op-code-part label-map :key #'car)))
+			 (if label-place
+			     (second label-place)
+			     op-code-part))))))
 
 (defmacro with-match ((ast proc) &rest clauses)
   (with-gensyms (assume form)
