@@ -24,6 +24,8 @@
 	((car ?form) (translate-op :car ?form nil environment))
 	((cdr ?form) (translate-op :cdr ?form nil environment))
 	((integerp ?form) (translate-op :atom ?form nil environment))
+	((list . ?forms) (translate-seq :list ?forms environment))
+	((tuple . ?forms) (translate-seq :tuple ?forms environment))
         (?atom (translate-atom ?atom environment))))
     (error "Invalid AST: ~s" ast)))
 
@@ -56,3 +58,10 @@
 	      (translate-walker form-b environment))
     ,@(translate-walker form-a environment)
        (,op)))
+
+(defun translate-seq (type body environment)
+  (reduce (lambda (l r)
+            `(,@r ,@(translate-walker l environment)
+                  ,@(when r '((:cons)))))
+          (nconc body (when (eql type :list) (list 0)))
+          :from-end t :initial-value nil))
