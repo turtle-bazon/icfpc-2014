@@ -5,4 +5,4 @@
         (bind (((op &rest args) form))
           (case op
             (:label (format stream "~a:~%" (first args)))
-            (t (format stream "    ~a~{ ~a~}~%" op args)))))))
+            (t (format stream "    ~a~{ ~a~}~%" op args))))))

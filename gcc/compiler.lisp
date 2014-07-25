@@ -88,7 +88,7 @@
   (iter (for binding-form in binding-forms)
         (for (binding proc-args proc-body) = (parse-binding binding-form))
         (collect binding into bindings)
-        (collect (translate-lambda proc-body (cons (append proc-args rec-env) env)) into codes)
+        (collect (translate-lambda proc-body (cons proc-args (cons rec-env env))) into codes)
         (finally
          (return
            (append (translate-lambda let-body (cons rec-env env))
