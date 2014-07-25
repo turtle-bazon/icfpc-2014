@@ -32,12 +32,19 @@
 
 (defun translate-letrec (binding-forms let-body env)
   (declare (optimize (debug 3)))
-  (iter (for binding-form in binding-forms)
+  (iter (with helper-proc = (gensym))
+        (for binding-form in binding-forms)
         (for (binding proc-args proc-body) = (parse-binding binding-form))
         (collect binding into bindings)
         (finally
          (return
-           (translate-let binding-forms let-body env bindings)))))
+           `((:dum ,(length bindings))
+             ,@(iter (for binding in bindings) (collect `(:ldf ,binding)))
+             (:ldf ,helper-proc)
+             (:rap ,(length bindings))
+             (:rtn)
+             (:label ,helper-proc)
+             ,@(translate-let binding-forms let-body env bindings))))))
 
 (defun translate-let (binding-forms let-body env rec-env)
   (declare (optimize (debug 3)))
