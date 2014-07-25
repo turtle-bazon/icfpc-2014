@@ -9,7 +9,7 @@
   :name "gcc"
   :version "0.1"
   :author "skobochka"
-  :depends-on (:iterate :metatilities :cl-match)
+  :depends-on (:iterate :metatilities)
   :components ((:file "package")
                (:file "compiler" :depends-on ("package"))))
 
