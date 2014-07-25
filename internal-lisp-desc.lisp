@@ -1,3 +1,4 @@
+;;;; TYPES
 
 ;; main ::
 (lambda (world-initial-state unknown)
@@ -83,3 +84,8 @@ ticks-remaining-for-fruit-present
 
 ;; ticks-remaining-for-fruit-present
 integer
+
+
+
+
+
