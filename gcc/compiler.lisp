@@ -47,7 +47,7 @@
         (collect (translate-walker proc-body (cons (append proc-args rec-env) env)) into codes)
         (finally
          (return
-           (append (translate-walker let-body bindings)
+           (append (translate-walker let-body (cons rec-env env))
                    (iter outer
                          (for proc-label in bindings)
                          (for proc-code in codes)
