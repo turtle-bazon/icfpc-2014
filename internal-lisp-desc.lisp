@@ -43,6 +43,8 @@
 ;; power-pill-mode ::
 game-ticks-remaining
 
+;; game-ticks-remaining :: integer
+
 ;; location ::
 (cons x y)
 
@@ -58,5 +60,17 @@ game-ticks-remaining
 ;; score :: integer
 
 ;; ghosts-statuses ::
+(cons ghost-0-status (cons ghost-1-status (cons ghost-...-status 0)))
+
+;; ghost-?-status ::
+(cons ghost-vitality (cons location (cons direction 0)))
+
+;; ghost-vitality ::
+(or 'standard 'fright-mode 'invisible)
+
+;; standard :: 0
+;; fright-mode :: 1
+;; invisible :: 2
+
 ;; fruits-statuses ::
 
