@@ -4,11 +4,8 @@
   (with-open-file (source filename)
     (translate (read source) :unlabel unlabel)))
 
-(defun pad-toplevel (form)
-  `((:ld 0 0) (:ld 0 1) ,@form))
-
 (defun translate (ast &key unlabel)
-  (let ((form (pad-toplevel (translate-walker ast '()))))
+  (let ((form (translate-walker ast '())))
     (if unlabel (unlabel form) form)))
 
 (defun unlabel (opcode-list)
@@ -34,11 +31,13 @@
        (progn ,@(iter (for (pattern action) in clauses)
                       (collect `(if-match ,pattern ,ast (,assume ,action))))))))
 
+(defun pad-toplevel (form)
+  `((:ld 0 0) (:ld 0 1) ,@form))
 
 (defun translate-walker (ast env)
   (declare (optimize (debug 3)))
   (with-match (ast translate-walker)
-    ((lambda ?proc-args ?proc-body) (translate-lambda ?proc-body (cons ?proc-args env)))
+    ((lambda ?proc-args ?proc-body) (pad-toplevel (translate-lambda ?proc-body (cons ?proc-args env))))
     ((let ?bindings ?body) (translate-let ?bindings ?body env nil))
     ((letrec ?bindings ?body) (translate-letrec ?bindings ?body env))
     ((+ ?form-a ?form-b) (translate-op :add ?form-a ?form-b env))
