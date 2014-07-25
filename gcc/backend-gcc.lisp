@@ -9,7 +9,7 @@
     ((?binding (lambda ?proc-args ?proc-body)) (list ?binding ?proc-args ?proc-body))))
 
 (defmethod translate-lambda ((backend backend-gcc) ast env)
-  (append (translate-walker ast env) '((:rtn))))
+  (append (translate-walker backend ast env) '((:rtn))))
 
 (defmethod translate-letrec ((backend backend-gcc) binding-forms let-body env)
   (declare (optimize (debug 3)))
