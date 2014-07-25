@@ -1,0 +1,6 @@
+(define (go n)
+    (to (+ n 1)))
+(define (to n)
+    (go (- n 1)))
+(define (main)
+    (go 1))
