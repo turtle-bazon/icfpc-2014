@@ -152,5 +152,4 @@
  	(:label ,false-label)
         ,@(translate-walker false-form environment)
         (:join)
- 	(:ldf ,end-label)
  	(:label ,end-label))))
