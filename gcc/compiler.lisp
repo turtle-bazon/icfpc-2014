@@ -45,7 +45,7 @@
     ((= ?form-a ?form-b) (translate-op :ceq ?form-b ?form-a env))
     ((> ?form-a ?form-b) (translate-op :cgt ?form-b ?form-a env))
     ((>= ?form-a ?form-b) (translate-op :cgte ?form-b ?form-a env))
-    ((cons ?form-a ?form-b) (translate-op :cons ?form-a ?form-b env))
+    ((cons ?form-a ?form-b) (translate-op :cons ?form-b ?form-a env))
     ((car ?form) (translate-op :car ?form nil env))
     ((cdr ?form) (translate-op :cdr ?form nil env))
     ((integerp ?form) (translate-op :atom ?form nil env))
