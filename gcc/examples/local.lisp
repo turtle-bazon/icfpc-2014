@@ -1,4 +1,5 @@
-((define (body x)
-     (+ x x))
- 21)
+(entrypoint
+ (define (body x)
+   (+ x x))
+ (body 21))
 
