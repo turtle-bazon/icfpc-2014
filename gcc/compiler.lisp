@@ -30,6 +30,9 @@
   (with-match (binding-form parse-binding)
     ((?binding (lambda ?proc-args ?proc-body)) (list ?binding ?proc-args ?proc-body))))
 
+(defun translate-lambda (ast env)
+  (append (translate-walker ast env) '((:rtn))))
+
 (defun translate-letrec (binding-forms let-body env)
   (declare (optimize (debug 3)))
   (iter (with helper-proc = (gensym))
@@ -51,16 +54,15 @@
   (iter (for binding-form in binding-forms)
         (for (binding proc-args proc-body) = (parse-binding binding-form))
         (collect binding into bindings)
-        (collect (translate-walker proc-body (cons (append proc-args rec-env) env)) into codes)
+        (collect (translate-lambda proc-body (cons (append proc-args rec-env) env)) into codes)
         (finally
          (return
-           (append (translate-walker let-body (cons rec-env env))
+           (append (translate-lambda let-body (cons rec-env env))
                    (iter outer
-                         (for proc-label in bindings)
-                         (for proc-code in codes)
+                         (for proc-label in (nreverse bindings))
+                         (for proc-code in (nreverse codes))
                          (collect `(:label ,proc-label))
-                         (iter (for form in proc-code) (in outer (collect form))))
-                   '((:rtn)))))))
+                         (iter (for form in proc-code) (in outer (collect form)))))))))
                 
 (defun translate-atom (atom env)
   (etypecase atom
