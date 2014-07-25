@@ -1,5 +1,4 @@
-(entrypoint
- (define (body x)
-   (+ x x))
- (body 21))
+(let ((body (lambda (x)
+              (+ x x))))
+  (body 21)))
 
