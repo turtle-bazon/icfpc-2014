@@ -2,7 +2,24 @@
 (in-package :gcc)
 
 (defun translate (ast)
-  (translate-walker ast '()))
+  (unlabel (translate-walker ast '())))
+
+(defun unlabel (opcode-list)
+  (let ((label-map (iter (for op-code in opcode-list)
+                         (for pc from 0)
+                         (when (eq (first op-code) :label)
+                           (collect (list (second op-code) pc))
+                           (decf pc)))))
+    (iter (for op-code in opcode-list)
+	  (unless (eq (first op-code) :label)
+	    (collect (unlabel-op-code op-code label-map))))))
+
+(defun unlabel-op-code (op-code label-map)
+  (iter (for op-code-part in op-code)
+	(collect (let ((label-place (find op-code-part label-map :key #'car)))
+		   (if label-place
+		       (second label-place)
+		       op-code-part)))))
 
 (defun translate-walker (ast environment)
   (flet ((assume (form) (return-from translate-walker form)))
@@ -68,7 +85,7 @@
 	(:sel ,true-label ,false-label)
 	(:ldc 1)
 	(:tsel ,end-label ,end-label)
-	(:label true-label)
+	(:label ,true-label)
         ,@(translate-walker true-form environment)
 	(:join)
 	(:label ,false-label)
