@@ -43,7 +43,8 @@
 ;; power-pill-mode ::
 game-ticks-remaining
 
-;; game-ticks-remaining :: integer
+;; game-ticks-remaining ::
+integer
 
 ;; location ::
 (cons x y)
@@ -73,4 +74,12 @@ game-ticks-remaining
 ;; invisible :: 2
 
 ;; fruits-statuses ::
+(or no-fruit-present fruit-present)
 
+;; no-fruit-present :: 0
+
+;; fruit-present ::
+ticks-remaining-for-fruit-present
+
+;; ticks-remaining-for-fruit-present
+integer
