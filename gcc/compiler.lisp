@@ -9,10 +9,12 @@
 
 (defun translate-walker (ast state)
   (flet ((assume (form) (return-from translate-walker form)))
-    (if-match (define (?proc-name . ?proc-args) ?forms) ast
-              (assume (translate-define ?proc-name ?proc-args ?forms state)))
-    (if-match ?atom ast
-              (assume (translate-atom ?atom state)))
+    (macrolet ((with-match (() &rest clauses)
+                 `(progn ,@(iter (for (pattern action) in clauses)
+                                 (collect `(if-match ,pattern ast (assume ,action)))))))
+      (with-match ()
+        ((define (?proc-name . ?proc-args) ?forms) (translate-define ?proc-name ?proc-args ?forms state))
+        (?atom (translate-atom ?atom state))))
     (error "Invalid AST: ~s" ast)))
 
 (defun translate-define (proc-name proc-args proc-body state)
