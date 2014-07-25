@@ -4,11 +4,12 @@
   (with-open-file (source filename)
     (translate (read source) :unlabel unlabel)))
 
+(defun pad-toplevel (form)
+  `((:ld 0 0) (:ld 0 1) ,@form))
+
 (defun translate (ast &key unlabel)
-  (let ((ast (translate-walker ast '())))
-    (if unlabel
-        (unlabel ast)
-        ast)))
+  (let ((form (pad-toplevel (translate-walker ast '()))))
+    (if unlabel (unlabel form) form)))
 
 (defun unlabel (opcode-list)
   (let ((label-map (iter (for op-code in opcode-list)
@@ -36,6 +37,7 @@
 (defun translate-walker (ast env)
   (declare (optimize (debug 3)))
   (with-match (ast translate-walker)
+    ((lambda ?proc-args ?proc-body) (translate-lambda ?proc-body (cons ?proc-args env)))
     ((let ?bindings ?body) (translate-let ?bindings ?body env nil))
     ((letrec ?bindings ?body) (translate-letrec ?bindings ?body env))
     ((+ ?form-a ?form-b) (translate-op :add ?form-a ?form-b env))
@@ -87,10 +89,10 @@
   (iter (for binding-form in binding-forms)
         (for (binding proc-args proc-body) = (parse-binding binding-form))
         (collect binding into bindings)
-        (collect (translate-lambda proc-body (cons proc-args (cons rec-env env))) into codes)
+        (collect (translate-lambda proc-body (cons proc-args (if rec-env (cons rec-env env) env))) into codes)
         (finally
          (return
-           (append (translate-lambda let-body (cons rec-env env))
+           (append (translate-lambda let-body (if rec-env (cons rec-env env) env))
                    (iter outer
                          (for proc-label in (nreverse bindings))
                          (for proc-code in (nreverse codes))
@@ -116,7 +118,7 @@
   (error "Variable ~s unbound" bind))
 
 (defun translate-variable (var env)
-  (declare (ignore))
+  (declare (optimize (debug 3)))
   (multiple-value-bind (n i) (locate-within-env var env)
     `((:ld ,n ,i))))
 
