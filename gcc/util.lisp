@@ -2,8 +2,13 @@
 
 (defun pretty-print-gcc (gcc &key (stream *standard-output*) (minimize nil))
   (iter (for form in gcc)
-        (bind (((op &rest args) form))
-          (case op
-            (:label (unless minimize
-		      (format stream ";~a:~%" (first args))))
-            (t (format stream "    ~a~{ ~a~}~%" op args))))))
+        (let ((unlabeled (eq 'unlabeled (first form))))
+	  (bind (((op &rest args) (if unlabeled
+				      (rest form)
+				      form)))
+	    (case op
+	      (:label (unless minimize
+			(format stream (if unlabeled
+					   ";~a:~%"
+					   "~a:~%") (first args))))
+	      (t (format stream "    ~a~{ ~a~}~%" op args)))))))
