@@ -81,7 +81,7 @@ Lightning Round Summary
    For the lightning round we will play the “classic” version of the game
    where it is just a single Lambda-Man against the ghosts.
 
-   Your challenge is is to write an AI for the Lambda-Man. It will play
+   Your challenge is to write an AI for the Lambda-Man. It will play
    against ghost AIs supplied by the judges and in mazes supplied by the
    judges.
 
@@ -161,8 +161,9 @@ Mechanics
 
    On each tick:
     1. All Lambda-Man and ghost moves scheduled for this tick take place.
-       (Note that Lambda-Man and the ghosts do not move every tick, only
-       every few ticks; see the [9]ticks section below.)
+       The next move is also scheduled at this point. (Note that
+       Lambda-Man and the ghosts do not move every tick, only every few
+       ticks; see the [9]ticks section below.)
     2. Next, any actions (fright mode deactivating, fruit
        appearing/disappearing) take place.
     3. Next, we check if Lambda-Man is occupying the same square as pills,
@@ -427,19 +428,23 @@ Initialisation and Program Execution
    the code memory does not change during a game. All data memory
    locations and all registers are initialised to 0.
 
-   During each game cycle, the GHC runs the program, executing up to 1024
-   instructions: the game cycle is divided into 1024 execution cycles. At
-   the start of each game cycle, the PC is initialised to 0. An execution
-   cycle begins with the GHC reading the instruction at the address
-   referenced by the PC from code memory. It executes the instruction, as
-   described in the section [12]Instruction Reference, possibly changing
-   the contents of the data memory and registers. At the end of the
-   execution cycle, if the value of the PC is the same as it was at the
-   start of the execution cycle, the GHC increments it. Execution
-   terminates at the end of an execution cycle if: the instruction
-   executed was HLT; it was the 1024th execution cycle of the game cycle;
-   or execution of the instruction caused an error. The contents of the
-   data memory and registers persist between game cycles.
+   On a game tick when ghost is scheduled to move, the GHC runs the
+   program, executing up to 1024 instructions:
+     * At the start of program execution, the PC is initialised to 0.
+     * An instruction cycle begins with the GHC reading the instruction at
+       the address referenced by the PC from code memory.
+     * It executes the instruction, as described in the section
+       [12]Instruction Reference, possibly changing the contents of the
+       data memory and registers.
+     * At the end of the instruction cycle, if the value of the PC is the
+       same as it was at the start of the instruction cycle, the GHC
+       increments it.
+     * Execution terminates at the end of an instruction cycle if:
+          + the instruction executed was HLT;
+          + it was the 1024th instruction executed;
+          + or execution of the instruction caused an error.
+     * The contents of the data memory and registers persist between game
+       ticks.
 
 Code Format
 
@@ -836,7 +841,7 @@ Effect:
     $fp := FRAME_PARENT($fp)
     $n := $n-1
   end
-  if TAG($fp) == TAG_DUM then FAULT(FRAME_MISMATCH)
+  if FRAME_TAG($fp) == TAG_DUM then FAULT(FRAME_MISMATCH)
   $v := FRAME_VALUE($fp, $i) ; i'th element of frame
   %s := PUSH($v,%s)          ; push onto the data stack
   %c := %c+1
@@ -1098,9 +1103,9 @@ everse order
 
 RTN - return from function call
 
-Synopsis: pop a stack pointer, return address and environment frame
+Synopsis: pop a return address and environment frame
             pointer off of the control stack;
-          restore the stack and environment;
+          restore the environment;
           jump to the return address
 Syntax:  RTN
 Effect:
@@ -1130,7 +1135,8 @@ Example: DUM 3      ; size of frame to allocate
 Effect:
   $fp := ALLOC_FRAME($n)       ; create a new empty frame of size $n
   FRAME_PARENT($fp) := %e      ; set its parent frame
-  %e := SET_TAG(TAG_DUM,$fp)   ; set it as the new environment frame
+  FRAME_TAG($fp) := TAG_DUM    ; mark the frame as dummy
+  %e := $fp                    ; set it as the new environment frame
   %c := %c+1
 Notes:
   To be used with RAP to fill in the frame body.
@@ -1154,8 +1160,9 @@ Effect:
   if TAG($x) != TAG_CLOSURE then FAULT(TAG_MISMATCH)
   $f := CAR_CLOSURE($x)
   $fp := CDR_CLOSURE($x)
-  if TAG(%e) != TAG_DUM then FAULT(FRAME_MISMATCH)
+  if FRAME_TAG(%e) != TAG_DUM then FAULT(FRAME_MISMATCH)
   if FRAME_SIZE(%e) != $n then FAULT(FRAME_MISMATCH)
+  if %e != $fp then FAULT(FRAME_MISMATCH)
   $i := $n-1
   while $i != -1 do           ; copy n values from the stack into the empty fram
 e in reverse order
@@ -1167,6 +1174,7 @@ e in reverse order
   $ep := FRAME_PARENT(%e)
   %d := PUSH($ep,%d)                    ; save frame pointer
   %d := PUSH(SET_TAG(TAG_RET,%c+1),%d)  ; save return address
+  FRAME_TAG($fp) := !TAG_DUM            ; mark the frame as normal
   %e := $fp                             ; establish new environment
   %c := $f                              ; jump to function
 
@@ -1253,8 +1261,9 @@ Effect:
   if TAG($x) != TAG_CLOSURE then FAULT(TAG_MISMATCH)
   $f := CAR_CLOSURE($x)
   $fp := CDR_CLOSURE($x)
-  if TAG(%e) != TAG_DUM then FAULT(FRAME_MISMATCH)
+  if FRAME_TAG(%e) != TAG_DUM then FAULT(FRAME_MISMATCH)
   if FRAME_SIZE(%e) != $n then FAULT(FRAME_MISMATCH)
+  if %e != $fp then FAULT(FRAME_MISMATCH)
   $i := $n-1
   while $i != -1 do            ; copy n values from the stack into the empty fra
 me in reverse order
@@ -1263,6 +1272,7 @@ me in reverse order
     FRAME_VALUE($fp,$i) := $y
     $i := $i-1
   end
+  FRAME_TAG($fp) := !TAG_DUM
   %e := $fp                   ; establish new environment
   %c := $f                    ; jump to function
 Notes:
@@ -1282,7 +1292,7 @@ Effect:
     $fp := FRAME_PARENT($fp)
     $n := $n-1
   end
-  if TAG($fp) == TAG_DUM then FAULT(FRAME_MISMATCH)
+  if FRAME_TAG($fp) == TAG_DUM then FAULT(FRAME_MISMATCH)
   $v,%s := POP(%s)           ; pop value from the data stack
   FRAME_VALUE($fp, $i) := $v ; modify i'th element of frame
   %c := %c+1
@@ -1667,8 +1677,8 @@ Solution format
      * Subdirectory code with the source code you wrote to help you
        prepare your solution and any auxiliary material that can be
        helpful to the judges to build your code. You should include a
-       README file here with any documentation/description of your
-       solution that you wish to share with the judges.
+       README file in this subdirectory with any documentation/description
+       of your solution that you wish to share with the judges.
 
    Site proudly generated by [16]Hakyll using [17]Haskell
 
