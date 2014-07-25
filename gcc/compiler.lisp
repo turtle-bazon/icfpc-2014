@@ -17,8 +17,7 @@
                            (collect (list (second op-code) pc))
                            (decf pc)))))
     (iter (for op-code in opcode-list)
-	  (unless (eq (first op-code) :label)
-	    (collect (unlabel-op-code op-code label-map))))))
+	  (collect (unlabel-op-code op-code label-map)))))
 
 (defun unlabel-op-code (op-code label-map)
   (iter (for op-code-part in op-code)
