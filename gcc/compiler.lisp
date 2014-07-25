@@ -24,6 +24,9 @@
 	((car ?form) (translate-op :car ?form nil environment))
 	((cdr ?form) (translate-op :cdr ?form nil environment))
 	((integerp ?form) (translate-op :atom ?form nil environment))
+	((if ?condition-form ?true-form ?false-form) (translate-if ?condition-form
+								   ?true-form ?false-form
+								   environment))
         (?atom (translate-atom ?atom environment))))
     (error "Invalid AST: ~s" ast)))
 
@@ -56,3 +59,20 @@
 	      (translate-walker form-b environment))
     ,@(translate-walker form-a environment)
        (,op)))
+
+(defun translate-if (condition-form true-form false-form environment)
+  (let ((true-label (gensym "true"))
+	(false-label (gensym "false"))
+	(end-label (gensym "end")))
+    `(,@(translate-walker condition-form environment)
+	(:sel ,true-label ,false-label)
+	(:ldc 1)
+	(:tsel ,end-label ,end-label)
+	(:label true-label)
+        ,@(translate-walker true-form environment)
+	(:join)
+	(:label ,false-label)
+        ,@(translate-walker false-form environment)
+        (:join)
+	(:ldf ,end-label)
+	(:label ,end-label))))
