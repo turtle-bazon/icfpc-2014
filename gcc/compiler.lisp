@@ -26,6 +26,10 @@
 	((integerp ?form) (translate-op :atom ?form nil environment))
 	((list . ?forms) (translate-seq :list ?forms environment))
 	((tuple . ?forms) (translate-seq :tuple ?forms environment))
+	((if ?condition-form ?true-form ?false-form)
+         (translate-if ?condition-form
+                       ?true-form ?false-form
+                       environment))
         (?atom (translate-atom ?atom environment))))
     (error "Invalid AST: ~s" ast)))
 
@@ -65,3 +69,20 @@
                   ,@(when r '((:cons)))))
           (nconc body (when (eql type :list) (list 0)))
           :from-end t :initial-value nil))
+
+(defun translate-if (condition-form true-form false-form environment)
+  (let ((true-label (gensym "true"))
+	(false-label (gensym "false"))
+	(end-label (gensym "end")))
+    `(,@(translate-walker condition-form environment)
+	(:sel ,true-label ,false-label)
+	(:ldc 1)
+	(:tsel ,end-label ,end-label)
+	(:label true-label)
+        ,@(translate-walker true-form environment)
+	(:join)
+	(:label ,false-label)
+        ,@(translate-walker false-form environment)
+        (:join)
+	(:ldf ,end-label)
+	(:label ,end-label))))
