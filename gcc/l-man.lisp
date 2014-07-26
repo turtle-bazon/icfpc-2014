@@ -14,14 +14,14 @@
 (deflib/gcc map-size (map x y)
   (if (integerp (cdr map))
       (if (= x 0)
-	  (map-size (car map) (+ 1 x) y)
+	  (map-size (car map) (+ 1 x) (+ 1 y))
 	  (cons x y))
       (if (= x 0)
 	  (map-size (cdr map) x (+ 1 y))
 	  (map-size (cdr map) (+ 1 x) y))))
 
 (deflib/gcc move (ai-state w-state)
-  (if (= (car (map-size (car w-state) 0 0)) 23)
+  (if (= (cdr (map-size (car w-state) 0 0)) 22)
       (cons ai-state :left)
       (cons ai-state :rigth)))
 
