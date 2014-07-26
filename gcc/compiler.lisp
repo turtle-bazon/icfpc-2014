@@ -51,8 +51,8 @@
     ((car ?form) (translate-op :car ?form nil env))
     ((cdr ?form) (translate-op :cdr ?form nil env))
     ((integerp ?form) (translate-op :atom ?form nil env))
-    ((list . ?forms) (translate-seq :list ?forms env))
-    ((tuple . ?forms) (translate-seq :tuple ?forms env))
+    ((list . ?forms) (translate-list ?forms env))
+    ((tuple . ?forms) (translate-tuple ?forms env))
     ((if ?condition-form ?true-form ?false-form)
      (translate-if ?condition-form
                    ?true-form ?false-form
@@ -210,12 +210,23 @@
      (caar `(car (car ,@macro-args))))
    env))
 
-(defun translate-seq (type body environment)
-  (reduce (lambda (l r)
-            `(,@r ,@(translate-walker l environment)
-                  ,@(when r '((:cons)))))
-          (nconc body (when (eql type :list) (list 0)))
-          :from-end t :initial-value nil))
+(defun translate-list (body environment)
+  (labels ((build-cons-chain (lst)
+             (case (length lst)
+               (0 0)
+               (1 `(cons ,(car lst) 0))
+               (t `(cons ,(car lst) ,(build-cons-chain (cdr lst)))))))
+    (translate-walker (build-cons-chain body) environment)))
+
+(defun translate-tuple (body environment)
+  ; There couldn't be 0-tuple or 1-tuple
+  (assert (>= (length body) 2) (body) "Tuple length cannot be less 2 but ~a given" (length body))
+
+  (labels ((build-cons-chain (lst)
+             (case (length lst)
+               (2 `(cons ,(car lst) ,(second lst)))
+               (t `(cons ,(car lst) ,(build-cons-chain (cdr lst)))))))
+    (translate-walker (build-cons-chain body) environment)))
 
 (defun translate-if (condition-form true-form false-form environment)
   (let ((true-label (intern (symbol-name (gensym "TRUE")) 

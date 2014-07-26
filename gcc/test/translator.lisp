@@ -114,3 +114,48 @@
                  (:LABEL :END5)
                  (:JOIN)
                  (:LABEL :END2))))
+
+
+(addtest (gcc-translator-core)
+  tuple-0
+  (ensure-error (translate '(tuple))))
+
+(addtest (gcc-translator-core)
+  tuple-1
+  (ensure-error (translate '(tuple 1))))
+
+(addtest (gcc-translator-core)
+  tuple-2
+  (ensure-same (translate '(tuple 1 2))
+               '((:LDC 1) 
+                 (:LDC 2) 
+                 (:CONS))))
+
+(addtest (gcc-translator-core)
+  tuple-3
+  (ensure-same (translate '(tuple 1 2 3))
+               '((:LDC 1) 
+                 (:LDC 2) 
+                 (:LDC 3) 
+                 (:CONS)
+                 (:CONS))))
+
+(addtest (gcc-translator-core)
+  list-0
+  (ensure-same (translate '(list))
+               '((:LDC 0))))
+
+(addtest (gcc-translator-core)
+  list-1
+  (ensure-same (translate '(list 1))
+               '((:LDC 1) (:LDC 0) (:CONS))))
+
+(addtest (gcc-translator-core)
+  list-2
+  (ensure-same (translate '(list 1 2))
+               '((:LDC 1) (:LDC 2) (:LDC 0) (:CONS) (:CONS))))
+
+(addtest (gcc-translator-core)
+  list-2
+  (ensure-same (translate '(list 1 2 3))
+               '((:LDC 1) (:LDC 2) (:LDC 3) (:LDC 0) (:CONS) (:CONS) (:CONS))))
