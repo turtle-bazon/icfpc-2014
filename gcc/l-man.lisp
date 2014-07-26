@@ -10,8 +10,8 @@
 
 (deflib/gcc move (ai-state w-state)
   (if (= (car (l-man-coord (l-man-state w-state))) 11)
-      (cons ai-state 3)
-      (cons ai-state 1)))
+      (cons ai-state :left)
+      (cons ai-state :rigth)))
 
 (pretty-print-gcc
  (build-ai-core '(let ((init (lambda (initial-state unknown)
