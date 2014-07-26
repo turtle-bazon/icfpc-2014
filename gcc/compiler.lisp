@@ -121,7 +121,7 @@
         (for frame in env)
         (for i = (position bind frame :test 'eq))
         (when i
-          (return-from locate-within-env (values n (- (1- (length frame)) i)))))
+          (return-from locate-within-env (values n i))))
   (error "Variable ~s unbound" bind))
 
 (defun translate-variable (var env)
@@ -139,7 +139,7 @@
   (case proc-name
     ((cadr caar) (translate-macro proc-name proc-args env))
     (t (multiple-value-bind (n i) (ignore-errors (locate-within-env proc-name env))
-         `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) (reverse proc-args)))
+         `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) proc-args))
              ,@(if (and n i) `((:ld ,n ,i)) `((:ldf ,proc-name)))
              (:ap ,(length proc-args)))))))
 
