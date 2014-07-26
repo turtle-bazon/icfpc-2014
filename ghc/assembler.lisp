@@ -99,7 +99,9 @@
 		  (eq 'pc (second param-value)))
 	     (error "PC register can't be indirect argument.")
 	     `(:ref ,param-value))))
-      ((numberp parsed-param) `(:const ,parsed-param))
+      ((numberp parsed-param) (if (typep parsed-param '(integer 0 255))
+				  `(:const ,parsed-param)
+				  (error "Type mismatch  for constant (0-255): ~a" parsed-param)))
       ((symbolp parsed-param) (case parsed-param
 				((a b c d e f g h i pc) `(:reg ,parsed-param))
 				(t `(:def ,parsed-param)))))))
