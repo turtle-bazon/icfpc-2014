@@ -121,7 +121,7 @@
         (for frame in env)
         (for i = (position bind frame :test 'eq))
         (when i
-          (return-from locate-within-env (values n i))))
+          (return-from locate-within-env (values n (- (1- (length frame)) i)))))
   (error "Variable ~s unbound" bind))
 
 (defun translate-variable (var env)
