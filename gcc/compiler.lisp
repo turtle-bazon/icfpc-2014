@@ -22,7 +22,7 @@
 	(iter (for op-code-part in op-code)
 	      (collect (let ((label-place (find op-code-part label-map :key #'car)))
 			 (if label-place
-			     (second label-place)
+			     (cons :label label-place)
 			     op-code-part))))))
 
 (defmacro with-match ((ast proc) &rest clauses)
