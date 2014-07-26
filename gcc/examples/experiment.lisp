@@ -1,7 +1,6 @@
-(letrec ((nth (lambda (x) (+ x 1)))
-         (init (lambda (x)
-                 (let ((f (lambda (y) (nth y))))
-                   (let ((g (lambda (z) (f z))))
-                     (g x))))))
-  (init 1))
+(letrec ((rec (lambda (x) (+ x 44))))
+  (let ((f (lambda (y) (rec y))))
+    (let ((g (lambda (x) (f x))))
+      (g 77))))
+
 

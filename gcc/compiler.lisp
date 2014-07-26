@@ -5,7 +5,7 @@
     (translate (read source) :unlabel unlabel)))
 
 (defun translate (ast &key unlabel)
-  (let ((form (translate-walker ast '())))
+  (let ((form (translate-walker ast '(() ()))))
     (if unlabel (unlabel form) form)))
 
 (defun unlabel (opcode-list)
@@ -34,8 +34,8 @@
 (defun translate-walker (ast env)
   (declare (optimize (debug 3)))
   (with-match (ast translate-walker)
-    ((lambda ?proc-args ?proc-body) (translate-lambda ?proc-body (cons ?proc-args env)))
-    ((let ?bindings ?body) (translate-let ?bindings ?body env nil))
+    ((lambda ?proc-args ?proc-body) (translate-lambda ?proc-body (list (cons ?proc-args (first env)) (second env))))
+    ((let ?bindings ?body) (translate-let ?bindings ?body env))
     ((letrec ?bindings ?body) (translate-letrec ?bindings ?body env))
     ((+ ?form-a ?form-b) (translate-op :add ?form-a ?form-b env))
     ((- ?form-a ?form-b) (translate-op :sub ?form-a ?form-b env))
@@ -87,17 +87,17 @@
              (:rap ,(length bindings))
              (:rtn)
              (:label ,helper-proc)
-             ,@(translate-let binding-forms let-body env bindings))))))
+             ,@(translate-let binding-forms let-body (list (first env) (append bindings (second env)))))))))
 
-(defun translate-let (binding-forms let-body env rec-env)
+(defun translate-let (binding-forms let-body env)
   (declare (optimize (debug 3)))
   (iter (for binding-form in binding-forms)
         (for (binding proc-args proc-body) = (parse-binding binding-form))
         (collect binding into bindings)
-        (collect (translate-lambda proc-body (cons proc-args (if rec-env (cons rec-env env) env))) into codes)
+        (collect (translate-lambda proc-body (list (cons proc-args (first env)) (second env))) into codes)
         (finally
-         (return
-           (append (translate-lambda let-body (if rec-env (cons rec-env env) env))
+         (return           
+           (append (translate-lambda let-body env)
                    (iter outer
                          (for proc-label in (nreverse bindings))
                          (for proc-code in (nreverse codes))
@@ -130,7 +130,7 @@
 (defun locate-within-env (bind env)
   (declare (optimize (debug 3)))
   (iter (for n from 0)
-        (for frame in env)
+        (for frame in (cons (append (car (first env)) (second env)) (cdr (first env))))
         (for i = (position bind frame :test 'eq))
         (when i
           (return-from locate-within-env (values n i))))
@@ -199,10 +199,13 @@
   (declare (optimize (debug 3)))
   (case proc-name
     ((cadr caar) (translate-macro proc-name proc-args env))
-    (t (multiple-value-bind (n i) (ignore-errors (locate-within-env proc-name env))
+    (t (let ((rec-i (position proc-name (second env) :test 'eq)))
          `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) proc-args))
-             ,@(if (and n i) `((:ld ,n ,i)) `((:ldf ,proc-name)))
-             (:ap ,(length proc-args)))))))
+             ,@(iter (for i from 0)
+                     (for bind in (second env))
+                     (collect `(:ld 0 ,(+ i (length (car (first env)))))))
+             ,@(if rec-i `((:ld 0 ,(+ rec-i (length (car (first env)))))) `((:ldf ,proc-name)))
+             (:ap ,(+ (length proc-args) (length (second env)))))))))
 
 (defun translate-macro (macro-name macro-args env)
   (translate-walker
