@@ -1,13 +1,23 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
-(in-package #:l-man)
+(cl:in-package #:l-man)
+
+(cl:defmacro plus (a b)
+  `(+ ,a ,b))
+
+(cl:defun macroexpand-all (ast)
+  (cl:if (cl:listp ast)
+	 (cl:macroexpand-1
+	  (cl:mapcar (cl:lambda (inner-ast)
+		       (macroexpand-all inner-ast))
+		     ast))
+	 ast))
 
 (deflib/gcc l-man-state (w-state)
   (car (cdr w-state)))
 
 (deflib/gcc l-man-coord (l)
   (car (cdr l)))
-
 
 (deflib/gcc map-obj (map x y)
   (nth x (nth y map)))
@@ -29,7 +39,7 @@
       (cons ai-state :left)
       (cons ai-state :rigth)))
 
-(pretty-print-gcc
+#+nil(pretty-print-gcc
  (build-ai-core '(let ((init (lambda (initial-state unknown)
 			       (cons 42 move))))
 		  (init initial-state unknown))
