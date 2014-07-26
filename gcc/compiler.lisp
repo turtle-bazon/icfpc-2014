@@ -56,6 +56,8 @@
                    env))
     ((when ?condition-form ?true-form)
      (translate-when ?condition-form ?true-form env))
+    ((cond . ?forms)
+     (translate-cond ?forms env))
     ((?proc-name . ?proc-args) (translate-proc-invocation ?proc-name ?proc-args env))
     (?atom (translate-atom ?atom env)))
   (error "Invalid AST: ~s" ast))
@@ -169,6 +171,10 @@
 	(:label ,true-label)
 	,@(translate-walker true-form environment)
 	(:label ,end-label))))
+
+(defun translate-cond (forms environment)
+  (translate-walker (iter (for (c f) in forms)
+			  (collect `(when ,c ,f))) environment))
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defparameter *gcc-ai-library* (make-hash-table)))
