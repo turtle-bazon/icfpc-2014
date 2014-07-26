@@ -130,9 +130,9 @@
     `((:ld ,n ,i))))
 
 (defun translate-op (op form-a form-b env)
-  `(,@(if form-b
-	  (translate-walker form-b env))
-      ,@(translate-walker form-a env) (,op)))
+  `(,@(translate-walker form-a env)
+    ,@(when form-b (translate-walker form-b env))
+    (,op)))
 
 (defun translate-proc-invocation (proc-name proc-args env)
   (declare (optimize (debug 3)))
