@@ -101,6 +101,11 @@
 (defun translate-atom (atom env)
   (etypecase atom
     (integer (translate-const atom env))
+    (keyword (translate-const (ecase atom
+				(:up 0)
+				(:down 2)
+				(:left 3)
+				(:rigth 1)) env))
     (atom (translate-variable atom env))))
 
 (defun translate-const (const env)
