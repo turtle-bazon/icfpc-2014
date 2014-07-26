@@ -120,7 +120,9 @@
     `((:ld ,n ,i))))
 
 (defun translate-op (op form-a form-b env)
-  `(,@(translate-walker form-b env) ,@(translate-walker form-a env) (,op)))
+  `(,@(if form-b
+	  (translate-walker form-b env))
+      ,@(translate-walker form-a env) (,op)))
 
 (defun translate-proc-invocation (proc-name proc-args env)
   (declare (optimize (debug 3)))
@@ -155,6 +157,8 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defparameter *gcc-ai-library* (make-hash-table)))
 
+;;(setq *gcc-ai-library (make-hash-table))
+
 (defmacro deflib/gcc (name (&rest arg-list) &body body*)
   "Defines library function for AI code. The all the functions will be
 linked into resulting AI GCC code."
@@ -168,11 +172,11 @@ linked into resulting AI GCC code."
 ;; (deflib/gcc test2 (x)
 ;;   (+ x x))
 
+
 (defun build-ai-core (ast &key (debug t))
-  (translate 
+  (translate
    `(lambda (initial-state unknown)
       (letrec ,(iter (for (fn-name fn-body) in-hashtable *gcc-ai-library*)
                      (collect `(,fn-name ,fn-body)))
         ,ast))
    :unlabel (not debug)))
-
