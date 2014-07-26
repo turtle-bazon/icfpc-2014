@@ -21,7 +21,7 @@
                      (call-with-world (car world-state)
                                       (car (cdr world-state))
                                       (car (cdr (cdr world-state)))
-                                      (car (cdr (cdr (cdr world-state)))))))))
+                                      (cdr (cdr (cdr world-state))))))))
     (let ((init (lambda (initial-state unknown)
                   (cons 0 step))))
       (init initial-state unknown))))
