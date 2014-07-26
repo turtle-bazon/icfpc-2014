@@ -97,5 +97,5 @@
        `(:ref ,(parse-parameter (subseq param-string 1 param-end))))
       ((numberp parsed-param) `(:const ,parsed-param))
       ((symbolp parsed-param) (case parsed-param
-				((a b c d e f g h i) `(:reg ,parsed-param))
+				((a b c d e f g h i pc) `(:reg ,parsed-param))
 				(t `(:def ,parsed-param)))))))
