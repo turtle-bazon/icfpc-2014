@@ -141,8 +141,8 @@
 
 (defun translate-variable (var env)
   (declare (optimize (debug 3)))
-  (multiple-value-bind (n i) (locate-within-env var (first env))
-    `((:ld ,n ,i))))
+  (multiple-value-bind (n i) (ignore-errors (locate-within-env var (first env)))
+    (if (and n i) `((:ld ,n ,i)) `((:ldf ,var)))))
 
 (defun translate-and (forms env)
   (if (= 1 (length forms))
