@@ -67,6 +67,7 @@
     ((?binding (lambda ?proc-args ?proc-body)) (list ?binding ?proc-args ?proc-body))))
 
 (defun translate-lambda (ast env)
+  (declare (optimize (debug 3)))
   (append (translate-walker ast env) '((:rtn))))
 
 (defun translate-letrec (binding-forms let-body env)

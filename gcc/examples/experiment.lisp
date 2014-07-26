@@ -1,3 +1,7 @@
-(let ((level-0 (lambda (x y) (cons (+ x 1) (- y 1)))))
-  (let ((level-1 (lambda (x y) (level-0 x y))))
-    (level-1 10 100)))
+(letrec ((nth (lambda (x) (+ x 1)))
+         (init (lambda (x)
+                 (let ((f (lambda (y) (nth y))))
+                   (let ((g (lambda (z) (f z))))
+                     (g x))))))
+  (init 1))
+
