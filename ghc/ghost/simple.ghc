@@ -21,6 +21,25 @@
 ; defaults from int's
 %def _x_coor,a
 %def _y_coor,b
-%def _ghost_index,a
+%def _my_newdir,a
+%def _gh_vitality,a
+%def _gh_direction,b
+%def _gh_index,a
 
+; int aliases
+%def _chdir,0
+%def _lm1_pos,1
+%def _lm2_pos,2
+%def _my_index,3
+%def _gh_start_coor,4
+%def _gh_cur_coor,5
+%def _gh_stat,6
+%def _map_cont,7
+%def _debug,8
+
+;;; program ;;;
+
+mov _my_newdir,_d_up
+int _chdir
+hlt
 
