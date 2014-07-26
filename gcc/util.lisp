@@ -14,3 +14,12 @@
 					   "~a:~%") (first args))))
 	      (t (format stream "~a~a~{ ~a~}~%"
 			 (if pad "    " "") op args)))))))
+
+(defun compile-gcc (gcc-input-file gcc-output-file)
+  (with-open-file (fo gcc-output-file :direction :output :if-exists :overwrite)
+    (pretty-print-gcc
+     (translate
+      (with-open-file (fi gcc-input-file)
+	(read fi))
+      :unlabel t)
+     :stream fo)))
