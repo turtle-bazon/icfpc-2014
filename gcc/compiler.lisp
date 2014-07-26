@@ -135,10 +135,19 @@
 
 (defun translate-proc-invocation (proc-name proc-args env)
   (declare (optimize (debug 3)))
-  (multiple-value-bind (n i) (ignore-errors (locate-within-env proc-name env))
-    `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) (reverse proc-args)))
-      ,@(if (and n i) `((:ld ,n ,i)) `((:ldf ,proc-name)))
-      (:ap ,(length proc-args)))))
+  (case proc-name
+    ((cadr caar) (translate-macro proc-name proc-args env))
+    (t (multiple-value-bind (n i) (ignore-errors (locate-within-env proc-name env))
+         `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) (reverse proc-args)))
+             ,@(if (and n i) `((:ld ,n ,i)) `((:ldf ,proc-name)))
+             (:ap ,(length proc-args)))))))
+
+(defun translate-macro (macro-name macro-args env)
+  (translate-walker
+   (ecase macro-name
+     (cadr `(car (cdr ,@macro-args)))
+     (caar `(car (car ,@macro-args))))
+   env))
 
 (defun translate-seq (type body environment)
   (reduce (lambda (l r)
