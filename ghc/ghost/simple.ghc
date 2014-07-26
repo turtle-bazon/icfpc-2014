@@ -1,0 +1,26 @@
+; directions
+%def _d_up,0
+%def _d_right,1
+%def _d_down,2
+%def _d_left,3
+
+; vitality modes
+%def _v_standard,0
+%def _v_fright_mode,1
+%def _v_invisible,2
+
+; map contents
+%def _m_wall,0
+%def _m_empty,1
+%def _m_pill,2
+%def _m_power_pill,3
+%def _m_fruti,4
+%def _m_lm_start,5
+%def _m_gh_start,6
+
+; defaults from int's
+%def _x_coor,a
+%def _y_coor,b
+%def _ghost_index,a
+
+

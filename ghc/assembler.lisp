@@ -47,9 +47,10 @@
     ((list :reg reg-name) (string-downcase (symbol-name reg-name)))
     ((list :def def-name) (let ((def-record (find def-name refs :key #'car)))
 			    (if def-record
-				(second def-record)
+				(param-value (second def-record) refs)
 				(error "Undefined def ~a" def-name))))
-    ((list :const value) value)))
+    ((list :const value) value)
+    ((list :ref sub-param) (format nil "[~a]" (param-value sub-param refs)))))
 
 (defun normalize-line (line)
   (string-downcase
@@ -68,7 +69,8 @@
                              (position #\Tab line)))
          (params-string (subseq line (1+ (or space-position (1- (length line))))))
          (params (split-sequence #\, params-string :remove-empty-subseqs t)))
-    `(:def ,(read-from-string (first params)) ,(read-from-string (second params)))))
+    `(:def ,(read-from-string (first params))
+	 ,(parse-parameter (second params)))))
 
 (defun parse-label (line)
   `(:label ,(read-from-string (subseq line 0 (1- (length line))))))
@@ -83,10 +85,17 @@
       ,(mapcar (lambda (param)
 		 (if (equal "" param)
 		     nil
-		     (let ((readed-param (read-from-string param)))
-		       (cond
-			 ((numberp readed-param) `(:const ,readed-param))
-			 ((symbolp readed-param) (case readed-param
-						   ((a b c d e f g h i) `(:reg ,readed-param))
-						   (t `(:def ,readed-param))))))))
+		     (parse-parameter param)))
 	       params))))
+
+(defun parse-parameter (param-string)
+  (let ((parsed-param (read-from-string param-string))
+	(param-end (1- (length param-string))))
+    (cond
+      ((and (= 0 (or (position #\[ param-string) -1))
+            (= param-end (or (position #\] param-string) -1)))
+       `(:ref ,(parse-parameter (subseq param-string 1 param-end))))
+      ((numberp parsed-param) `(:const ,parsed-param))
+      ((symbolp parsed-param) (case parsed-param
+				((a b c d e f g h i) `(:reg ,parsed-param))
+				(t `(:def ,parsed-param)))))))
