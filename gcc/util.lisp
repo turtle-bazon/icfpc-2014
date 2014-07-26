@@ -13,7 +13,10 @@
 					   ";~a:~%"
 					   "~a:~%") (first args))))
 	      (t (format stream "~a~a~{ ~a~}~%"
-			 (if pad "    " "") op args)))))))
+			 (if pad "    " "") op
+			 (mapcar #'(lambda (x)
+				     (if (and (listp x) (eql (car x) :label))
+					(caddr x) x)) args))))))))
 
 (defun compile-gcc (gcc-input-file gcc-output-file)
   (with-open-file (fo gcc-output-file :direction :output :if-exists :overwrite
