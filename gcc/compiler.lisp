@@ -151,3 +151,28 @@
         ,@(translate-walker false-form environment)
         (:join)
  	(:label ,end-label))))
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defparameter *gcc-ai-library* (make-hash-table)))
+
+(defmacro deflib/gcc (name (&rest arg-list) &body body*)
+  "Defines library function for AI code. The all the functions will be
+linked into resulting AI GCC code."
+  `(setf (gethash ',name *gcc-ai-library*)
+         '(lambda ,arg-list ,@body*)))
+
+;; Usage samples
+;; (deflib/gcc test (x)
+;;   (+ x x))
+
+;; (deflib/gcc test2 (x)
+;;   (+ x x))
+
+(defun build-ai-core (ast &key (debug t))
+  (translate 
+   `(lambda (initial-state unknown)
+      (letrec ,(iter (for (fn-name fn-body) in-hashtable *gcc-ai-library*)
+                     (collect `(,fn-name ,fn-body)))
+        ,ast))
+   :unlabel (not debug)))
+
