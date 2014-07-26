@@ -16,7 +16,8 @@
 			 (if pad "    " "") op args)))))))
 
 (defun compile-gcc (gcc-input-file gcc-output-file)
-  (with-open-file (fo gcc-output-file :direction :output :if-exists :overwrite)
+  (with-open-file (fo gcc-output-file :direction :output :if-exists :overwrite
+		      :if-does-not-exist :create)
     (pretty-print-gcc
      (translate
       (with-open-file (fi gcc-input-file)
