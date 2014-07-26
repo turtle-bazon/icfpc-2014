@@ -107,7 +107,15 @@
 				(:up 0)
 				(:down 2)
 				(:left 3)
-				(:rigth 1)) env))
+				(:rigth 1)
+
+				(:wall 0)
+				(:empty 1)
+				(:pill 2)
+				(:power-pill 3)
+				(:fruit-loc 4)
+				(:lm-start 5)
+				(:ghost-start 6)) env))
     (atom (translate-variable atom env))))
 
 (defun translate-const (const env)
