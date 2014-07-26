@@ -35,6 +35,7 @@
    ((0, ((10, 10), 2)), ;; Ghost 2
     ((0, ((11, 10), 2)), ;; Ghost 3
      ((0, ((12, 10), 2)), ;; Ghost 4
-      0)))), ;; Fruit (n > 0 - present)
+      0)))), ;; Fruit (n > 0 - present), no fruit means empty list(0), when
+             ;; theres fruit there will be counter + fruit coordinates ?
   0 ;; L-man move(as direction)
   )))
