@@ -8,6 +8,10 @@
 (deflib/gcc l-man-coord (l)
   (car (cdr l)))
 
+
+(deflib/gcc map-obj (map x y)
+  (nth x (nth y map)))
+
 (deflib/gcc nth (n lst)
   (if (= n 0) (car lst) (nth (- n 1) (cdr lst))))
 
@@ -21,7 +25,7 @@
 	  (map-size (cdr map) (+ 1 x) y))))
 
 (deflib/gcc move (ai-state w-state)
-  (if (= (cdr (map-size (car w-state) 0 0)) 22)
+  (if (= (map-obj (car w-state) 2 4) 2)
       (cons ai-state :left)
       (cons ai-state :rigth)))
 
