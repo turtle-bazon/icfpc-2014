@@ -138,7 +138,7 @@
   (case proc-name
     ((cadr caar) (translate-macro proc-name proc-args env))
     (t (multiple-value-bind (n i) (ignore-errors (locate-within-env proc-name env))
-         `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) proc-args))
+         `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) (reverse proc-args)))
              ,@(if (and n i) `((:ld ,n ,i)) `((:ldf ,proc-name)))
              (:ap ,(length proc-args)))))))
 
