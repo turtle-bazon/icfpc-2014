@@ -1,0 +1,2 @@
+(defpackage #:l-man
+  ())
