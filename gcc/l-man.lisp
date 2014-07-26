@@ -1,6 +1,6 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
-(in-package :gcc)
+(in-package #:l-man)
 
 (deflib/gcc l-man-state (w-state)
   (car (cdr w-state)))

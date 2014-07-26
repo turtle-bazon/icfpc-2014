@@ -14,7 +14,7 @@
                (:file "compiler" :depends-on ("package"))
                (:file "util" :depends-on ("package"
 					  "compiler"))
-               (:file "l-man-package"))))
+               (:file "l-man-package"))
 
   :in-order-to ((test-op (load-op gcc-test)))
   :perform (test-op :after (op c)
