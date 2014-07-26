@@ -94,7 +94,11 @@
     (cond
       ((and (= 0 (or (position #\[ param-string) -1))
             (= param-end (or (position #\] param-string) -1)))
-       `(:ref ,(parse-parameter (subseq param-string 1 param-end))))
+       (let ((param-value (parse-parameter (subseq param-string 1 param-end))))
+	 (if (and (eq :reg (first param-value))
+		  (eq 'pc (second param-value)))
+	     (error "PC register can't be indirect argument.")
+	     `(:ref ,param-value))))
       ((numberp parsed-param) `(:const ,parsed-param))
       ((symbolp parsed-param) (case parsed-param
 				((a b c d e f g h i pc) `(:reg ,parsed-param))
