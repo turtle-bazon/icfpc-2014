@@ -44,7 +44,7 @@
     ((= ?form-a ?form-b) (translate-op :ceq ?form-b ?form-a env))
     ((> ?form-a ?form-b) (translate-op :cgt ?form-b ?form-a env))
     ((>= ?form-a ?form-b) (translate-op :cgte ?form-b ?form-a env))
-    ((cons ?form-a ?form-b) (translate-op :cons ?form-b ?form-a env))
+    ((cons ?form-a ?form-b) (translate-op :cons ?form-a ?form-b env))
     ((car ?form) (translate-op :car ?form nil env))
     ((cdr ?form) (translate-op :cdr ?form nil env))
     ((integerp ?form) (translate-op :atom ?form nil env))
@@ -116,6 +116,7 @@
   `((:ldc ,const)))
 
 (defun locate-within-env (bind env)
+  (declare (optimize (debug 3)))
   (iter (for n from 0)
         (for frame in env)
         (for i = (position bind frame :test 'eq))
