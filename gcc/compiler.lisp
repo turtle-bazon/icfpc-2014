@@ -34,7 +34,7 @@
 (defun translate-walker (ast env)
   (declare (optimize (debug 3)))
   (with-match (ast translate-walker)
-    ((lambda ?proc-args ?proc-body) (translate-lambda ?proc-body (list (cons (append ?proc-args (second env)) (first env)) (second env))))
+    ((lambda ?proc-args ?proc-body) (translate-lambda ?proc-body (list (cons (append (second env) ?proc-args) (first env)) (second env))))
     ((let ?bindings ?body) (translate-let ?bindings ?body env))
     ((letrec ?bindings ?body) (translate-letrec ?bindings ?body env))
     ((+ ?form-a ?form-b) (translate-op :add ?form-a ?form-b env))
@@ -89,16 +89,16 @@
              (:label ,helper-proc)
              ,@(translate-let binding-forms
                               let-body
-                              (list (cons (append (car (first env)) bindings)
+                              (list (cons (append bindings (car (first env)))
                                           (cdr (first env)))
-                                    (append bindings (second env)))))))))
+                                    (append (second env) bindings))))))))
 
 (defun translate-let (binding-forms let-body env)
   (declare (optimize (debug 3)))
   (iter (for binding-form in binding-forms)
         (for (binding proc-args proc-body) = (parse-binding binding-form))
         (collect binding into bindings)
-        (collect (translate-lambda proc-body (list (cons (append proc-args (second env)) (first env)) (second env))) into codes)
+        (collect (translate-lambda proc-body (list (cons (append (second env) proc-args) (first env)) (second env))) into codes)
         (finally
          (return           
            (append (translate-lambda let-body env)
@@ -204,11 +204,11 @@
   (case proc-name
     ((cadr caar) (translate-macro proc-name proc-args env))
     (t (multiple-value-bind (n rec-i) (ignore-errors (locate-within-env proc-name (first env)))
-         `(,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) proc-args))
-             ,@(iter (for bind in (second env))
-                     (multiple-value-bind (n i) (locate-within-env bind (first env))
-                       (assert (and n i (zerop n)))
-                       (collect `(:ld 0 ,i))))
+         `(,@(iter (for bind in (second env))
+                   (multiple-value-bind (n i) (locate-within-env bind (first env))
+                     (assert (and n i (zerop n)))
+                     (collect `(:ld 0 ,i))))
+             ,@(apply #'append (mapcar (lambda (form) (translate-walker form env)) proc-args))             
              ,@(if (and n rec-i) `((:ld ,n ,rec-i)) `((:ldf ,proc-name)))
              (:ap ,(+ (length proc-args) (length (second env)))))))))
 
