@@ -237,19 +237,22 @@
  	(:label ,end-label))))
 
 (defun translate-when (condition-form true-form environment)
-  (let ((true-label (intern (symbol-name (gensym "TRUE")) 
-                            (find-package :keyword)))
-	(end-label (intern (symbol-name (gensym "END")) 
-                           (find-package :keyword))))
-    `(,@(translate-walker condition-form environment)
-	(:tsel ,true-label ,end-label)
-	(:label ,true-label)
-	,@(translate-walker true-form environment)
-	(:label ,end-label))))
+  (translate-walker `(if ,condition-form ,true-form 0) environment))
 
 (defun translate-cond (forms environment)
-  (translate-walker (iter (for (c f) in forms)
-			  (collect `(when ,c ,f))) environment))
+  (labels ((build-if (forms)
+             (cond 
+               ((= (length forms) 0) 0)
+               ((= (length forms) 1) 
+                (bind (((c f) (first forms)))
+                  (if (eql c 't)
+                      f
+                      `(when ,c ,f))))
+               (t (bind ((((c f) . tail-forms) forms))
+                    `(if ,c
+                         ,f
+                         ,(build-if tail-forms)))))))
+    (translate-walker (build-if forms) environment)))
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defparameter *gcc-ai-library* (make-hash-table)))
