@@ -89,8 +89,7 @@
              (:label ,helper-proc)
              ,@(translate-let binding-forms
                               let-body
-                              (list (cons (append bindings (car (first env)))
-                                          (cdr (first env)))
+                              (list (cons bindings (first env))
                                     (append (second env) bindings))))))))
 
 (defun translate-let (binding-forms let-body env)
