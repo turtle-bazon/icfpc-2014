@@ -38,3 +38,29 @@
                    ,test-var-3
                    (ensure-same (translate '(lambda (x y) (,bin-op-lisp x y)))
                                 '((:ld 0 0) (:ld 0 1) (,bin-op) (:rtn))))))))
+
+(addtest (gcc-translator-core)
+  if-1
+  (ensure-same (bind ((*gensym-counter* 0))
+                 (translate '(if 0 1 2)))
+               '((:LDC 0) 
+                 (:SEL :TRUE0 :FALSE1)
+                 (:LDC 1) 
+                 (:TSEL :END2 :END2)
+                 (:LABEL :TRUE0)
+                 (:LDC 1) 
+                 (:JOIN) 
+                 (:LABEL :FALSE1)
+                 (:LDC 2) 
+                 (:JOIN) 
+                 (:LABEL :END2))))
+
+(addtest (gcc-translator-core)
+  when-1
+  (ensure-same (bind ((*gensym-counter* 0))
+                 (translate '(when 0 1)))
+               '((:LDC 0) 
+                 (:TSEL :TRUE0 :END1) 
+                 (:LABEL :TRUE0) 
+                 (:LDC 1) 
+                 (:LABEL :END1))))
