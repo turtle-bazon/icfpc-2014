@@ -87,7 +87,17 @@
   cond-3
   (ensure-same (bind ((*gensym-counter* 0))
                  (translate '(cond (0 0))))
-               '((:LDC 0) (:TSEL :TRUE0 :END1) (:LABEL :TRUE0) (:LDC 0) (:LABEL :END1))))
+               '((:LDC 0)
+                 (:SEL :TRUE0 :FALSE1)
+                 (:LDC 1)
+                 (:TSEL :END2 :END2)
+                 (:LABEL :TRUE0)
+                 (:LDC 0)
+                 (:JOIN)
+                 (:LABEL :FALSE1)
+                 (:LDC 0)
+                 (:JOIN)
+                 (:LABEL :END2))))
 
 (addtest (gcc-translator-core)
   cond-4
