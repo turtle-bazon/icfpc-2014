@@ -1588,4 +1588,557 @@
  <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 3:47:17">отлично, спасибо</msg>
  <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 3:47:28">ладно, до завтра </msg>
  <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 3:47:37">я надеюсь часам к 10 — 11 встать</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 3:48:12">аналогично, но по киеву</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 3:48:40">и эта. когда закончится военная заворушка, хочу всех напоить пивом)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 3:49:8">обязательно :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 3:49:27">всё. я убрёл</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 3:49:47">Я тоже упал. Логи закоммитил. Но они в таком формате, xml-ном. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 4:9:6">2 grepz: я добавил простую систему управления библиотечными функциями (см. https://bitbucket.org/skobochka/icfpc-2014/commits/3ba6f95b145baf761545f1a2300d19921274c344)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 4:10:9">надо сделать набор helper'функций для:&lt;br />1. разбора состояния мира (карта, здоровье и т.п.)&lt;br />2. для разбора состояния ЛМ и призраков&lt;br />&lt;br />эти хелперы нам очень пригодятся когда будем писать AI</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 4:10:19">ну и стоит подумать над алгоритмами AI</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 4:10:31">логи того что мы напридумывали-набеседовали - в репе</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 4:10:43">я ушел спать, попробую встать не позже 10-11 по киеву</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 10:31:37">Я тут параллельно на работе, но вроде вкурил всё что вы за вчера сделали, одного непонимаю, почему при трансляции letrec зачем оно помимо задания самой функции ещё и её вызов делает(LDF)?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 11:54:38">&amp;quot;The program for Lambda-Man´s AI was limited to 1048576 instructions.&amp;quot;</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 11:54:43">Начались ограничения.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 11:59:25">стоило ожидать</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:6:7">у нас рекурсивные вызовы делать же нельзя?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:7:58">Вроде без всяких оптимзаций можно.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:8:24">непохоже, но может я где-то косячу</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:8:38">не убирает лейбл внутри вызова функции</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:13:18">я там выложил расшифровку состояния мира: world-state.sample и l-man.lisp, где стаб для управления человечком</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:15:56">привет всем</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:16:2">Привет</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:16:5">Привет.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:17:23">ща я быстро позавтракаю, почитаю коммиты пока</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:18:40">Да там их нет. Я сам минут 15-20 назад проснулся.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:18:42">С утра какой-то глюк в их симуляторе был, спейсы в псевдоассемблере не воспринимал, сейчас починили уже</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:20:4">надо знаете чего, накидать хелперы для работы со списками </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:20:17">хотя бы размер карты узнать</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:21:4">а по-возможности и клетку получить по её координате</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:22:10">тогда можно написать функцию типа call-with-env, которая будет вызывать коллбек с 4 параметрами — клетками справа/вверху/лева/внизу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:22:53">рекурсивные вызовы должны работать, я вчера проверял — можно глянуть gcc/examples/simple-loop.lisp</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:23:12">ок, значит я где-то накасячил</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:24:4">а что будет, кстати, если cdr ячейки сравнить с «0», а там cons?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:24:13">в смысле, как конец списка искать?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:24:37">должно ноль наверное вернуть - пустой список</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:24:51">The empty list is encoded as the integer 0.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:25:45">затем и нужна инструкция ATOM(integerp)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:25:52">чтобы не сравнивать список с интами</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:25:54">я так думаю</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:27:38">во точно, атом</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:27:53">сделаете кто-нибудь? :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:28:26">у нас уже был вроде</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:28:38">я сейчас проверю как это работает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:28:41">найду размеры карты</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:30:31">давай!</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:36:4">progn у нас нет?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:36:27">неа, а зачем он тебе понадобился, кстати?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:36:38">мы вчера думали над его целесообразностью</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:37:9">вроде бы решили, что без побочных эффектов он не нужен</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:37:16">deflib/gcc move - что там за число 11?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:37:19">если подумать, то можно вобщем и без него, всё верно</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:37:36">11 - координата</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:37:46">л-ман туда-сюда будет дёргаться</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:38:0">так как в одном случае у него условие выполяется, в другом нет, просто как пример</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:38:20">Нам бы эти 3, 1 перевести в нормальный читаемый вариант. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:38:35">Что у нас с топлевел енвайронментом?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:39:10">надо, я сейчас отпинаюсь от работы смогу что-то более-менее нормально запилить.&lt;br />Проверил нахождение размера карты через cdr и integerp - всё как говорилось, работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:39:26">turtle: 3 1 без проблем вообще, добавь в translate-walker паттерны типа :down :left :right :bottom</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:39:49">Кстати, да, можно вообще туда их захардкодить.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:39:52">там ещё вы убрали условие из translate-op, я его опять ввёл, чтобы сущности не плодить, когда оп с 1 параметром, второй просто не подставляется.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:40:25">иначе cdr/car/integerp работать не будут</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:40:53">ну мы не то, чтобы его убрали, видимо, при мерже у sectoid’a бранчей в мастер что-то потерялось</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:41:26">ясно, а то я сегодня вдуплял долго почему у меня выражение валилось с ошибкой, пока по косточкам до car не добрался. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:42:16">да блин, тесты надо написать, но никто не хочет :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:42:29">grepz, п</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:42:44">а ты закоммитил хелпер по размерам харты?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:43:21">не, пока не комитил, я на работе зависаю, так что отвлекаться приходится</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:43:32">окей</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:43:52">ладно, надо бы что-то спрограммировать бы до 16 часов</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:44:42">а такой вопрос: карта всегда окружена стеной?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:44:52">как в эмуляторе игры?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:45:20">в смысле, можно ли смело заглядывать в ( x - 1 ), ( y - 1 ), или надо проверять, что x и y не нуль?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 12:45:30">я так понимаю что да</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:46:6">Написано, что да.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:46:48">&amp;quot;Maps are like mazes: they consist of corridors 1-square wide, without open spaces. More formally: there are no 2x2 areas consisting only of non-wall squares.&lt;br />&lt;br />Maps have walls around the edges.&amp;quot;</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:52:41">надо бы ещё cond спрограммировать, а то дерево if-ов неудобно писать</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 12:56:47">Макросистема нужна. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:57:9">да не обязательно пока, можно на уровне translate-walker добавить паттерны</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 12:58:59">и всякие caddr :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:0:29">Надо какие-нибудь босяцие макросы сделать.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:1:25">хм, а откуда у меня там нагенерилось всяких «LDF +» </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:2:33">я там запушил gcc/examples/bumper-ai.lisp</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:2:47">как-то криво транслируется, собака</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:3:19">да, есть такое, я тоже не пойму, толи я дурак, толи лыжи не едут.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:4:18">паттерн ((+ ?form-a ?form-b) (translate-op :add ?form-a ?form-b env)) почему-то не срабатывает, видимо, проваливается в стандартный proc-invocation</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:6:12">gcc/examples/bumper-ai.lisp ты его в мастер запушил?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:6:57">да, попробуй ещё раз</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:7:13">во, теперь есть</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:7:15">не замечаю, что проклятый гит обламывается иногда при коммите</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:8:19">Босяцкий cond сделал.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:8:41">минут на 15 отойду</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:10:59">нашёл проблему — скобки не так расставил =)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:11:6">странно, почему такой эффект</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:11:8">ну да ладно</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:11:12">Ох уж этот лисп. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:11:14">всё равно не работает :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:11:27">загружается, но tags mismatch</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:11:49">Значит, что-то не туда возвращается.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:12:53">блин как бы всё это продебажить</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:19:38">А у нас nth есть разве?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:19:57">А, вон ты его куда вынес.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:20:21">я там ещё кой-чего пофиксил, но пока всё равно не работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:24:36">короче там всё работает кроме функции at-coords </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:24:40">тоесть, она тоже работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:24:52">но результат нельзя сравнить с числом, tags mismatch</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:25:7">блин а как в эмуляторе посмотреть, что она возвращает :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:25:14">DBUG</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:25:17">но если значение уже на стеке</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:25:41">возможно стоит dbug как ф-ию ilisp'а тоже ввести</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:26:0">Там же видн стек в эмуляторе.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:26:4">Или нет?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:26:5">хм а на стек оно как попадает? перед вызовом функции?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:26:21">в http://icfpcontest.org/game.html я стека не вижу</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:26:42">после возврата из ф-ии если вызвать DBUG оно по идее должно показать значение</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:26:46">или хз вобщем</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:30:18">так, исходя из дампа данных, карта лежит в (car world-state). Если не смотреть на качество кода, то вот эта ф-ия по идее должна работать правильно:&lt;br />(deflib/gcc map-size (map x y)&lt;br />  (if (integerp (cdr map))&lt;br />      (if (= x 0)&lt;br />	  (map-size (car map) (+ 1 x) y)&lt;br />	  (cons x y))&lt;br />      (if (= x 0)&lt;br />	  (map-size (cdr map) x (+ 1 y))&lt;br />	  (map-size (cdr map) (+ x 1) y))))&lt;br />А на выходе при попытке сделать (car result) tag mismatch. Я где-то ошибся?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:31:8">у меня такая же фигня с картой</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:31:48">я не могу сделать даже (car (car map))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:32:5">tag mismatch тоже</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:32:10">очень странно</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:34:13">(deflib/gcc move (ai-state w-state)&lt;br />  (cons 0 (car (car (car w-state)))))</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:34:19">вот такое сработало</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:34:35">да, я щас ровно такой же эксперимент сделал :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:34:48">а если такое же сделать в внутренней ф-ии ?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:34:54">тогда наверное не сработает, так?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:35:2">ща посмотрим</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:35:40">caar и cadr сделал.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:35:56">и во внутренней функции работает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:36:2">ага</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:36:5">тоже проверил</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:37:53">и даже через рекурсию работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:37:58">блин я щас сделал код чтобы если (car (car (car worls-state))) == 0, то бежать направо, иначе налево</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:38:2">побежал налево</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:38:13">что-то я там подзапутался</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:39:20">короче там какая-то проблема явно с этими списками</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:39:54">и даже такое работает:</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:39:55">(deflib/gcc test (map)&lt;br />  (if (integerp (cdr map))&lt;br />      2&lt;br />      (test (cdr map))))&lt;br />&lt;br />(deflib/gcc move (ai-state w-state)&lt;br />  (cons 0 (test w-state)))&lt;br /></msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:39:59">бежит вниз</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:41:56">обана</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:42:16">оказывается, порядок аргументов не надо менять при вызове функции</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:43:9">что-то найти в доке такого не могу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:45:41">хотя я могу ошибаться…</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:47:4">Да.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:47:11">Самый нижни заполняется в 0.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:47:17">Тот, что выше - дальше.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:47:21">DUM 2&lt;br />LDC 4&lt;br />LDC 5&lt;br />LDF 5&lt;br />RAP 2&lt;br />RTN</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:47:26">Вот вот это если посмотреть.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:47:58">Вероятно там тоже список, поэтому он консами заполняет фрейм со стека.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:48:5">Поэтому обратный порядок и может получиться.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:48:23">тогда я откатываю правку</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:49:0">тогда непонятно с картой вообще</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:49:1">Ну ты в симуляторе тоже глянь, об одном и том же ли мы говорим?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:49:36">эм, я скорее от безысходности спрашиваю, а мы вообще можем большие списки как аргументы передавать?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:50:0">с другой стороны почему бы нет.. в мейн то он попадает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:50:19">и те тестовые функции его карили и цдрили</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:50:21">Он же на куче просто. И там ссылка.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:50:22">а почему нет, он же указатель просто передаёт на фрейм</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:50:40">ну да, точно</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:51:18">А что там с картой непонятно?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:51:57">да вот собственно более-менее сложный код при работе со списками(картой) отваливается с tag mismatch</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:52:46">Нада найти где он отваливается. :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:53:18">ещё вопрос, cons можно из ф-ии возвращать&amp;gt;</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:53:19">?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:53:31">можно, безусловно</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:53:56">гм</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:53:56">Свиз? Что за непонятки с картой?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:54:6">короче, я локализовал проблему, но непонятно, что с ней делать</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:54:6">походу именно с cons и проблема</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 13:54:21">с cons - tag mismatch, без - всё хорошо</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:54:29">может, это не та проблема, но всё же</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:54:31">А что за проблема?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:55:12">1. вот есть функция: call-with-world (lambda (map) …</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:55:29">2. я её зову так: (call-with-world (car world-state))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:55:42">3. внутри call-with-world всё работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:55:47">теперь я меняю сигнатуру</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:56:1">на call-with-world (lambda (map lman) … )</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:56:21">и зову как (call-with-world (car world-state) (cadr world-state))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:56:33">tag-mismatch</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:56:42">а теперь я меняю параметры:</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:56:56">(call-with-world (cadr world-state) (car world-state))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:56:59">и опять работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:57:36">то-ли где-то косяк, то ли параметры при вызове функции надо всё-таки не реверсить</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:57:54">ща минут 10 на стенде поэкспериментирую</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:58:14">Ты смотрел в симуляторе l-mana?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:58:20">Тот код, который я дал?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:58:27">Там видно как параметры куда идут.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:58:58">ща я транслятор тогда проверю</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:59:28">Там проблема в соответсвии между LD x x и вызовом.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 13:59:32">Он же с фрейма читает потом.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 13:59:49">не понял</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:0:52">Ну смотри.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:0:57">Пушим в стек - 4</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:1:5">Пушим в стек 5 - (5 4).</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:1:23">Вот эта 4 её мы с фрейма забираем как LD 0 0, а 5 как LD 0 1</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:1:59">ага, вроде так и есть сейчас</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:2:52">хотя так да не так</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:2:53">(let ((proc (lambda (la lb)&lt;br />              (+ (car la) (cdr lb)))))&lt;br />  (proc (cons 1 10) (cons 100 1000)))&lt;br /></msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:3:9">должно быть 1001, получилось 110</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:3:39">где-то лажа, ща погляжу</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:4:24">Ну да, по идее, не надо реверсить.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:4:34">У тебя же после реверса меняется начало с концом.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:4:49">Первый аргумент пропушенный в стек, его по LD 0 0 можно взять.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:5:0">А с реверсом получается, по LD 0 0 идёт последний аргумент.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:5:24">Хотя нет, там непонятно как у тебя назначаются.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:5:56">так, давай ещё раз прикинем на моём примере</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:5:59">как должно быть</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:6:12">Давай.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:6:12">(cons 1 10) — должен быть запушен последним?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:6:20">а сначала (cons 100 1000) ?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:6:25">Не обязательно.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:6:35">Первый конс и должен быть запушен первым.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:6:46">Но это зависит от того как дальше лукап делать.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:6:55">ну да, вот я и определяюсь</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:7:7">Ну допустим, что (cons 1 10) должен быть запушен первым.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:7:24">Если он будет запушен первым, то его надо дальше брать как LD 0 0</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:8:5">понятно, а у меня LD 0 1</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:8:9">ща погляжу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:8:28">блин и в консе прямой порядок, ну что такое</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:8:51">давайте щас чётко определимся с порядком, и везде унифицируем, а то поломалось же всё</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:9:0">итого: фиксируем обратный порядок?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:9:30">(f a b) -&amp;gt; сначала push b, потом push a, внутри a — это LD 0 0, и b — LD 0 1</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:9:32">ок?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:10:18">так</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:11:8">тогда давайте я сейчас поправлю funcall, а вы посмотрите остальные базовые функции, хорошо?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:11:19">чтобы точно порядок был везде один и тот же</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:11:45">я только одного не пойму, если ошибка действительно в этом, почему код (cons x y) на выходе выполняется нормально, а (cons (- x 1) y)) к примеру уже ломается</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:11:57">* на выходе функции</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:12:22">ну давай я это отдельно посмотрю в эмуляторе после ремонта</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:12:26">ок</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:12:30">может, там просто другая ошибка</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:12:40">я пойду кофе в себя залью тогда</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:17:44">так, вроде пофиксил где можно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:17:59">ща посмотрю есть ли проблема с возвращаемым cons</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:19:33">что-то там явно не так :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:19:35">(let ((proc (lambda (x y) (cons (- x 1) y))))&lt;br />  (proc 10 10))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:19:43">результат (10, -9)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:20:4">гм</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:20:47">  $y,%s := POP(%s)&lt;br />  $x,%s := POP(%s)&lt;br />  if TAG($x) != TAG_INT then FAULT(TAG_MISMATCH)&lt;br />  if TAG($y) != TAG_INT then FAULT(TAG_MISMATCH)&lt;br />  $z := $x - $y&lt;br />  %s := PUSH(SET_TAG(TAG_INT,$z),%s)&lt;br />  %c := %c+1</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:20:56">получается перепутаны аргументы</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:21:28">прямо по спеке перепутаны?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:21:58">я сейчас посмотрю как у нас, обновлю gcc</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:22:8">думаю уже поправили бы, если там была ошибка</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:22:12">давай, только pull сделай сначала</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:23:12">хм, там как-то странно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:23:16">рассмотрим код:</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:23:25">(let ((proc (lambda (x y) (cons (- x 1) y))))&lt;br />  (proc 10 100))&lt;br /></msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:23:30">результат: (10, -99)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:23:32">асм:</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:23:40">    LDC 100&lt;br />    LDC 10&lt;br />    LDF 5&lt;br />    AP 2&lt;br />    RTN&lt;br />;5:&lt;br />    LD 0 1&lt;br />    LDC 1&lt;br />    LD 0 0&lt;br />    SUB&lt;br />    CONS&lt;br />    RTN&lt;br /></msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:24:1">proc — это ;5:</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:24:18">угу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:24:18">тоесть я сначала пушу в стек LD 0 1 — это y, 100</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:24:22">потом 1</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:24:28">потом LD 0 0 — это 10</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:24:33">делаю SUB</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:24:41">разве я не должен получить 9?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:24:47">и 100 на стеке?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:25:1">именно, оно забирает последние переменные на стэке</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:25:8">а это как раз и будет 10 и 1</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:25:17">а откуда тогда в результате -99 ? :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:25:48">погодь, а если оно стек считает с конца(то бишь начала)?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:26:11">(f a b) -&amp;gt; сначала push b, потом push a, внутри a — это LD 0 0, и b — LD 0 1 - не так.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:26:27">push a&amp;lt; потом push b, внутри a - это LD 0 0.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:26:47">А b LD 0 1. Но сначала надол a пушить.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:26:52">короче, для конса это не там</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:26:54">    LDC 100&lt;br />    LDC 10&lt;br />    CONS&lt;br />    RTN</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:26:59">результат (100, 10)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:27:35">Ну для конса и должен быть такой результат.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:28:25">ок, тогда я для конса конкретно меняю в трансляторе порядок аргументов?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:28:51">Погоди.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:28:56">Я сейчас смотрию в транслятор.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:28:58">гожу</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:29:0">И там всё ок.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:29:12">((:LDC 100) (:LDC 10) (:CONS))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:29:22">Возвращает (translate '(cons 100 10))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:29:25">Наоборот.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:29:32">Т.е. так и должно быть.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:29:47">но ты в http://icfpcontest.org/lman.html глянь</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:29:59">Я там и смотрю.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:30:20">так</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:30:22">Так и получается.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:30:38">    LDC 100&lt;br />    LDC 10&lt;br />    CONS&lt;br />    RTN</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:30:46">data stack: (100, 10)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:30:51">а не (10, 100)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:31:1">наоборот должно быть же</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:31:4">Так конс так и работает.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:31:13">ну правильно, он потому что y первой забирает&lt;br /></msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:31:30">$y,%s := POP(%s)&lt;br />  $x,%s := POP(%s)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:31:40">$z := ALLOC_CONS($x,$y)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:32:14">ну тоесть надо менять порядок</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:32:15">(car (cons 10 100))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:32:16">Тот gcc он же эквивалент (cons 1000 10).</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:32:22">должно быть 10, получаем 100</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:32:26">Зачем? Не надо.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:32:35">turtle :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:32:43"> LDC 100&lt;br /> LDC 10&lt;br /> CONS&lt;br /> CAR&lt;br /> RTN</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:32:47">Получаем 100.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:32:57">но получить-то должны 10!!</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:33:5">Почему?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:33:8">не, и должны 100 получить</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:33:27">смотри: y = 10, x = 100, машина преобразует это в (100, 10)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:33:29">Это cdr 10 должен получить.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:33:32">car забирает x</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:33:45">да вы троллите чтоли меня :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:33:51">Ну спеку глянь. :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:33:55">посмотри в псевдокод cons :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:33:57">вот я в slime проверяю в лиспе: GCC&amp;gt; (car (cons 10 100))&lt;br />10&lt;br /></msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:34:9">CONS - allocate a CONS cell&lt;br />&lt;br />Synopsis: pop two values off the data stack;&lt;br />          allocate a fresh CONS cell;&lt;br />          fill it with the two values;&lt;br />          push the pointer to the CONS cell&lt;br />Syntax: CONS&lt;br />Effect:&lt;br />  $y,%s := POP(%s)&lt;br />  $x,%s := POP(%s)&lt;br />  $z := ALLOC_CONS($x,$y)&lt;br />  %s := PUSH(SET_TAG(TAG_CONS,$z),%s)&lt;br />  %c := %c+1&lt;br /></msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:34:25">так тут транслирует VM оргов то что мы предоставляем</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:34:42">да мало ли какой там псевдокод, это задача транслятора </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:34:53">не может быть, чтобы (car (cons 10 100)) было 100</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:35:1">то есть мы сначала положили X, потом Y на стэк, VM забрал верхнее - Y, потом X и поменял их местами</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:35:9">(car (cons 10 100))  - для нашего случая надол (car (cons 100 10))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:35:19">Давай по порядку.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:35:26">Смотрим в слиме  (car (cons 100 10))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:35:37">Получаем 100.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:35:47">блин, ну объясните мне, почему я не могу в трансляторе поменять местами аргументы в cons для IL :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:35:52">Транслируем: (translate '(car (cons 100 10)))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:36:2">Получаем ((:LDC 100) (:LDC 10) (:CONS) (:CAR))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:36:6">Вбиваем в симулятор.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:36:23">Получаем 100.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:36:37">translate = ((:LDC 10) (:LDC 100) (:CONS) (:CAR))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:36:37">Поменять можешь, просто это неправильно будет.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:36:46">а, всё, разобрался</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:36:48">ну да, получается мы должны менять местами значения</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:36:55">У мееня текущий транслятор 100 сначала делает.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:37:5">(cons 100 10), даёт то что выше, а должно быть наоборот</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:37:7">давайте все вместе сейчас синхронизируем репо, и ещё раз обсудим</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:37:16">Да, после компиляции по другому работает. 6)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:37:18">а то у нас разный код</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:37:25">короче</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:37:31">:)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:37:54">А, потому что там обобщённый код для всех операций.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:38:12">им всё-таки надо было предусмотреть более развёрнутый дебаг. Реально легко запутаться.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:38:14">короче так: там теперь сам translate-op меняет порядок операции</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:38:30">:)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:38:34">Надо глянуть, кстати.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:38:50">давайте сделаем так: пусть translate-op всегда поддерживает прямой порядок</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:39:5">а если надо менять, поменяем в его вызове из translate-walker</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:39:18">да, пожалуй так будет лучше</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:39:45">Да, надо так.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:39:56">Потому что для SUB другой порядок нужен.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:40:1">И div тоже.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:40:2">ща закоммичу</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:40:26">нет, правда, я совсем не удивлён, что LamCo обонкротились :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:40:45">:)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:41:2">так, погодите, а для кого вообще нужен прямой порядок?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:41:8">Кто-то тесты вчера продвигал яро. :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:41:18">было дело. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:41:22">я щас спеку наискосок проглядел — везде   $y,%s := POP(%s)&lt;br />  $x,%s := POP(%s)&lt;br /></msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:41:24">Надо был с них начать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:41:53">Только вот SUB - $x - $y.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:42:21">А CONS - ALLOC_CONS($x,$y)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:42:21">да, для деления и вычитания</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:42:44">но деления нет, потому только вычитания, все остальные операции коммутативны</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:42:45">Хотя. Сейчас у меня минус тоже неправильно работоал.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:43:23">Ты протолкнул свои изменения?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:43:26">Или правишь пока?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:43:50">правлю пока — я опять с порядком запутался :(</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:44:19">Ну...</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:45:0">Делай прямой порядко.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:45:5">Первый, потом второй.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:45:12">И не ошибёшься, думаю.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:45:58">1.15 осталось, не успеваем</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:46:26">протолкнул</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:46:41">проверьте, пожалуйста, все операции в эмуляторе</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:46:49">ок</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:49:56">арифметику, car/cdr проверил, всё хорошо</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:50:18">надо ещё сравнения и условия</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:50:55">Я тоже посмотрел, нормально.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:50:58">Сравнения проверил.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:51:11">Условия if проверял вчера. :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:51:21">тоже проверил</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:51:23">но вот такой тест опять не работает:</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:51:24">всё работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:51:24">(let ((proc (lambda (la lb)&lt;br />              (- (car la) (cdr lb)))))&lt;br />  (proc (cons 1 10) (cons 100 1000)))&lt;br /></msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:51:24">Сейчас when и cond гляну.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:53:36">да блин что ж такое-то</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:53:43">(let ((proc (lambda (la lb) (car la))))&lt;br />  (proc (cons 1 10) (cons 100 1000)))&lt;br /></msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:53:48">почему там 100</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:53:55">    LDC 100&lt;br />    LDC 1000&lt;br />    CONS&lt;br />    LDC 1&lt;br />    LDC 10&lt;br />    CONS&lt;br />    LDF 9&lt;br />    AP 2&lt;br />    RTN&lt;br />;9:&lt;br />    LD 0 0&lt;br />    CAR&lt;br />    RTN&lt;br /></msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:54:14">LD 0 0 в ;9: — это же последний конс?!</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:54:26">Нет, первый.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:54:49">точно?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:54:56">Да, точно.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:55:41">90 получается</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:56:8">как так то</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:56:32">А -999 должно.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:57:5">А потому что создались они не в том порядке.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:57:5">а если поменять порядок аргументов то всё правильно :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:57:14">    LDC 100&lt;br />    LDC 1000&lt;br />    CONS&lt;br />    LDC 1&lt;br />    LDC 10&lt;br />    CONS&lt;br />    LDF 9&lt;br />    AP 2&lt;br />    RTN&lt;br />;9:&lt;br />    LD 0 1&lt;br />    CAR&lt;br />    LD 0 0&lt;br />    CDR&lt;br />    SUB&lt;br />DBUG</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:57:28">LDC 1&lt;br />LDC 10&lt;br />CONS&lt;br />LDC 100&lt;br />LDC 1000&lt;br />CONS&lt;br />LDF 9&lt;br />AP 2&lt;br />RTN&lt;br />;9:&lt;br />LD 0 0&lt;br />CAR&lt;br />LD 0 1&lt;br />CDR&lt;br />SUB&lt;br />RTN</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:57:31">Вот так должно быть.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:57:36">нет</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:57:38">наоборот</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 14:57:40">закоммитил правку, теперь надо глянуть</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:58:18">Ну либо так.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:58:24">Если созддавать в таком порядке.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 14:58:25">во, так правильно</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:59:0">Ну тут надо проверить.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:59:8">Вот почему они изначально создаются с тем порядком?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 14:59:21">Если просто определиться, то уже норм должно быть.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:0:24">мде, не подойдёт такой фикс</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:0:26">Аааа. Сейчас можем запутаться. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:0:33">уже запутались :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:1:7">У нас в translate-op надо порядок создания определить.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:1:13">надо вобщем отдельно порядок для аргументов при новом фрейме делать и когда нового фрейма нет или я не прав?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:1:15">У нас сейчас там наоборот.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:2:35">ДА нет.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:2:36">блин, надо тесты, конечно</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:2:38">Нормально.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:2:49">я щас там экспериментирую — что-то старое ломается</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:2:53">Для минуса смотрю.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:3:4">Где-то в lambda, скорее всего. Сейчас гляну.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:4:26">Да там тоже вроде всё нормально.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:5:32">В proc беда с текущим кодом.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:5:39">GCC&amp;gt; (translate '(ff 1 2))&lt;br /></msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:5:48">Выдает: ((:LDC 2) (:LDC 1) (:LDF FF) (:AP 2))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:5:57">А Должен LDC 1 сначала поставить.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:6:20">почему, мы же вроде решили обратный порядок для функций?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:6:47">Ну где-то решили, где-то не решили.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:6:54">lambda, например, другой пордяок.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:7:29">По мне так только в proc сейчас надо прямой порядок поставить и всё.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:8:34">запушил, давайте всё проверять</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:9:47">функция определения размера карты вот сейчас вот начала правильно работать</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:10:22">сейчас все остальные операции проверю</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:12:3">зато у меня перестал работать (car lman) и (cdr lman) :(</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:12:51">у меня зато теперь всё работает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:12:52">:)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:13:27">(deflib/gcc map-size (map x y)&lt;br />  (if (integerp (cdr map))&lt;br />      (if (= x 0)&lt;br />	  (map-size (car map) (+ 1 x) y)&lt;br />	  (cons x (+ y 1)))&lt;br />      (if (= x 0)&lt;br />	  (map-size (cdr map) x (+ 1 y))&lt;br />	  (map-size (cdr map) (+ 1 x) y))))&lt;br />&lt;br />(deflib/gcc move (ai-state w-state)&lt;br />  (if (= (cdr (map-size (car w-state) 0 0)) 22)&lt;br />      (cons ai-state :left)&lt;br />      (cons ai-state :rigth)))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:14:42">класс</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:14:48">45 минут ещё :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:14:52">%)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:15:12">блин почему координаты пакмана ломаются у меня</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:15:17">даже карта уже заработала</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:15:33">координы ловишь как (car (cdr l)))?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:15:57">где l =  (car (cdr w-state)))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:16:8">хм, нет похоже :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:16:10">ща</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:17:50">еее!!</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:18:6">пакман уже зигзагом пробежался =)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:18:11">ща закоммичу ai</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:18:15">давай</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:18:51">Крут. :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:19:24">да вообще монстр</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:19:33">bumper-ai.lisp</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:19:44">нету</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:19:46">у меня он убегает в левый угол и застревает там</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:19:53">да блин</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:19:54">ща</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:20:22">ушло</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:20:58">так щас попробую чуть проапгрейдить, чтобы он своё предыдущее направление сохранял в ai-state и старался не бежать назад</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:22:6">Как мы теперь ии компилируем?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:22:21">ну я его просто через translate-file</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:22:51">может перетащим на build-ai-core</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:23:2">чтобы на функции уже разбивать</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:23:9">давай после lightning division :/</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:23:13">ок</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:23:39">много времени с порядком провозились конечно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:23:51">35 минут осталось, вряд ли уже успеем A* сделать на IL, конечно, но, может, хоть что-то</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:24:12">если хотя бы бегать будет и на поворотах менять направление, уже класс</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:25:17">блин а у нас нету логических «and», «or» и тд?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:25:31">нет</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:25:36">только вложенными when</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:25:41">в условия</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:25:47">давайте мож сделаем</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:26:49">может пока на when, чтобы не огрести багов?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:27:44">ок, но блин код утраивается</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:28:26">условие (and (= x ox) (= y ox)) в лапшу превращается если там есть обе ветки true и false</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:28:36">мдя</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:30:19">А где там утраивается?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:30:32">                                              (let ((can-walk (lambda (x y)&lt;br />                                                                (if (= x (car ai-state))&lt;br />                                                                    (if (= y (cdr ai-state))&lt;br />                                                                        0&lt;br />                                                                        (at-coords x y))&lt;br />                                                                    (at-coords x y)))))&lt;br /></msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:30:40">ну фиг с ним пока</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:35:12">блин всё равно быстро застревает</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:35:14">Кстати, транслирует он его как-то странно.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:35:23">глянте код кто-нибудь bumper-ai</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:36:11">Ты там расставь :up, :down и т.д.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:36:16">А то непонятно. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:37:57">расставил</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:38:6">тока перестало работать, но не из-за этого :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:39:31">У тебя начинается иф lf = 0, и даалее.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:39:39">И когда тоже куда-то не пришло, опять в lf.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:39:44">Т.е. заведомов тупик.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:39:54">Хотя.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:40:2">Там уже точно тупик полный.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:44:24">я запушил examples/experiment.lisp</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:44:34">он рабочий, но там какая-то лажа</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:45:3">если все вызовы для аргументов lman-env с at-coords заменить на can-walk, то всё перестаёт работать</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:45:19">Я пока захардкодил :wall ит.д.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:45:29">хотя can-walk в этом варианте ничего не делает, только зовёт at-coords</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:45:56">так ладно, осталось 15 минут</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:46:6">я предлагаю закоммитить бота experiment.lisp</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:46:20">он хотя бы хоть что-то делает, а не просто в сторону бежит</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:46:25">Давайте. Хотя бы что-то будет.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:46:34">сделаешь?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:46:36">Да.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:46:43">ага, спасио</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:47:0">если я сейчас за 10 минут пофикшу багу, то пересабмитим</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:47:35">А то что у нас return 2 раза зовётся ничего?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:47:36">хотя думаю ничего</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:49:54">стоп отбой</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:50:19">запушил experiment.lisp ещё раз</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:50:22">что-то вышло</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:50:30">у меня бот аж четверть карты оббежал</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:50:55">ушёл пуш</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:51:35">посмотрите плз всё ли завелось у вас</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:53:11">короче этот вариант однозначно будет застревать в тупиках и бегать по зацикленным пещерам вокруг</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:53:24">но бектрейсинг я уже тупо не успею сделать</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:53:43">Да, работает. )</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:54:24">работает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:54:36">видно что бот проседает там где решение принимать надо</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:54:46">кол-во инструкций на цикл :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:56:42">лол он походу даже из тупиков вылазит</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:56:54">но зацикливается в кругах</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:57:22">у нас же ai-state это инт?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:57:31">было бы щас не 3 минуты до конца, а 20 — я бы просто пройденный путь сохранял в ai-state</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:57:37">не, au-state — это что угодно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:57:41">я щас там храню cons</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:57:42">а, ну тогда круто</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:57:57">Вроде отправил.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:58:5">ну класс</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:58:25">Геморно публиковать, потом публиковалку напишу. Завтра.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:58:49">Если что, имя команды - Skobochka, приватный идентификатор - skoba-2014</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 15:58:56">Так, я до дому почапал, где-то наверное с полчаса-час буду отсутствовать.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:59:3">надо ща глянуть, может, scoreboard сделают после lightning division</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:59:11">Ну хз. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:59:14">давай, я тоже щас минут через 15 пойду прогуляюсь</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:59:16">Хотя может быть, конечно.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 15:59:19">Давай.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 15:59:35">а куда делся sectoid, интересно :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:3:0">орги дополнительную спеку выложили: http://icfpcontest.org/spec-extra.html </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:3:52">как мы и думали, это tournament между пакманами и гоустами</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:4:2">надо программировать гоустов :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:4:11">Да.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:4:15">Но это мы и знали.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:4:54">&amp;quot;It turns out to be an encoding of the ghost programs!&amp;quot;</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:4:57">Удивили. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:6:6">Короче, как мы и думали.ю</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:6:21">Надо доотлаживать бота и уже писать эмулятор готов на IL.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:7:8">блин, они реально расчитывают, что кто-то напишет на IL полный эмулятор мира с гоустами и в процессе инициализации подберёт стратегию? :) </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:7:19">хотя чем чёрт не шутит, два дня же ещё</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:7:59">только я не понял, где можно гоустов поотлаживать</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:9:43">Отдельно нигде, вроде бы.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:9:59">Но в мире они туда копипамтятся.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:17:46">sectoid проспал(</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:18:5">Доброе утро. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:18:14">привет =)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:18:25">сектоид проигнорировал будильники</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:18:42">мы успели?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:19:6">какое-то решение ушло</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:19:18">много времени потеряли на отладке транслятора</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:19:28">тестов, конечно, просто ад как не хватает :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:21:9">Читал экстра спеку?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:21:14">Всё как мы и думали.</msg>
 </kopete-history>
