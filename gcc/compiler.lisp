@@ -46,6 +46,7 @@
     ((>= ?form-a ?form-b) (translate-op :cgte ?form-a ?form-b env))
     ((and . ?forms) (translate-and ?forms env))
     ((or . ?forms) (translate-or ?forms env))
+    ((not ?form) (translate-not ?form env))
     ((cons ?form-a ?form-b) (translate-op :cons ?form-a ?form-b env))
     ((car ?form) (translate-op :car ?form nil env))
     ((cdr ?form) (translate-op :cdr ?form nil env))
@@ -182,6 +183,11 @@
          `((:label ,true-end)
            (:ldc 1)
            (:label ,end))))))
+
+(defun translate-not (form env)
+  `((:ldc 1)
+    ,@(translate-walker form env)
+    (:cgt)))
 
 (defun translate-op (op form-a form-b env)
   `(,@(translate-walker form-a env)
