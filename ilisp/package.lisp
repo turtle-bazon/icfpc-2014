@@ -11,7 +11,14 @@
            #:=
            #:>
            #:>=
-           #:cons))
+           #:cons
+           #:car
+           #:cdr
+           #:integerp
+           #:if
+           #:when
+           #:list
+           #:tuple))
 
 (defpackage #:ilisp.impl
   (:use :cl :iterate :metatilities)
