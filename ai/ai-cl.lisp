@@ -33,22 +33,23 @@
   (let ((diff-x (- x-a x-b)) (diff-y (- y-a y-b)))
     (+ (* diff-x diff-x) (* diff-y diff-y))))
 
-(defun pop-nearest-object (my-x my-y objects)
-  (il-foldl (lambda (object acc)
-              (let ((nearest-object (car acc))
-                    (nearest-sq-dist (cadr acc))
-                    (rest-objects (cddr acc))
-                    (current-sq-dist (sq-dist my-x my-y (car object) (cdr object))))
-                (if (or (integerp nearest-object)
-                        (< current-sq-dist nearest-sq-dist))
-                    (cons object
-                          (cons current-sq-dist
-                                (if (integerp nearest-object)
-                                    rest-objects
-                                    (cons nearest-object rest-objects))))
-                    (cons nearest-object (cons nearest-sq-dist (cons object rest-objects))))))
-            (cons 0 (cons 0 0))
-            objects))
+(defun pop-nearest-object (cell objects)
+  (let ((my-x (car cell)) (my-y (cdr cell)))
+    (il-foldl (lambda (object acc)
+                (let ((nearest-object (car acc))
+                      (nearest-sq-dist (cadr acc))
+                      (rest-objects (cddr acc))
+                      (current-sq-dist (sq-dist my-x my-y (car object) (cdr object))))
+                  (if (or (integerp nearest-object)
+                          (< current-sq-dist nearest-sq-dist))
+                      (cons object
+                            (cons current-sq-dist
+                                  (if (integerp nearest-object)
+                                      rest-objects
+                                      (cons nearest-object rest-objects))))
+                      (cons nearest-object (cons nearest-sq-dist (cons object rest-objects))))))
+              (cons 0 (cons 0 0))
+              objects)))
 
 (defun coords= (coord-a coord-b)
   (and (= (car coord-a) (car coord-b))
@@ -79,5 +80,20 @@
                       (cons (cons x (+ y 1))
                             0))))))
 
-        
+(defun plan-route (source target map rev-path)
+  (if (coords= source target)
+      (cons target rev-path)
+      (labels ((try-moves (avail-moves)
+                 (if (integerp avail-moves)
+                     0
+                     (let ((next-move-plan (pop-nearest-object target avail-moves)))
+                       (let ((best-move (car next-move-plan))
+                             (rest-moves (cddr next-move-plan)))
+                         (let ((path (plan-route best-move target map (cons source rev-path))))
+                           (if (integerp path)
+                               (try-moves rest-moves)
+                               path)))))))
+        (try-moves (filter-accessible (neighbours source) map rev-path)))))
+
+            
     
