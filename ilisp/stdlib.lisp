@@ -8,3 +8,9 @@
 
 (defun cddr (x)
   (cdr (cdr x)))
+
+(defmacro funcall (fn &rest args)
+  `(,fn ,@args))
+
+(defmacro function (x)
+  x)

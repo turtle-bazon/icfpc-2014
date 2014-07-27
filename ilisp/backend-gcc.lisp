@@ -83,6 +83,8 @@
     ((declare . ?unused) (list))
     ((defun ?name ?lambda-list . ?body) (translate-defun translator ?name ?lambda-list ?body))
     ((defmacro ?name ?lambda-list . ?body) (translate-defmacro translator ?name ?lambda-list ?body))
+    ((function ?obj) (translate-walk translator ?obj))
+    ((funcall ?fn . ?args) (translate-walk translator `(,?fn ,?args)))
 
     ((+ ?form-a ?form-b) (translate-binop translator :add ?form-a ?form-b))
     ((- ?form-a ?form-b) (translate-binop translator :sub ?form-a ?form-b))
@@ -296,6 +298,11 @@
         
         (scope-add-var translator 'world-state)
         (scope-add-var translator 'ghosts)
+
+        (format t "~a" `(letrec ,(iter (generating el in (functions translator))
+                                    (for fn-name = (next el)) (for fn-body = (next el))
+                                    (collect `(,fn-name ,fn-body)))
+                       (,entry-point world-state ghosts)))
 
         (pretty-print-gcc
          
