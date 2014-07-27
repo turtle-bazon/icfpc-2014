@@ -91,6 +91,11 @@
     ((ilisp:when ?condition-form ?true-form)
      (translate-if translator ?condition-form ?true-form 0))
 
+    ((?proc-name . ?proc-args) (translate-invoke translator ?proc-name ?proc-args))
+    ;; ((?proc-name . ?proc-args) (if (gcc-macro-p ?proc-name)
+    ;;                                (translate-walker (apply (gcc-macro-fn ?proc-name) ?proc-args) env)
+    ;;                                (translate-proc-invocation ?proc-name ?proc-args env)))
+
     ;; ((ilisp:list . ?forms) (translate-list translator ?forms))
     ;; ((ilisp:tuple . ?forms) (translate-tuple translator ?forms))
 
@@ -166,6 +171,14 @@
                      params))
            (translate-lambda translator args body)
            `((:RAP ,(length bindings))))))
+
+(defmethod translate-invoke ((translator gcc-translator) proc-name proc-args)
+  (declare (optimize (debug 3)))
+  `(,@(apply #'append (mapcar (named-lambda invoke-process-args (form)
+                                (translate-walk translator form))
+                              proc-args))
+      ,@(translate-atom translator proc-name)
+      (:ap ,(length proc-args))))
 
 (defmethod translate-binop ((translator gcc-translator) op lhs rhs)
   `(,@(translate-walk translator lhs)

@@ -17,6 +17,9 @@
            #:integerp
            #:if
            #:when
+           #:defun
+           #:defmacro
+
            #:list
            #:tuple))
 
