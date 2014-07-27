@@ -42,7 +42,13 @@
           (with ai-state = (car game))
           (with step = (cdr game))
           (for (map (lv (lx . ly) ld ll . ls) ghosts . fruit) = world-state)
-          (draw-map (car world-state) (lambda (x y) (if (and (= x lx) (= y ly)) #\X nil)))
+          (draw-map (car world-state) (lambda (x y)
+                                        (if (and (= x lx) (= y ly))
+                                            #\X
+                                            (il-foldl (lambda (coord v)
+                                                        (if (and (= x (car coord)) (= y (cdr coord))) #\@ v))
+                                                      nil
+                                                      (ghosts-coords ghosts)))))
           (for counter from 0 below max-turns)
           (for (new-ai-state . direction) = (funcall step ai-state world-state))
           (setf ai-state new-ai-state)
@@ -50,7 +56,7 @@
           (break "Moving direction ~a as [~a, ~a] -> [~a, ~a] where ~a"
                  direction lx ly (+ lx dlx) (+ ly dly) (map-cell (cons (+ lx dlx) (+ ly dly)) map))
           (for new-world-state =
-               (cons (modify-map map (lambda (cell x y) (if (and (= x lx) (= y ly)) 1 cell)))
+               (cons (modify-map map (lambda (cell x y) (if (and (= x (+ lx dlx)) (= y (+ ly dly))) 1 cell)))
                      (cons (cons lv (cons (cons (+ lx dlx) (+ ly dly)) (cons ld (cons ll ls))))
                            (cddr world-state))))
           (setf world-state new-world-state)

@@ -130,6 +130,7 @@
                             forbidden)))))
 
 (defun choose-dir (source target)
+  (declare (optimize (debug 3)))
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
     (if (= ys yt)
         (if (< xs xt) 1 3)
@@ -142,6 +143,7 @@
   (funcall proc ai-state))
 
 (defun choose-next-target-for (object map pacman angry-ghosts)
+  (declare (optimize (debug 3)))
   (let ((objects (locate-objects object map)))
     (if (integerp objects)
         0
@@ -150,6 +152,7 @@
             path-to-object)))))
 
 (defun choose-next-target (map pacman angry-ghosts objects-by-priority)
+  (declare (optimize (debug 3)))
   (if (integerp objects-by-priority)
       0
       (let ((path (choose-next-target-for (car objects-by-priority) map pacman angry-ghosts)))
