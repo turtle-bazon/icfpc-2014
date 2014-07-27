@@ -250,13 +250,19 @@
 			 (mapcar #'(lambda (x)
 				     (if (and (listp x) (eql (car x) :label))
 					(caddr x) x)) args))))))))
-(defun build-ai-core (ast &key (debug t))
-  (translate-gcc
-   `(il:lambda (initial-state unknown)
-      (il:letrec ,(iter (for (fn-name fn-body) in-hashtable *ilisp-fn-library*)
-                     (collect `(,fn-name ,fn-body)))
-        ,ast))
-   :unlabel (not debug)))
+(defun build-ai-core (main-fn &key (debug t))
+  (let ((translator (make-instance 'gcc-translator)))
+    (with-scope (translator)
+      (scope-add-var translator 'il::world-state)
+      (scope-add-var translator 'il::ghosts)
+
+      (pretty-print-gcc
+       (translate translator
+                  `(il:letrec ,(iter (for (fn-name fn-body) in-hashtable *ilisp-fn-library*)
+                                     (collect `(,fn-name ,fn-body)))
+                              (,main-fn il::world-state il::ghosts))
+                  :unlabel (not debug))))))
+  
 
 
 (defun compile-gcc (gcc-input-file gcc-output-file)
