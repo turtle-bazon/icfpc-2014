@@ -2141,4 +2141,898 @@
  <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 16:19:28">тестов, конечно, просто ад как не хватает :)</msg>
  <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:21:9">Читал экстра спеку?</msg>
  <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:21:14">Всё как мы и думали.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:29:5">читаю логи и счас буду листать extra-spec</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:29:20">Ага. Давай.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:30:42">хех. я правильно отреверсил андокументед)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:30:58">:)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:31:51">хехехехехе. таки не угадал с тем, как будет реализовываться режим соревнования</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:32:49">А ты как думал?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:32:54">Вроде бы же всё как думали.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:33:9">ну, я думал что таки 2 пакмана будет</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 16:33:25">А я сразу думал, что госты против пакмана.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:33:28">а оказывается будем и гостов сабмитить, и лямбдмана</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 16:59:44">все убрели проветрится похоже?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 17:0:10">я пока здесь, но мне надо будет уйти через 15 мин</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:2:9">я вот думаю во что счас &amp;quot;вбрасываться&amp;quot;?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 17:3:40">если с целью принести максимум пользы, то сделать тесты для транслятора :) там ещё не все баги того. а если максимум фана, то можно либо транслятор/АИ для гоустов, либо АИ для пакмана</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 17:4:12">но АИ для пакмана пока затруднительно писать, пока не все баги транслятора выловлены</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:4:24">начну с тестов транслятора. а то что-то от меня маловато пользы)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 17:4:56">от тебя пока основная польза, пока все остальные разбрелись =)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:5:15">что там нынче в моде для тестов? я 5am юзал (или как его там)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 17:6:9">честно говоря, я не знаю, я никогда тестов не пишу и страдаю =)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:6:31">ясненько. прикручу 5am.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:7:49">5am, lift - нормальные.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:8:18">Я пока and и or делаю оптимизированные.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:9:7">у всех asdf 3й стоит?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 17:9:23">всё я отошёл минут на 40 - час</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:13:11">ага, lift делали те же чуваки, что и utilities и metabang-bind. беру lift</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:16:8">*metatilities</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:34:9">В обещм, and, or и not я сделал.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:34:16">Что нам там ещё нужно будет?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:37:36">нам нужено покрыть этот кошмар тестами</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:37:55">и неплохо было бы навернуть какие-нить макры на транслятор </msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:38:0">Да, действительно кошмар. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:38:12">чтобы впиливать формы можно было добавлять не упатчивая транслятор</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:38:13">Макры да, круто было бы.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:38:19">возьмешься?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:38:22">Я босяцке макры сделал, без defmacro.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:38:27">я пока колдую над тестами</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:38:32">Но там тоже, в целом, херачится.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:38:40">Я пока гостов, наверное, посмотрю.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:38:45">давай, погляди</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:38:48">Я пока не представляю как там сделать нормальные макры.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:39:4">Плюс, ещё нам надо сфигачить через build-ai-... что-то там.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:39:24">build-ai там тривиален</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:39:42">он добавляет наружную лямбду, вкидывает библиотеку и подставляет основное тело</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:39:59">Сам да, но надо через него начать билдить лябдаменов.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:40:4">макры я бы делал по аналогии с deflib/gcc, добавив еще один проход для macroexpansion</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:42:45">о, вот и первые баги в трансляторе)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:43:24">:)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:43:35">порядок аргументов</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:43:41">(addtest (gcc-translator-core) &lt;br />  op-add-const-1&lt;br />  (ensure-same (translate '(+ 1 2))&lt;br />               '((:LDC 2) (:LDC 1) (:ADD))))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:43:44">Да ёлы-палы. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:43:46">я ведь верно мыслю?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:44:10">Да нет.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:44:16">Надос начала 1, потом 2.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:44:25">пилять</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:44:29">надо просыпаться)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:45:55">Мы сегодня с этим порядком аргументов целый день потратили. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:46:18">теперь не будем тратить</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:46:24">доделаю тесты и не будем</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:47:19">Да, не хватало тестов, не хватало. :) Вспоминали, кто вчера предлагал, но не сделал. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:47:51">У нас на госта 256 байт только.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:47:55">Не густо, скажем так.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:48:5">ога</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:48:6">Т.е. гост получится явно тупее лямбдамена.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:48:21">и при этом регистровая машина</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:48:27">Т.е. как бы у лямбдамена преимущество однозначно.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:48:27">больше простор для оптимизации</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:48:40">вспоминаем SSA и задачу распределения регистров</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 17:48:57">хотя может эффективнее будет придумывать алгоритм и писать ручками на ASM'е</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:50:2">По мне так вообще госта из примеров надо взять и засабмитить. :) И не тратить на него времени.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:50:9">Хотя, как время будет, конечно.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:50:29">Но вместо этого сделать сверх-умного лямбдамена.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 17:50:46">Привет сектоид, тесты это круто. :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 17:50:59">Сильно их сегодня не хвататло</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:52:6">Либо если писать госта, то чисто на асме, без изысков.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:52:13">С трансляторами облажаемся, думаю.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 17:53:40">я тут маленько вывод pretty-print поправил, а то непонятно какая где функция</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:57:13">&amp;quot;The Lambda-Man who scores the highest in a match wins against the other.&amp;quot;</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:57:21">Да, на гостах можно не концентрироваться, думаю.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 17:57:41">только если уменьшить шансы конкурентам</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:57:52">Ну да.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:57:54">&amp;quot;Stores the first Lambda-Man’s position in registers A (x-ordinate) and B (y-ordinate). In the single Lambda-Man version of the game, the first Lambda-Man is the only Lambda-Man.&amp;quot;</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 17:57:58">Как вы это перевели?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 17:58:44">вобщем смысл: гост знает где лямда-мэн, а лямбда мэн в игре всего один</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:1:1">Дьявол в деталях. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:1:13">Что значит &amp;quot;first Lamda-Man&amp;quot;?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:1:48">И дальше есть для второго лямбдамена.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:1:54">орги хотели сделать многоплльзовательский вариант, но я так понял отказались, так что только 1 l-man теперь</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:2:14">Да ну навряд ли такое объяснение.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:2:19">grepz: сорри что проспал остаток lightning'а :( не услышал будильники</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:2:30">да и не только grepz, но и все остальные</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:2:43">Да ладно, я сам себе на работе весь день зависал, так что не особо много пользы было. :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:3:2">Мы сегодня часа 3 наверное на отладку убили</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:5:12">sectoid: а там программа для гостов как хранится? Обычным текстом?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:6:12">For the full round we will stick to the “classic” version of the game where it is just a single Lambda-Man against the ghosts, but your challenge now is to write an AI for the Lambda-Man and AIs for the ghosts. Your Lambda-Man AI will play matches against ghost AIs from an opposing team.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:6:17">так что вот</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:6:57">Да, тоже читаю.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:6:58">grepz: где - там?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:7:9">Мне кажется, будет ещё расширение спецификации попозже.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:7:15">мне тоже так кажется</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:7:15">Может, как раз по истечении двух суток.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:7:17">кстати</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:7:23">теперь есть 3 тестовые карты</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:7:29">подольете их в реп?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:7:49">Ща.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:8:2">GCC&amp;gt; (run-tests)&lt;br />Start: GCC-TRANSLATOR-CORE&lt;br />#&amp;lt;Results for GCC-TRANSLATOR-CORE [28 Successful tests]&amp;gt;&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:8:5">дело идет)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:8:22">где там у нас были особо мерзкие баги сегодня?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:8:33">Притом для гостов получается что они циклически программы запускают, то есть если всего 1, то все 4 госта будет с ней работать, если 2, то 2x2</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:8:57">в порядке операций на арифметику, cons и передачу аргументов в функции</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:9:21">арифметику покрыл (всю)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:9:29">счас захвачу консы и прочее</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:9:42">и рекурсивные вызовы, плюс условия конечно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:10:5">хочу макры</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:10:34">тогда можно было бы выделить core IL language, а остальное макрами навернуть</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:10:47">и при отлаженом минимальном core IL, остальное автоматом тоже верное</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:11:5">ну т.е. если что - проблема точно в тексте макры</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:11:38">Эт да.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:12:32">ловите начальный тест-сьют</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:12:46">счас попробую еще на test-op привинтить на gcc-систему</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:12:52">чтобы аще бубль-гум был</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:14:54">пропаду на время</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:15:44">эээ</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:15:55">у нас 2 pretty-print-gcc</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:16:2">ой</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:16:4">мой косяк</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:16:12">один момент</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:16:51">grepz: и еще вопрос: а зачем ты делаешь (let (...) (bind (...) ...)) ? bind же может работать и let/let*</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:17:21">        (let ((unlabeled (eq 'unlabeled (first form))))&lt;br />	  (bind (((op &amp;amp;rest args) (if unlabeled&lt;br />				      (rest form)&lt;br />				      form)))&lt;br />можно же&lt;br />        (bind ((unlabeled (eq 'unlabeled (first form)))&lt;br />               ((op &amp;amp;rest args) (if unlabeled&lt;br />			      (rest form)&lt;br />			      form)))&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:17:26">и вложеность ниже</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:17:35">убрал лишний pretty-print</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:17:59">Вообще это ф-ия Свиза, особой проблемы не вижу, главное что работает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 18:18:49">так, если больше косяков нет, то я всё-таки пропаду</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:19:36">ок, пропадай)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:21:40">теперь можно запустить тесты вот так:&lt;br />(asdf:oos 'test-op :gcc)&lt;br />&lt;br />либо в SLIME REPL: , test-system gcc</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:21:57">поправка: , test-system RET gcc RET</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:22:32">Отлично.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:27:0">пишу тесты дальше</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:27:12">появились проблемы с gensym'ом и label'ами</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:27:24">там у нас uninterned symbols</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:27:40">Да.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:28:20">и на них ensure-same валится</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:28:37">вот думаю что лучше: интернировать их в keywords или писать кастомный сравниватель</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:29:3">их делал grepz?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:29:4">Так они же всё равно разные будут.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:29:12">Я делал, наверное. Какая функция?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:30:17">с разными я заборолся уже</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:30:22">в смысле со счетчиком</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:30:39">Как ты их заборол?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:31:27">(addtest (gcc-translator-core)&lt;br />  if-1&lt;br />  (ensure-same (bind ((*gensym-counter* 0))&lt;br />                 (translate '(if 0 1 2)))&lt;br />               '((:LDC 0) &lt;br />                 (:SEL :TRUE0 :FALSE1)&lt;br />                 (:LDC 1) &lt;br />                 (:TSEL :END2 :END2)&lt;br />                 (:LABEL :TRUE0)&lt;br />                 (:LDC 1) &lt;br />                 (:JOIN) &lt;br />                 (:LABEL :FALSE1)&lt;br />                 (:LDC 2) &lt;br />                 (:JOIN) &lt;br />                 (:LABEL :END2))))</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:31:44">и вот так:&lt;br />	Modified   gcc/compiler.lisp&lt;br />diff --git a/gcc/compiler.lisp b/gcc/compiler.lisp&lt;br />index 90f5000..22b42f6 100644&lt;br />--- a/gcc/compiler.lisp&lt;br />+++ b/gcc/compiler.lisp&lt;br />@@ -218,9 +218,12 @@&lt;br />           :from-end t :initial-value nil))&lt;br /> &lt;br /> (defun translate-if (condition-form true-form false-form environment)&lt;br />-  (let ((true-label (gensym &amp;quot;true&amp;quot;))&lt;br />- 	(false-label (gensym &amp;quot;false&amp;quot;))&lt;br />- 	(end-label (gensym &amp;quot;end&amp;quot;)))&lt;br />+  (let ((true-label (intern (symbol-name (gensym &amp;quot;TRUE&amp;quot;)) &lt;br />+                            (find-package :keyword)))&lt;br />+ 	(false-label (intern (symbol-name (gensym &amp;quot;FALSE&amp;quot;)) &lt;br />+                             (find-package :keyword)))&lt;br />+ 	(end-label (intern (symbol-name (gensym &amp;quot;END&amp;quot;)) &lt;br />+                           (find-package :keyword))))&lt;br />     `(,@(translate-walker condition-form environment)&lt;br />  	(:sel ,true-label ,false-label)&lt;br />  	(:ldc 1)&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:32:15">т.е. я интернирую метки в KEYWORD</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:32:29">можно сделать пакет для меток какой-то, чтобы не засирать KEYWORD</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:32:35">если есть желание</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:32:36">=)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:32:45">Да, в целом, по фигу, думаю.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:32:58">тогда пусть будет пока в keyword</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:33:1">Можно просто в строку перегнать.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:33:17">пусть символами будут</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:34:23">В целом, макросы можно обычными макросами прикрутить.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:34:34">Без изысков.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:34:47">как? у нас же не вычисляются формы, а явно транслируется AST</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:34:55">Просто нужно будет сделать macroaxpand нашей формы.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:35:2">Ну, пример.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:35:2">а, ну так - да, мона</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:35:13">GCC&amp;gt; (defmacro plus (a b) `(+ ,a ,b))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:35:20">GCC&amp;gt; (translate (macroexpand '(plus 1 2)))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:35:27">((:LDC 1) (:LDC 2) (:ADD))  </msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:35:36">И макросы иметь, и не геморроиться. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:35:45">а теперь попа: (translate (macroexpand '(+ 3 (plus 1 2))))</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:35:54">надо рекурсивно проходить</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:35:59">и учитывать спец. формы</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:36:14">что по сути сводится к описаному мною выше: macroexpand pass</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:36:39">Да, тогда надо в волкере экспаншн делать.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:37:32">угу</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:37:47">но наверное родные макры использовать таки стоит</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:37:53">чтобы удобно в SLIME было их отлаживать</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:38:46">Собственно, можно в валкере на ast macroexpand сделать с тановится всё хорошо.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:38:59">Ты тесты закночил?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:39:3">не все</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:39:5">но часть уже есть</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:39:8">пишу еще дальше</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:39:13">там много тонких камней</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:39:42">Хотя нет, так тоже не совсем получится.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:39:47">Учитывая родные макры.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:40:1">а, хм</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:40:13">можно сделать для макр отдельный пакадж</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:40:19">не импортящий :cl</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:40:30">чуть менее удобно, но в целом хорошо</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:40:44">Ну macroexpand будет на это смотреть?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:41:14">ну мы ж тогда будем писать явно макры из пакаджа с макрами</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:41:32">аще по-хорошему нам засунуть весь ilisp в отдельный пакадж (который без :cl будет).</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:41:39">чтобы не было конфликтов и не тащить лишнее</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:42:13">Идея неплохая, конечно.\</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:42:24">но объемная по времени</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:42:30">и пока не совсем ясны профиты</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:42:36">потому я пока в раздумьях</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:42:42">Ага.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:42:59">так, cond походу бажный у нас</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:43:38">А без :cl мы defmacro то сможем сделать?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:43:40">Что там с cond?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:45:17">Он простой весьма.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:45:23">он неверный)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:45:26">Если бажный конд, то тогда when будет бажным.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:45:38">какие проблемы? (cl:defmacro ...)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:45:49">when не бажный, а вот cond - бажный</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:46:5">там смесь проходов</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:46:12">в смысле что транслейтится не то)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:46:41">Ну ка покажи.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:47:43">сча, может я олень просто</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:48:33">GCC-TEST&amp;gt; (bind ((*gensym-counter* 0))&lt;br />                 (translate '(cond (0 1))))&lt;br />((:LDF (WHEN 0 1)) (:AP 0))&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:48:35">таки да</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:48:43">это несколько странная конструкция, не находишь?;)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:49:0">счас закоммичу фикс</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:49:4">только тесты допишу</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:50:40">Так то слегонца сранная, да. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:51:42">еще баг</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:51:51">cond это таки не последовательный when</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:52:18">а скорее (if x1 y1 (if x2 y2 (if ...))</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:52:30">счас поправлю</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:52:34">все-таки макры нужны</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:52:40">Ну это то да. Но можно и последовательным считать, если не до оптимизаций .</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:52:51">последовательно будет неверный ответ</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:53:8">Если оконечную t не считать, то вполне верный.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:53:12">если мы приняли 1 условие - остальные даже не проверяются</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:53:21">Ну, смотря ещё как условия там набраны.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:53:48">Скажем так - не всегда будет неверный ответ. Зависит от документации. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:53:54">Но ладно, можешь фикс сделать.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:54:2">(cond &lt;br />  (x1 y1)&lt;br />  (x2 y2)&lt;br />  (x3 y3))&lt;br />если у нас выполнилось x2, то x3 даже не будет проверятся</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:54:4">счас сделаю</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:54:41">Ну да, в классическом cond так и есть.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:54:53">а у нас другой cond? :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:54:58">не-классический?)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:55:8">У нас его всё равно пока никто не пользовал. Какой сделаем, такой и будет. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:55:26">счас схачу классический и тесты к нему</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:55:50">или... может таки запилим макросистему и ряд проблем уйдет сам собой?)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:56:28">Ну тут всё равно макросистема не оптимизнёт cond до того состояния, что ручками сделаешь.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:56:36">А так надо бы, конечно. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:57:24">макросистема позволит написать этот cond очень прозрачно)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:57:58">Макросистема много чего позволит прозрачно написать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 18:58:24">Но при это не шибко эффективно. Если борроться за эффективность + прозрачность, много копий можно обломать, думаю.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 18:59:9">ладн</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:0:38">а что у нас даже вырожденый случай (cond) ? по идее 0 (местный анало nil)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:2:30">Не знаю, кстати, не думал об этом.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:2:54">пусть будет 0</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:13:39">о, у нас кривой when :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:14:8">ну или нестандартный)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:14:19">что у нас должен возвращать when, если условие не выполнилось?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:14:28">стандартный должен возвращать 0</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:18:56">Опять про when? :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:19:0">закинул обновленный when/cond</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:19:3">и тесты к ним</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:19:20">А, там про cond было. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:19:30">Я же тебе говорил, что если cond глючный, то и when глючный.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:19:36">поправил оба</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:19:54">счас буду обкладывать тестами lambda/let/letrec и вызовы функций</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:20:20">ОК.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:20:46">(pretty-print-gcc&lt;br /> (build-ai-core '(let ((init (lambda (initial-state unknown)&lt;br />                               (cons 42 move))))&lt;br />                  (init initial-state unknown))&lt;br />                :debug nil))&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:20:54">тут lambda излишняя имхо</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:21:7">сам build-ai-core оборачивает все в лямбду</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:21:32">Это ты что смотришь?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:21:34">l-man?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:21:49">ага</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:21:53">Ты его не трогай пока.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:21:58">оок, не трогая</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:22:1">Там ничего нинтересного.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:22:6">И на удаление, наверное.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:22:8">я просто глянул - решил тебе намекнуть</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:22:19">та вообще надо код слегка реорганизовать будет</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:22:31">Там можно и не слегка. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:22:38">ибо после тестов хотелось бы впилить макры и какой-то зачаток оптимизатора</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:24:20">Я там смотрю как можно макроэкспанд обычный заюзать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:34:47">В отдельном пакете макры норм работают, в целом.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:35:58">Надо теперь подумать как это всё организовать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:36:2">Как вызывать компиляцию и т.д.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:36:22">Чот я выпрямить не могу, буквой Г стал. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:36:27">Отдохну чутка.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:37:20">а у нас cons точно верно работает?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:38:50">ололо, неверно)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 19:39:40">а не, cons верно. list/tuple неверно)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 19:44:24">cons точно верно.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:21:58">Карты могут быть 256 на 256.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:22:15">Самая большая длина сколько? 32? Если пустая.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:25:16">длина чего?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:25:20">или ты про level?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:29:25">привет, свиз</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:29:31">привет</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:29:37">как тут оно :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:29:43">ничеготак</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:29:45">немного тестов есть</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:30:1">часть багов починил в cond/list/tuple/еще чем-то</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:30:6">есть мысли что делать дальше</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:32:15">и еще мне похоже надо сделать паузу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:32:48">да не вопрос, я там пока походу локализовал неприятный баг</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:32:53">а как тесты устроены?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:33:35">Длина пути до цели.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:33:58">тесты - транслируем выражение - сравниваем с эталоном</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:34:4">эталоны выверял глазками</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:34:10">тесты в репе, можешь глянуть</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:34:11">ага, ок, а как их вызывать?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:34:26">я бы добавил ещё один на вложенные замыкания</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:34:32">который щас ломается как раз</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:35:44">в examples/experiment.lisp как раз код, который неправильно компилируется в gcc</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:36:37">[17:21:40] &amp;lt;sectoid&amp;gt; теперь можно запустить тесты вот так:&lt;br />(asdf:oos 'test-op :gcc)&lt;br />&lt;br />либо в SLIME REPL: , test-system gcc</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:39:7">мне наверное таки надо проветриться</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:39:44">во тесты работают, класс, спасибо</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:39:57">давай, я прогулялся — стало существенно лучше :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:40:23">давай расскажу вкратце состояние и мысли</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:40:31">текстом или созвонимся все скупом?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:40:32">давай</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:40:45">лучше текстом, чтобы подошедшие тоже могли прочитать</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:42:9">Давайте обсужать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:42:23">Из главного - на когд госат 256 байтов и столько же область данных.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:42:29">Не разгуляешься.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:42:50">Если мы насчнём транслировать в ghc, то туда надо нехилый написать оптимизатор.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:42:53">Как мне кажется.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:43:25">Победа считается по набранным очкам лямбдамена. Гост может только вражескому лябдамену очки подрезать.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:43:46">1. макросы. они очень просятся в наш ILisp. обсуждали варианты реализации, выкристаллизовалось 2 варианта:&lt;br />  а) что-то вроде deflib/gcc, но для макр&lt;br />  б) штатный defmacro и пакет без импорта cl (чтобы лишнее не подматывалось)&lt;br />В обоих случаях нужен macro expansion phase. &lt;br />&lt;br />2. разделить package'и. как по мне, ilisp должен аще весь жить в отдельном пакете, чтобы не перемешиваться с common lisp&lt;br />3. есть лимит на 1М инструкция в лямбда-мене. пока вроде достаточно, но уже начинает хотется оптимизатор&lt;br />4. в гостах вообще 256 инструкций. может будем госто-проги писать руками на asm?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:44:39">5. нам таки нужен AI для LM</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:44:59">/me ничерта не понимает в AI, но готов возится с компиляторами/трансляторами</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:45:19">ага, примерно понятно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:45:25">давайте тогда так спланируем</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:46:11">самое важное — это AI для пакмана, но его очень мучительно делать без макр и бажным транслятором, поэтому эти два пункта давайте попробуем сегодня закрыть</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:46:24">разделить пакаджи — ок</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:46:52">в лимит мы пока не упираемся, но с макрами сможем, имхо :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:47:6">свиз, для аи имхо важен алгоритм</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:47:15">который можно вообще параллельно на CL вертеть</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:47:17">и да, нужен хотя бы один мембер команды, который сядет за гоустов</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:47:33">с АИ у меня есть несколько идей</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:47:55">можно их будет все попробовать в порядке возрастающей сложности</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:48:11">у меня по AI из идей было только сканирование карты, превращение в граф путей, и дальше уже наложение на этот граф условий (тэгов) по ходу раунда</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:48:37">можешь попробовать начать реализовывать AI на CL, при это стараясь использовать минимум хитрых форм?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:48:45">defmacro я тебе для IL обеспечу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:49:19">если освоим макры и библиотеки для CL, то я бы попробовал начать с двух вещей: pathfinding (в идеале a*, но там надо думать как сеты представлять в IL), и локатор объектов на карте</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:49:28">в идеале:&lt;br /> написать клевый ai в пакадже lamba-man-ai, потом заменить в этом пакадже (:use :cl) на (:use :il) и радоваться</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:49:32">вот либы я не обещаю(</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:49:35">По гостам предлагаю руками тупо сделать волновой алгоритм для пакмана.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:49:45">Что-то ещё там городить - хз.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:49:45">тогда можно первым этапом тупо ходить за power-cell’ами</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:49:55">Чуть позже хотел сесть за гостов.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:49:55">да, волновой можно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:49:59">turtle: возьмешься его запилить?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:50:7">Да, сяду за него чуть позже.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:50:24">turtle: ты хочешь его делать на каком'то il' или на asm сразу?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:50:33">Я на асме хочу делать.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:50:37">о, годно</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:50:41">Но там ещё вопрос, у нас очень лимитировано памяти.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:50:44">еще есть секция AI, которая должна ловить паттерны в &amp;quot;мозгах&amp;quot; гостов</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:50:55">только не забудь разворачиваться, когда пакман таблетку съест :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:50:56">самое простое: ловить &amp;quot;слепых&amp;quot; гостов</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:51:3">IL, боюсь, выжрет кучу инструкций и ничего не останется. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:51:31">turtle: отлично. и если делать на asm сразу, то убирается завязка на написание/!отладку! трансляторов</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:51:44">ладно, а я тогда попробую сейчас сконцентрироваться на багфиксе IL-&amp;gt;GCC</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:51:52">Потом, что нам нужно будет потом пакману - нужно будет интерпретатор гостов делать на IL, чтобы пакман мог прикидывать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:51:59">Но это потом, наверное, да.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:52:1">в принципе можешь сконцентрироваться на AI</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:52:13">Пока для волнового алгоритма не хватет памяти для самой большой карты.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:52:16">я через полчасика-часик вернусь и плотно займусь ILispom</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:52:20">ILisp'ом</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:52:24">Да и самая маленькая тоже еле влазит.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:52:36">я все-равно в ии мало полезен</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:52:51">а если тупо перебирать варианты с бектрекингом с минимальным лимитом?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:52:57">для гоустов</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:53:5">А что там бектрекать?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:53:18">ну чтобы гоуст вокруг ёлки не ходил кругами</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:53:31">Аа.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:53:34">/me убег на минут 30-60</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 20:53:58">Ну сделать, чтобы он шёл на сокращение расстояния с пакманом, пр иэтом вся карта не влазит, волновой алгоритм один в один не подойдёт.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:54:51">а у нас есть лимит на cpu time для госта?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:54:55">сделай гоустам туман войны :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:55:6">ограничь его зону видимости допустим 32x32</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 20:55:7">если нет, то может в каждом цикле сканировать карту и искать вектор движения?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:55:17">и волновым алгоритмом</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 20:55:31">если пакман слишком далеко, то всё равно бестолку за ним охотится</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 21:15:2">Лимит на cpu time есть.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 21:15:10">32 х 32 - уже до фига.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 21:15:17">В память лезет только 16х16. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 21:15:48">Я думаю, надо просто делить на большие квадратики. По ним работает волновой алгоритм. Потом по меньшему квадратику и т.д.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 21:16:4">Почти как PNG когда грузится на медленных каналах.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:16:58">ну можно попробовать</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:17:8">хотя я не очень представляю, как это на асме написать</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:17:46">А что если так: гост знает положение до пакмана, он может построить путь до него насколько хватает ресурсов(требуется посчитать), всё что дальше считается прямым путём, сделал шаг, область видимости изменилась, пересчитал путь. Плюс отслеживать уже пройденное на сколько-то ходов, чтобы в тупик не попасть. </msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:18:24">Хотя там ресурсов то всего ничего</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:19:8">Или просто на изгибах коридоров выруливать в сторону пакмана</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:19:17">кстати оффтопик: тут в трансляторе IL мне пришла такая мысль: правильно ли я понимаю, что при генерации кода можно смело все последовательности (:AP ..) (:RTN) менять на (:TAP …) (:RTN) ?  </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:19:58">у нас же без progn вообще все вызовы кроме аргументов функции — это tail call</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:20:25">я руками щас в тестовом асме попробовал — вроде работает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:21:27">а LDC не помешает?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:21:28">хотя там есть TAP, а есть TRAP …</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:21:38">а как он помешает?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:22:33">сейчас попробую</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:30:47">вроде норм</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:33:32">попробуем имплементировать?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:33:42">я вроде не вижу что это может сломать</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:33:58">ну я тоже руками позаменял, везде работает</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:34:4">так что наверное стоит</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:34:25">единственно, я не понял, когда надо TRAP</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:34:33">для вызовов самого себя?</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:35:52">frame pointer must point to an empty frame of size $n; в этой фразе разница</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:36:14">а, тоесть это вместо RAP</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:36:19">да</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:36:27">AP - TAP, RAP - TRAP</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:36:33">там в notes так и сказано</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:36:40">тогда RAP+RTN можно менять на TRAP-RTN :)</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:36:47">получается так</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:37:10">имплементируешь? а то я уже просто в другой ветке вожусь</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:37:25">ок</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:39:52">/me вернулся</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:40:10">а если хранить не 1 точку в байте, а меньше?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:40:17">у нас вроде есть and/or/xor/not?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:40:27">тогда втиснуть можно больше</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:41:57">а что-нибудь ломали? А то experiment.lisp фолтится с IllegalAddr.</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:42:20">оу, вижу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:42:49">experiment.lisp который в мастере это как раз я код закоммитил, который криво генерируется</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 21:43:11">да, я уже увидел. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:45:58">есть что-то срочное по задачам? или я займусь подчисткой кода и макрами?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:46:16">срочного пока ничего нет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:46:23">макры кто-то щупал?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:46:29">я тут окончательно запутался с этими environment frames</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:46:44">а что с ними там?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:47:50">там какая-то фигня, я не могу понять, как правильно расчитать первый аргумент инструкции LD для вызова letrec-функции</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:48:10">фрейм каждый раз создаётся при funcall-e</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:48:42">как я могу на этапе компиляции понять, какой у меня в данной точке программы фрейм? :(</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:48:55">полный граф вызовов строить чтоли</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:51:18">или может хакерски всегда неявно добавлять к вызовам функций все letrec адреса, чтобы их можно из нулевого фрейма взять :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:52:28">пойду кофе намучу и подумаю</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:54:42">хм, попробую тоже в это въехать</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 21:54:56">а то мне не очень нравится наша реализация let/letrec/lambda</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 21:56:57">давай</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:1:10">Так по этому, как его называется, лексическому скопу. Который на этапе компиляции и виден.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:1:31">Евала нет.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:1:36">ну с переменными это (вроде бы) так</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:1:37">Так что всё нормально должно быть.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:1:49">а с летрек-биндами ужё чёто нет</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:1:55">вот глянь experiment.lisp</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:2:39">по лексическому скоупу в функции f биндинг rec должен лежать по LD 1 0</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:2:47">а по-факту это LD 2 0</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:2:57">потому что мы туда попадаем через вызов g</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:3:34">Ага. И чем больше вызываем, тем дальше?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:3:54">да</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:4:17">откуда я там пойму на этапе трансляции, через сколько функций я сюда пришёл</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:4:37">а если ещё я и разными путями сюда прийти могу, то ваще беда </msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:4:47">Либо с лямбдами что-то не то.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:5:5">Да вообще связка да, какая-то динамичная.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:5:45">с лямбдами кривовато, конечно, но там хотя бы логика работающая под алгоритмом</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:5:51">я тут счас пытаюсь реализовать классические CL'ные let/lambda/labels через эту извращеную лисп-машину</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:6:23">по-крайней мере, все скоупы для переменных работают</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:6:49">а с летреком засада, он в нефиксированном фрейме каждый раз находится :(</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:7:0">видимо, надо программировать какой-то хак </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:7:21">чтобы эти летреки вверх всегда передавать при вызове функций</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:7:42">чтобы всегда было понятно в каком фрейме биндинг</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:11:3">блин, от RAP/AP/DUM башка болеть начинает(</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:11:44">а прикинь я это вчера в час ночи программировал =)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:12:38">так, ладно, попробую все рекурсивные биндинги неявно через параметры носить</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:12:50">других идей пока что всё равно нет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:16:59">Верно ли что:&lt;br />&lt;br />(let ((x1 v1)&lt;br />      (x2 v2)&lt;br />      ...&lt;br />      (xN vN))&lt;br />  ...)&lt;br />эквивалентно&lt;br />(ap (lambda (x1 x2 .. xN) ...) v1 v2 ... vN)&lt;br />&lt;br />в то время как&lt;br />(letrec ((x1 v1)&lt;br />         (x2 v2)&lt;br />         ...&lt;br />         (xN vN))&lt;br />  ...)&lt;br />&lt;br />эквивалентно&lt;br />&lt;br />(rap (lambda (x1 x2 .. xN) ...) v1 v2 ... vN)&lt;br />?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:17:5">я пытаюсь навести красоту в голове</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:17:51">ну не совсем</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:18:21">вкуриваю дальше</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:18:56">rap вообще нужен, насколько я понял, только в паре с dum</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:19:2">ага</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:19:23">потому в этой конструкции его нет, ибо dum тут деталь реализации)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:19:34">я пытаюсь просто заново вкурить разницу между ap/rap</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:20:30">в случае с летрек я сначала, грубо говоря, делаю фрейм через дум, складываю туда все летрек-бинды, и через rap вызываю хелперную функцию </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:20:42">сам rap просто фрейм ведь не создаёт</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:21:10">да</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:21:44">встает вопрос: а если бы мы положили на стек значения биндов, и потом сказали бы ap -- что бы изменилось?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:22:23">rap там другие манипуляции с current environment выполняет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:23:2">хотя вроде даже эквивалентные...</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:23:21">на самом деле вопрос любопытный, можно проверить</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:23:31">в теории ты рекурсивно функцию звать не сможешь</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 22:24:38">блин, я с ap-&amp;gt;tap походу все условия поломал. что-то похоже упускаю.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:25:22">мучаю эмулятор</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:26:41">аы</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:26:44">аыыыы</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:26:47">кажется понимаю</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:26:50">счас надо проверить</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:28:54">да, все дело в манипуляциях с parent frame pointer</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:29:21">счас еще повкуриваю и смогу написать правильные let/letrec/lambda</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:33:56">дело в dum</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:34:4">и в особенностях работы ldf</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:34:19">ldf проставляет указатель на контекст closure cell'а на _текущий_ фрейм</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:35:6">заметка себе на будущее: если терм у нас внутренне полностью замкнут (т.е. нет свободных переменных) - его точно не надо rap</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:35:51">хм, я не очень понял, если честно отличия :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:38:27">Почему не надо?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:39:9">turtle: потому, что ему не нужны переменные из родительского scope</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:39:13">или я опять запутался...</msg>
+ <msg nick="grepz" in="1" from="icfpc-2014@conference.bazon.ru/grepz" time="26 22:39:45">почему не нужны?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:40:5">потому, что он не имеет свободных переменных</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:40:9">так, надо додумать</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:40:30">И что нам это даст?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="26 22:40:43">Он же фрейм всё равно создаст.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:41:7">надо додумать. я похоже снова запутался:(</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:49:56">хм. а никому эти scope'ы не напоминают region inference?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 22:50:36">а что это? :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 22:50:46">http://en.wikipedia.org/wiki/Region-based_memory_management</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:0:21">experiment.lisp счас бажный?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:0:33">да, но я его почти починил </msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:0:45">ты чинишь компилятор?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:1:2">через хак с протягиванием номера скопа?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:1:47">да, только не номера скоупа, а прямо сами биндинги я неявными параметрами передаю в каждом функолле внутри скоупа letrec</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:2:5">вроде работает, правда пока не везде :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:2:10">щас допинаю, наверно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:2:31">ок</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:13:3">скажешь как допинаешь?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:13:37">ща минут 15 ещё</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:13:58">ветку env-refactoring потом смержишь в мастер, если всё ок будет? :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:14:4">оок</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:14:10">а то походу только ты мержить умеешь =)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:15:47">я пока додумываю перераскладку этого дела и впиливание макр</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:31:0">пытаюсь сделать транслятор таки через generic'и. чтобы можно было дополнительные pass'ы добавлять</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:45:25">блин, всё уже работает, но теперь сломалась top-level lambda :(</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:46:53">бггг)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:47:0">а что выдает?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:47:34">да там понятная проблема, в хипе ведь должны с самого начала параметры лежать initial-state + unknown</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:48:4">а я потом делаю dum, и эти параметры типа индексируются на единицу больше</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:48:26">ща попробую поиграться с порядком в неявных аргументах</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:58:31">swizard: ты макры хочешь с destructuring lambda-list или пусть его обычный будет?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="26 23:59:15">ну я пока не знаю… если там какая-то dsl-ка будет, то с деструктурингом удобней конечно будет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:59:37">я пока наивняк делаю</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="26 23:59:49">ибо опят застопорился с generic'зацией компилятора(</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:11:55">кто там хотел макросов?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:11:56">;)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:12:32">=)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:13:0">блин я в печали :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:13:9">чего ты в печали?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 0:13:28">Что случилось?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:14:9">походу обламывается моя идея с передачей рекурсивных биндов в неявных параметрах при вызове функций</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:14:19">как бы всё ок работает</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:14:37">но там один момент получается: </msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:14:37">а что не так тогда?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:15:0">вот в программе бота функция инициализации возвращает state и замыкание step</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:15:10">так</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:15:25">и привет, этот step зовётся уже вне контекста letrec, и ему явных параметров не передают :(</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:15:31">в смысле, неявных</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:16:3">короче надо подумать</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:16:51">[23:15:25] &amp;lt;swizard&amp;gt; и привет, этот step зовётся уже вне контекста letrec, и ему явных параметров не передают :(&lt;br />&lt;br />эээ? как это не передают?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:16:58">step'у дают 2 параметра</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:17:20">или ты имеешь в виду что в коде нашей программы нет вызовов step'а?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:18:11">ну да, просто сам step в рекурсивном контексте letrec, и у меня типа хак, что ему передаётся не только 2 параметра, но и неявный третий — адрес step</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:18:30">ну или даже четвёртый — адрес nth в варианте bumper-ai</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:18:36">бррр</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:18:38">я запутался)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:18:56">ну короче не бери в голову пока, может, вообще всю ветку дропнуть надо будет :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:19:29">чёрт, ну почти сложилось же</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:19:30">если что - там есть уже макры в мастере</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:19:49">а как ими пользоваться?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:20:10">бтв а гоустами никто ещё не занимался пока? :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:20:38">turtle вроде занимался</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:20:47">или нет?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 0:20:58">Я занимаюсь.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 0:21:13">Но я ещё только себе парсер пишу пока.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 0:21:20">Чтобы нормально можно было лабелы расставлять.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:23:18">ага, ок</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:26:0">хмм, а фрейм после DUM не дропается чтоли после RTN?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:26:47">должен дропаться</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:26:56">наверное</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 0:27:16">Кстати, вроде в спеке уточнение было по этому поводу.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 0:27:20">УЖе не помню какое.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:27:35">походу если куда-то наружу вернуть адрес одной из функций в созданном DUM фрейме, то не дропается</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:28:5">там что-то было насчет того, что если ссылок нет - убьется сразу, иначе - gc</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:28:16">swizard: есть еще одна мыслишка. можно трансформировать IL -&amp;gt; IR -&amp;gt; GCC. В IR заменять обращения к переменным ссылками на соотв. scope и потом отдельным проходом нумеровать их</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:29:31">во The latest hardware revision optimizes the deallocation of the &lt;br />  environment frame. If the environment has not been captured by LDF&lt;br />  (directly or indirectly) then it can be immediately deallocated.&lt;br />  Otherwise it is left for GC.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:29:56">угу</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:30:12">я думал что на этом можно попробовать какую-то оптимизацию запупенить</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:32:27">мне наверное надо проветрится</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:32:34">подумаю над IL/IR</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:32:37">и лекс. скопами</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:32:41">давай</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:32:47">заодно променад катну</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:33:5">свиз, если у тебя есть идеи насчет ИИ для лямбда-мена, может стоит попробовать реализовать их на CL?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:33:25">вынося функции/макры на которые опираешься в отдельное место в файле</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:33:30">тогда нужен эмулятор пакмана на кл :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:33:43">а что там так нужно ?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:33:47">считал что у тебя CL</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:33:51">тока порезаный сильно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:34:13">простые заглушечные костыли для отладки пишутся по идее не сложно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:34:29">т.е. заглушка дампа мира, состояния гхостов и т.п.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:34:30">но проверять-то как-то надо</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:34:37">в смысле, на эмуляторе</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:34:55">так я только корректность компиляции проверю :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:34:59">поиграй пока с самими алгоритмами)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:35:6">потом устроим debugging night ;)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:35:25">ну посмотрим, может, так и надо сделать</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:35:56">а я на свежем воздухе подумаю как сделать правильную работу со скопами</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 0:36:2">у меня почти получилось на бумаге</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:36:25">окей</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:53:17">мда, проблема, конечно, с этими рекурсивными биндами</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:53:41">вот вижу я в коде, что происходит вызов функции</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:53:57">я могу понять, что это вызов letrec</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:54:13">я даже знаю в какой слот фрейма я положил эту функцию</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:54:25">а вот какой по номеру этот фрейм — узнать не могу </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:54:55">ваще нет идей :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 0:57:58">а не есть</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 0:58:45">Это хорошо. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:7:3">о, первые успехи =)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:7:14">короче, общий смысл такой </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:7:40">1. оставляем весь этот механизм с протаскиванием рекурсивных биндов в неявных параметрах</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:8:12">2. наружу никогда не возвращаем что-то изнутри скоупа letrec</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:8:49">3. вместо этого возвращаем просто результат LDF на обычную функцию</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:9:3">в этом случае нет проблем с неявными параметрами</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:9:49"> ветка env-refactoring</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 1:9:58">я там и бота чуток переписал</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:9:15">http://newstar.rinet.ru/~goga/sicp/sicp.pdf страница 548 — наши фреймы и скоупы :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:10:39">В своё время я до туда не дочитал.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:12:3">ну собственно мы так и сделали</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:12:9">как там написано</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:13:8">даже хелперы и тип окружения почти 1:1</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:13:59">так ну ладно, про летрек я там всё равно сходу найти не могу</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:25:14">получилось?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:25:48">ну как сказать… будем считать, что это частное решение :) </msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:26:13">у меня в голове решение есть, счас попробую превратить в код)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:26:25">с летреком в этом месте я разобрался, но нарыл новую проблему со скоупом, на этот раз переменных</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:26:29">во давай :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:26:37">было бы круто домучить сегодня транслятор :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:26:42">домучим</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:28:5">вот тебе тогда тест, который щас сломан:</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:28:6">(let ((f (lambda (x)&lt;br />           (let ((g (lambda (y) (+ x y))))&lt;br />             (let ((h (lambda (y) (g y))))&lt;br />               (h 4))))))&lt;br />  (f 17))</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:28:45">оок, счас буду ковырять</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:29:11">или вот даже более хардкорно:</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:29:12">(let ((f (lambda (x)&lt;br />           (let ((g (lambda (y) (+ x y))))&lt;br />             (let ((h (lambda (y) (g y))))&lt;br />               (+ (h 4) (g 4)))))))&lt;br />  (f 17))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:29:33">тут ваще диллема от которой у меня башка взрывается :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:30:7">может инлайнить всё к чертям собачьим</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:30:7">а что тут не так?)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:30:16">ну тут смотри какая беда</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:30:22">она в функции g</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:30:34">внутри неё есть обращение к переменной x</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:30:39">вот где она? :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:30:48">сча, отиндентчу</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:30:56">в LD 1 0 или LD 2 0? :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:31:13">это зависит от того, зовём ли мы (h 4) или (g 4)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:31:34">что компилить туда — непонятно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:31:37">не должно зависеть</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:31:43">100% не должно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:31:57">а ведь зависит</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:32:22">Известная дилема между должно/не должно и происходит. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:32:26">если мы напрямую зовём g, то в кадре 0 у нас y, а в кадре 1 x</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:32:43">Что-то я тоже думаю, а не слишком ли скоупов понасоздавали? :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:32:52">если зовём через h, то в кадре 0 y, в кадре 1 _тоже y_, в кадре 2 уже x</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:32:52">так</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:33:6">не путай меня, я только разобрался)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:33:40">ну тогда расскажи, как оно должно быть =)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:34:1">кадр создаётся каждый раз, когда в ассемблере выполняется AP</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:34:9">так что тут ничего не поделать</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:34:18">надо с этим как-то жить</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:36:43">лукап на рантайме чтоль сделать</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:37:14">счас что-то придумаю)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:37:29">Ну если у нас при каждом вызове создаётся, то лукап на рантайме напрашивается, конечно.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:37:37">Но что-то мне покоя не даёт. :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:38:4">давайте брейншторм устроим в это место, а то реально весь прогресс встал :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:38:36">А ты как лукап на рантайме хочешь сделать?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:39:40">ну навскидку: перечислить все используемые в коде символы, и везде вообще не просто аргументы пушить / загружать, а, например, консы: (enum . value)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:39:59">тогда можно в цикле идти наверх по кадрам, ища конкретный енум</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:40:10">т.е. такой себе динамик скоп сделать?)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:40:13">номер знаем, позицию знаем, номер кадра найдём</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:40:18">ну типа</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:41:22">но тут сходу сразу проблема с функцией step для бота: VM не знает ничего про конс-обёртки, поэтому будет напрямую аргументы передавать</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:46:4">вот и ST пригодится, биндинги навешивать :-/</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:48:8">&amp;quot;With dynamic scope, each identifier has a global stack of bindings. Introducing a local variable with name x pushes a binding onto the global x stack (which may have been empty), which is popped off when the control flow leaves the scope. Evaluating x in any context always yields the top binding. In other words, a global identifier refers to the identifier associated with the most recent environment. Note that this cannot be done at compile-time because the binding stack only exists at run-time, which is why this type of scoping is called dynamic scoping.&amp;quot;</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:48:21">Ну получается, что вся архитектура толкает к динамик скоупу.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:48:37">Как раз почти один к одному.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:49:34">ага похоже</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:49:55">господа, вы не против, если попытаюсь запилить таки свой вариант?)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:49:58">а то не усну же)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:50:0">потом</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:50:9">да делай, конечно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:50:12">вдруг получится</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:50:26">а что там у тебя за вариант, вкрадце?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:52:43">мне кажется мы смешиваем создание скопа/заполнение скопа. хочу попробовать их таки разделить. может я чего-то не понимаю...</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:53:15">сча, попробую сформулировать свою идею понятно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:53:57">хм</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:54:4">кажется до меня кое-чего дошло</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:54:52">Ну а вообще, мы же можем узнать откуда мы вызвали. И оттуда расставлять. Хотя нет, расставлять не можем.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:55:12">расставлять не можем</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:55:13">Узнать можем, а расставить уже не получится один раз, похоже.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:55:26">Т.е. расставлять надо каждый раз разным.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:55:36">ага, как в киллер-примере:</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:55:37">(let ((f (lambda (x)&lt;br />           (let ((g (lambda (y) (+ x y))))&lt;br />             (let ((h (lambda (y) (g y))))&lt;br />               (+ (h 4) (g 4)))))))&lt;br />  (f 17))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:55:56">как не расставляй LD в функции g, всё равно неправильно будет</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:56:9">потому что это число зависит от того, откуда мы вызвали</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:56:19">поэтому я пока не вижу других вариантов, кроме рантайма</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:56:45">ну или попробовать повторить мой хак с протаскиванием замыкания в неявных аргументах</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:57:4">Ну...</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:57:11">короче, глубину стека кадров мы на компиляции знать никак не можем, походу</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 2:57:24">По сути твой хак он всё же динамит скоуп. Поэтому всё равно динамик он.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:57:53">пажжите</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:57:55">не, он статик :) на компиляции всегда понятно, что искать бинд нужно в нулевом кадре</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:58:13">сделали мы (lambda (x) (+ x y))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:58:16">потому что там всё продублировано, что можно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:58:36">тело (с LD 0 0 и LD 1 y) ушло кудысь вниз</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:59:4">а в том месте где мы его (let ((f (lambda ..))) - у нас произошел LDF &amp;lt;addr-of-that-lambda&amp;gt;</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:59:23">по идее этот LDF замкнул тело лямбды на нужный контекст</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 2:59:44">соотв. в стеке лежит CLOSURE в котором никуда LD'шки не поедут</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:59:56">не, ты код в эмуляторе глянь, он короткий: </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 2:59:58">    LDC 17&lt;br />    LDF 4&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL F 4):&lt;br />    LDC 4&lt;br />    LDF 12&lt;br />    AP 1&lt;br />    LDC 4&lt;br />    LDF 17&lt;br />    AP 1&lt;br />    ADD&lt;br />    RTN&lt;br />;(LABEL H 12):&lt;br />    LD 0 0&lt;br />    LDF 17&lt;br />    AP 1&lt;br />    RTN&lt;br />    RTN&lt;br />;(LABEL G 17):&lt;br />    LD 1 0&lt;br />    LD 0 0&lt;br />    ADD&lt;br />    RTN&lt;br /></msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:0:27">задача: нужно исправить строчку «LD 1 0» на правильную :) которая после label g 17</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:0:34">Кстати, у нас как-то имена криво делаются.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:0:40">Не сыграло бы потом злую шутку.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:0:51">какие имена?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:0:53">это asm - какой исходной конструкции?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:1:4">это асм примера-убийцы</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:1:9">;(LABEL G 17):</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:1:34">а почему криво?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:1:35">вот где у нас бага</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:1:51">мы делаем LDF'ы если &amp;quot;грузим&amp;quot; &amp;quot;замыкания&amp;quot;</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:2:12">а у нас эти CLOSURE'ы должны приходить как параметры</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:2:13">Криво потому что если совпадёт, то могут неправильными быть.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:2:17">Адреса.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:2:28">счас попробую переписать твой пример в чистом LC</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:3:15">давай, но я не очень понял, правда, как их ещё грузить, кроме как через ldf</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:3:59">&amp;gt;как их ещё грузить&lt;br />&lt;br />LD 0 x ;)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:4:9">кто сказал что closure не может быть в env?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:4:12">готовый</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:4:17">именно closure, а не адрес</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:4:27">closure == fn addr + bound scope</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:5:43">ты сейчас в терминах GCC рассказываешь? :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:6:27">давай сначала вообще. что есть closure? функция замкнутая на контекст, верно?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:6:35">ага</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:7:22">теперь смотри что у нас есть в GCC</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:7:28">в GCC есть 3 типа объектов</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:7:36">int32, cons и closure</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:7:57">closure есть function offset (address) + lexical frame pointer</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:8:10">причему lexical frame pointer - не относительный, а абсолютный</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:8:40">я в лямбдах запутался(</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:9:20">хм</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:9:22">твой пример в LC</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:9:23">((lambda (f) &lt;br />   (f 17))&lt;br /> (lambda (x)&lt;br />   ((lambda (g)&lt;br />      ((lambda (h) &lt;br />         (+ (h 4) (g 4)))&lt;br />       ((lambda (y) (g y)))))&lt;br />    (lambda (y) (+ x y)))))</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:9:29">jq</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:9:31">сча</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:9:58">вот твой пример в LC&lt;br />((lambda (f) &lt;br />   (f 17))&lt;br /> (lambda (x)&lt;br />   ((lambda (g)&lt;br />      ((lambda (h) &lt;br />         (+ (h 4) (g 4)))&lt;br />       ((lambda (y) (g y)))))&lt;br />    (lambda (y) (+ x y)))))</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:10:21">тоесть ты хочень сказать, что надо делать все функции через dum/rap, и при вызове по указателю он там env правильно ставит? </msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:10:32">в смысле, выставляет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:10:33">не все через dum/rap</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:10:44">dum/rap нужен для letrec</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:10:51">просто letrec в LC невыразим</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:10:56">без извращений</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:11:9">могу попробовать сделать примеры поменьше и ручками оттранслировать в GCC</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:11:52">let (и letrec!) у нас эквивалентен лямбда-абстракции с последующей аппликацией (тут же)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:12:28">вся разница лишь в том, что при letrec скоп аргументов общий</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:12:36">т.е. они &amp;quot;видят&amp;quot; друг-друга</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:12:49">хорошо, какой асм-то генерировать :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:12:54">а то я что-то уже тоже запутался</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:13:16">попробовать модифицировать твой генератор?)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:13:22">или допилить свой?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:13:44">да погоди пока пилить, напиши лучше пример-убийцу на  gcc руками</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:13:50">ох</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:13:53">там столько термов</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:13:58">можно его сделать короче?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:13:58">в смысле код, который должен получится</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:14:9">если низзя - ок, напишу счас</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:14:38">чуток короче можно, но тогда станет непонятно по результату правильно он работает или нет</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:14:41">а так сразу видно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:14:51">ок, счас напишу</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:15:14">пишу в sexp-gcc</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:15:46">Я тут тоже думал.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:16:9">В конечном итоге как получится, конечно, нам решать, будет там скоуп динамик или не динамик.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:16:18">AP - создаёт фрейм, RAP - нет.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:16:33">счас если напишу пример - будет точно лексик</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:16:40">динамик мона потом поверх навернуть</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:16:55">про AP/RAP я тоже думал</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:17:3">Если мы сделаем функцию, а параметры будем хотеть смотреть вне её скоупа - так не надо просто делать.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:17:18">но там такая проблема, что RAP нельзя без DUP делать, а DUP делает фрейм</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:17:22">Вне лексического скоупа. Ошибка компиляции, итпа.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:17:59">turtle: ну кагбэ в этом и идея лекс. скопа, не?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:18:6">Ну ка кбы да.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:21:4">там тока на top-level будет чуть-чуть сложно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:25:26">какой же адовый этот ваш киллер-пример</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:26:18">это минимальный между прочим,  я  его из bumper-ai.lisp еле локализовал </msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:27:14">похоже я криво превратил его в LC</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:27:17">попытка номер 2</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:35:20">блин а вообще можно выполнить LD n i, где n — это не константа? </msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:35:30">нет</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:35:36">хмм</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:36:17">тогда уровень вложенности фиксированный может быть при динамическом резолвинге</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:40:2">(:LDC 17)&lt;br />(:LDF :L2)&lt;br />(:AP 1)&lt;br />&lt;br />;; lambda l1&lt;br />(:LABEL :l1)&lt;br />(:LDC 17) ; 17&lt;br />(:LD 0 0) ; f argument&lt;br />(:AP 1)&lt;br />(:RTN)&lt;br />&lt;br />;; lambda l2&lt;br />(:LABEL :l2)&lt;br />(:LDF :L6)&lt;br />(:LDF :L3)&lt;br />(:AP 1)&lt;br />(:RTN)&lt;br />&lt;br />;; lambda l3&lt;br />(:LABEL :l3)&lt;br />(:LDF :L5)&lt;br />(:LDF :L4)&lt;br />(:AP 1)&lt;br />(:RTN)&lt;br />&lt;br />;; lambda l4&lt;br />(:LABEL :l4)&lt;br />(:LDC 4)&lt;br />(:LD 0 0) ;; h (closure)&lt;br />(:AP 1) ;; (h 4)&lt;br />(:LDC 4)&lt;br />(:LD 1 0) ;; g (closure)&lt;br />(:AP 1) ;;&lt;br />(:ADD)&lt;br />(:RTN)&lt;br />&lt;br />;; lambda l5&lt;br />(:LABEL :l5)&lt;br />(:LD 0 0) ; y - argument&lt;br />(:LD 1 0) ; g - closure&lt;br />(:AP 1)&lt;br />(:RTN)&lt;br />&lt;br />;; lambda l6&lt;br />(:LABEL :l6)&lt;br />(:LD 1 0) ;; x (closured from parent)&lt;br />(:LD 0 0) ;; y - argument&lt;br />(:ADD)&lt;br />(:RTN)&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:40:8">первое предполдожение</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:40:12">счасть уточню</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:42:43">хммм ты его уже пробовал в эмуляторе гонять?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:42:52">еще нет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:43:5">я хочу чтобы он расчитал за меня смещения</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:43:46">&lt;br />    LDC 17&lt;br />    LDF 7&lt;br />    AP 1&lt;br />;(LABEL L1 3):&lt;br />    LDC 17&lt;br />    LD 0 0&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L2 7):&lt;br />    LDF 27&lt;br />    LDF 11&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L3 11):&lt;br />    LDF 23&lt;br />    LDF 15&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L4 15):&lt;br />    LDC 4&lt;br />    LD 0 0&lt;br />    AP 1&lt;br />    LDC 4&lt;br />    LD 1 0&lt;br />    AP 1&lt;br />    ADD&lt;br />    RTN&lt;br />;(LABEL L5 23):&lt;br />    LD 0 0&lt;br />    LD 1 0&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L6 27):&lt;br />    LD 1 0&lt;br />    LD 0 0&lt;br />    ADD&lt;br />    RTN&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:44:1">уже загрузилась</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:44:47">data stack: 42</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:44:52">&lt;br />    LDC 17&lt;br />    LDF 8&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L1 4):&lt;br />    LDC 17&lt;br />    LD 0 0&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L2 8):&lt;br />    LDF 28&lt;br />    LDF 12&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L3 12):&lt;br />    LDF 24&lt;br />    LDF 16&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L4 16):&lt;br />    LDC 4&lt;br />    LD 0 0&lt;br />    AP 1&lt;br />    LDC 4&lt;br />    LD 1 0&lt;br />    AP 1&lt;br />    ADD&lt;br />    RTN&lt;br />;(LABEL L5 24):&lt;br />    LD 0 0&lt;br />    LD 1 0&lt;br />    AP 1&lt;br />    RTN&lt;br />;(LABEL L6 28):&lt;br />    LD 1 0&lt;br />    LD 0 0&lt;br />    ADD&lt;br />    RTN</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:45:0">а сколько должно быть?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:45:25">столько и должно :)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:45:42">тока я не понимаю, что у тебя тут происходит</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:45:53">бгггг)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:46:8">псевдокод:&lt;br />((lambda l1 (f) &lt;br />   (f 17))&lt;br />&lt;br /> (lambda l2 (x)&lt;br />   ((lambda l3 (g)&lt;br />      ((lambda l4 (h) &lt;br />         (+ (h 4) (g 4)))&lt;br />       &lt;br />       (lambda l5 (y) (g y))))&lt;br />    (lambda l6 (y) (+ x y)))))&lt;br /></msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:46:38">в общем пруф оф концепт работает</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:46:42">осталось написать код)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:46:50">моя идея простая, свиз</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:47:1">мы передаем замыкания</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:47:3">через параметры</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:47:17">т.е. через environment</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:47:28">там лежат забинженые готовые closure</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:47:33">тогда ничто никуда не ползет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:47:59">уф</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:48:2">покурю пока</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:48:2">Ну тогда получается, что их в этом скоупе лексическом только и можно использовать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:48:21">Я в контексте того, что мы напишем библиотечные функции.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:48:28">тривиально</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:49:19">(lambda (world-state ghost-state)&lt;br />  (let ((lib-fn1 ...)&lt;br />        (lib-fn2 ...)&lt;br />        ...&lt;br />        (lib-fnN ...))&lt;br />    &amp;lt;body&amp;gt;))</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:49:39">А хотя, наши библиотечные функции не будут из чужого скопа ничего брать.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:49:45">Буду почище.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:50:5">более того, мы можем наделать helper'ов уже замкнутых на world-state начальный</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:50:8">для вещей что не меняются</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:50:9">Я про lib-fn, которые вынесены на начальную lambda.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:50:17">и засунуть замыкания в ai-state</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:50:32">изменяемую часть будет передавать замыканию как параметр</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:50:41">Ну замыкаться то будут в своём скоупе.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:50:50">Ну нам только параметры и интересны, конечно.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:50:53">на свой скоуп*</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:50:56">Императив не пройдёт. :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:50:56">кстати</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:50:59">интересный вопрос</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:51:11">а можно в CONS'ы засунуть CLOSURE?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:51:17">Можно.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:51:30">да</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:51:36">кавайи</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:51:44">тогда считайте что объекты мы уже придумали)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:51:49">бггг)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:51:54">так</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:52:6">все, курю и иду пилить этот ад в виде транслятора)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:52:57">а, не, еще кое-что</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:53:3">насчет letrec</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:53:52">(let ((x1 f1) (x2 f2) ... (xN fN)) body) эквивалентен:&lt;br />((lambda (x1 x2 ... xN)) f1 f2 ... fN)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:53:58">это всем очевидно?</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:54:34">ну да, let —  это синтаксический сахар</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:54:40">а letrec эквивалентен тому же самому! только конвенция вызова этой нашей лямбды - не AP, а RAP!</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:57:13">ну окей, попробуй наваять</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:57:28">оок. пилю</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:57:29">я чёто уже плохо соображаю, поэтому возразить ничего не могу :)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:57:45">ну, ручная компиляция моей идеи дала правильный ответ)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:57:52">так что я думаю мы на верном пути</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 3:58:1">поковыряю может перед сном тогда в отдельной ветке вариант с динамическим резолвом, если силы будут</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:58:3">а что у нас с AI LM/ghost'ов?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:58:38">КОнкретно с AI никак, я только ассемблер дописал.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:58:46">Сейчас спеку перечитываю.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:59:32">ассемблер в репе?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 3:59:38">свиз, твою ветку надо мержить?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 3:59:49">Да, всё в репе.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:3:41">не, пока не надо</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:3:49">хотя она рабочая вроде относительно</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:3:55">за исключением киллер-примера</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:8:44">да с замыканиями идея походу правильная</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:9:10">я щас погонял в эмуляторе goto.gcc — там контрол стек растёт, а стек кадров нет</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:9:33">походу при вызове по указателю действительно окружение восстанавливается</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:10:7">интересно</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:11:11">хех</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:11:20">ничего, мы еще и tail call'ы туда привинтим</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:11:28">но сначала - рабочий компилятор без TCO</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:11:32">чтобы ты работать мог</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:11:43">посмотри, кстате, на какой глубине стека он дохнет</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:20:10">а, там не видно...</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:25:32">Что-то я ассемблеры то подзабыл.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:25:41">что там?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:25:52">В ассемблерах?</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:26:3">ага</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:26:6">Геморно там.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:26:17">Раньше как-то не замечалось, когда мелкий был.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:26:21">гггг</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:27:41">Да ассемблер то фиг с ним. Что-то не соображу какой-нибудь совсем простейший алгоритм для хождения.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:28:10">я щас короче поразмышлял — если эта идея с замыканиями реально сработает, то у меня получится использовать CPS в ai пакмана</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:28:42">просто будем класть continuation в ai-state, а на очередном шаге его звать</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:29:11">работает она)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:29:21">ага, так и будем)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:29:46">и тогда всё совсем ровно должно получиться, можно будет спокойно выбирать цели и дискретно к ним двигаться, подправляя стратегию по ходу игры (например, при приближении гоустов)</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:30:23">я тогда завтра начну прямо с программирования ai на CL</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:30:36">потом по ходу странслируем в IL</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:31:26">ладно, пойду я спать тогда</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:31:39">Давай.</msg>
+ <msg nick="swizard" in="1" from="icfpc-2014@conference.bazon.ru/swizard" time="27 4:32:4">до завтра</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:32:15">ночи)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:44:35">Какой-то совсем убогий ассемблер.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:44:53">у меня тут снова моооооозг от скопов</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:45:4">Да уж. :)</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:45:11">Ладно, я тоже спать пойду, наверное.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:45:17">давай</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:45:19">ночи тебе</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:45:23">а я еще попедалю</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 4:45:24">Ага. Спасибо.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 4:45:39">или тоже спать пойти? %)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 5:19:34">так, код закинул в реп. код не рабочий (пока что). проснусь - доделаю его, протестирую и вмержу в мастер. AI пока пилите на CL.</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 5:19:57">завел много будильников на 10.30 утра (через 6 часов, гыгы)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 5:19:59">/me тоже тихо умер</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 7:26:54">я таки не уснул%(</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 7:27:5">в итоге допинал реализацию до почти рабочего состояния</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 7:27:13">мозгодробительный тест проходит на ура</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 7:27:33">не хватает мелочей вроде макросов/определения функций</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 7:27:50">стандартной библиотеки (она будет, как тока допинаю defun)</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 7:28:3">ну и системы для удобной загрузки всего этого</msg>
+ <msg nick="sectoid" in="1" from="icfpc-2014@conference.bazon.ru/sectoid" time="27 12:25:42">есть кто живой?</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 12:53:21">Всем привет.</msg>
+ <msg nick="turtle" in="0" from="icfpc-2014@conference.bazon.ru/turtle" time="27 12:54:9">Еле отодрал себя от кровати. :)</msg>
 </kopete-history>
