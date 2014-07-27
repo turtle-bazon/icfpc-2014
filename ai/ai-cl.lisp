@@ -95,13 +95,15 @@
             (find-object object (cdr objects))))))
 
 (defun filter-accessible (coords map visited)
-  (il-foldl (lambda (coord acc)
-              (if (and (> (map-cell coord map) 0)
-                       (integerp (find-object coord visited)))
-                  (cons coord acc)
-                  acc))
-            0
-            coords))
+  (if (integerp coords)
+      0
+      (il-foldl (lambda (coord acc)
+                  (if (and (> (map-cell coord map) 0)
+                           (integerp (find-object coord visited)))
+                      (cons coord acc)
+                      acc))
+                0
+                coords)))
 
 (defun neighbours (source)
   (let ((x (car source)) (y (cdr source)))
@@ -112,6 +114,7 @@
                             0))))))
 
 (defun plan-route (source target map rev-path forbidden)
+  (declare (optimize (debug 3)))
   (if (coords= source target)
       (il-reverse (cons target rev-path))
       (labels ((try-moves (avail-moves)
