@@ -62,6 +62,8 @@
     ((/ ?form-a ?form-b) (translate-op :div ?form-a ?form-b env))
     ((= ?form-a ?form-b) (translate-op :ceq ?form-a ?form-b env))
     ((> ?form-a ?form-b) (translate-op :cgt ?form-a ?form-b env))
+    ((< ?form-a ?form-b) (translate-op :cgt ?form-b ?form-a env))
+    ((<= ?form-a ?form-b) (translate-op :cgte ?form-b ?form-a env))
     ((>= ?form-a ?form-b) (translate-op :cgte ?form-a ?form-b env))
     ((and . ?forms) (translate-and ?forms env))
     ((or . ?forms) (translate-or ?forms env))
