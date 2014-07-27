@@ -71,6 +71,23 @@ check_right:
 mov b,0
 jeq move,b,0
 
+can_up:
+mov b,0
+jeq move,b,0
+
+can_down:
+mov b,0
+jeq move,b,0
+
+can_left:
+mov b,0
+jeq move,b,0
+
+can_right:
+mov b,0
+jeq move,b,0
+
 move:
+
 hlt
 
