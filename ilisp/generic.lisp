@@ -14,16 +14,26 @@
 
 ;; defun
 
-(defmacro ilisp:defun (name (&rest arg-list) &body body*)
-  )
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defparameter *ilisp-fn-library* (make-hash-table)))
+
+;;(setq *gcc-ai-library (make-hash-table))
+
+(defmacro il:defun (name (&rest lambda-list) &body body*)
+  "Defines library function for AI code. The all the functions will be
+linked into resulting AI GCC code."
+  `(setf (gethash ',name *ilisp-fn-library*)
+         '(lambda ,lambda-list ,@body*)))
 
 ;; defmacro
+(defun gcc-macro-fn-name (sym)
+  (intern (format nil "GCC-MACRO/~A/~A" 
+                  (package-name (symbol-package sym)) 
+                  (symbol-name sym))
+          (symbol-package sym)))
 
-(defun gcc-macro-fn-name (macro-name)
-  (intern (format nil "GCC-MACRO/~A" macro-name)))
-
-(defun gcc-macro-fn (macro-name)
-  (symbol-function (gcc-macro-fn-name macro-name)))
+(defun gcc-macro-fn (sym)
+  (symbol-function (gcc-macro-fn-name sym)))
 
 (defun gcc-macro-p (sym)
   (fboundp (gcc-macro-fn-name sym)))

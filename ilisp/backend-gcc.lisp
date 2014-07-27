@@ -91,10 +91,10 @@
     ((ilisp:when ?condition-form ?true-form)
      (translate-if translator ?condition-form ?true-form 0))
 
-    ((?proc-name . ?proc-args) (translate-invoke translator ?proc-name ?proc-args))
-    ;; ((?proc-name . ?proc-args) (if (gcc-macro-p ?proc-name)
-    ;;                                (translate-walker (apply (gcc-macro-fn ?proc-name) ?proc-args) env)
-    ;;                                (translate-proc-invocation ?proc-name ?proc-args env)))
+    ;; ((?proc-name . ?proc-args) (translate-invoke translator ?proc-name ?proc-args))
+    ((?proc-name . ?proc-args) (if (gcc-macro-p ?proc-name)
+                                   (translate-walk translator (apply (gcc-macro-fn ?proc-name) ?proc-args))
+                                   (translate-invoke translator ?proc-name ?proc-args)))
 
     ;; ((ilisp:list . ?forms) (translate-list translator ?forms))
     ;; ((ilisp:tuple . ?forms) (translate-tuple translator ?forms))
@@ -102,6 +102,7 @@
     ;; ((and . ?forms) (translate-and ?forms env))
     ;; ((or . ?forms) (translate-or ?forms env))
     ;; ((not ?form) (translate-not ?form env))
+
     ;; ((when ?condition-form ?true-form)
     ;;  (translate-when ?condition-form ?true-form env))
     ;; ((cond . ?forms)
@@ -249,6 +250,14 @@
 			 (mapcar #'(lambda (x)
 				     (if (and (listp x) (eql (car x) :label))
 					(caddr x) x)) args))))))))
+(defun build-ai-core (ast &key (debug t))
+  (translate-gcc
+   `(lambda (initial-state unknown)
+      (letrec ,(iter (for (fn-name fn-body) in-hashtable *ilisp-fn-library*)
+                     (collect `(,fn-name ,fn-body)))
+        ,ast))
+   :unlabel (not debug)))
+
 
 (defun compile-gcc (gcc-input-file gcc-output-file)
   (with-open-file (fo gcc-output-file :direction :output :if-exists :overwrite
