@@ -32,6 +32,13 @@
 (defun map-size (map)
   (cons (il-length (car map)) (il-length map)))
 
+(defun call-with-tuple/2 (tuple proc)
+  (funcall proc (car tuple) (cdr tuple)))
+(defun call-with-tuple/3 (tuple proc)
+  (funcall proc (car tuple) (car (cdr tuple)) (cdr (cdr tuple))))
+(defun call-with-tuple/4 (tuple proc)
+  (funcall proc (car tuple) (car (cdr tuple)) (car (cdr (cdr tuple))) (cdr (cdr (cdr tuple)))))
+
 (defun locate-objects (object map)
   (cdr (il-foldl (lambda (row acc)
                    (let ((y (car acc)) (objects (cdr acc)))
@@ -51,13 +58,13 @@
   (let ((diff-x (- x-a x-b)) (diff-y (- y-a y-b)))
     (+ (* diff-x diff-x) (* diff-y diff-y))))
 
-(defun pop-nearest-object (cell objects)
+(defun pop-min-dist-object (dist cell objects)
   (let ((my-x (car cell)) (my-y (cdr cell)))
     (il-foldl (lambda (object acc)
                 (let ((nearest-object (car acc))
                       (nearest-sq-dist (cadr acc))
                       (rest-objects (cddr acc))
-                      (current-sq-dist (sq-dist my-x my-y (car object) (cdr object))))
+                      (current-sq-dist (funcall dist my-x my-y (car object) (cdr object))))
                   (if (or (integerp nearest-object)
                           (< current-sq-dist nearest-sq-dist))
                       (cons object
@@ -68,6 +75,12 @@
                       (cons nearest-object (cons nearest-sq-dist (cons object rest-objects))))))
               (cons 0 (cons 0 0))
               objects)))
+
+(defun pop-nearest-object (cell objects)
+  (pop-min-dist-object #'sq-dist cell objects))
+
+(defun pop-farest-object (cell objects)
+  (pop-min-dist-object (lambda (sx sy tx ty) (- 0 (sq-dist sx sy tx ty))) cell objects))
 
 (defun coords= (coord-a coord-b)
   (and (= (car coord-a) (car coord-b))
@@ -158,24 +171,61 @@
   (il-foldl (lambda (ghost-info acc) (cons (car (cdr ghost-info)) acc)) 0 ghosts))
   
 (defun nearest-ghost (pacman ghosts-coords)
-  (car (pop-nearest-object pacman ghosts-coords)))
+  (pop-nearest-object pacman ghosts-coords))
 
-(defun game-loop (ai-state map pacman ghosts fruits)
-  (call-with-ai-state
-   ai-state
-   (lambda (current-path)
-     (if (integerp current-path)
-         (game-loop (make-ai-state (choose-next-target map pacman (cons 3 (cons 2 0))))
-                    map pacman ghosts fruits)
-         (cons (make-ai-state (cdr current-path))
-               (choose-dir pacman (car current-path)))))))
+(defun flee-point (map pacman ghost-coord)
+  (car (pop-farest-object ghost-coord (filter-accessible (neighbours pacman) map 0))))
+
+(defun check-angry-ghost-too-close (map pacman)
+  (lambda (nearest-ghost ghost-sq-dist rest-ghosts)
+    (declare (ignore rest-ghosts))
+    (if (>= 8 ghost-sq-dist)
+        (cons (flee-point map pacman nearest-ghost) 0)
+        0)))
+
+(defun check-cowardly-ghost-close (map pacman)
+  (lambda (nearest-ghost ghost-sq-dist rest-ghosts)
+    (declare (ignore rest-ghosts))
+    (if (>= 32 ghost-sq-dist)
+        (plan-route pacman nearest-ghost map 0)
+        0)))
+  
+(defun estimate-ghosts-threat (map pacman ghosts)
+  (call-with-tuple/2
+   (analyze-ghosts ghosts)
+   (lambda (angry-ghosts cowardly-ghosts)
+     (if (integerp angry-ghosts)
+         (if (integerp cowardly-ghosts)
+             0
+             (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords cowardly-ghosts))
+                                (check-cowardly-ghost-close map pacman)))
+         (let ((flee-plan (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords angry-ghosts))
+                                             (check-angry-ghost-too-close map pacman))))
+           (if (integerp flee-plan)
+               (if (integerp cowardly-ghosts)
+                   0
+                   (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords cowardly-ghosts))
+                                      (check-cowardly-ghost-close map pacman)))
+               flee-plan))))))
+
+(defun make-game-loop (ai-state)
+  (lambda (map pacman-info ghosts fruits)
+    (call-with-ai-state
+     ai-state
+     (lambda (current-path)
+       (let ((pacman (cadr pacman-info)))
+         (let ((ghosts-threat (estimate-ghosts-threat map pacman ghosts)))
+           (if (integerp ghosts-threat)
+               (if (integerp current-path)
+                   (game-loop (make-ai-state (choose-next-target map pacman (cons 3 (cons 2 0))))
+                              map pacman ghosts fruits)
+                   (cons (make-ai-state (cdr current-path))
+                         (choose-dir pacman (car current-path))))
+               (cons (make-ai-state (cdr ghosts-threat))
+                     (choose-dir pacman (car ghosts-threat))))))))))
 
 (defun gcc-step (ai-state world-state)
-  (game-loop ai-state
-             (car world-state)
-             (car (cdr (car (cdr world-state))))
-             (car (cdr (cdr world-state)))
-             (cdr (cdr (cdr world-state)))))
+  (call-with-tuple/4 world-state (make-game-loop ai-state)))
              
 (defun gcc-init (initial-world-state foreign-ghosts)
   (declare (ignore initial-world-state foreign-ghosts))
