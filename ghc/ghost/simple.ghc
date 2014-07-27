@@ -40,6 +40,8 @@
 ; some constants
 %def _sight_area_size,5
 %def _sight_min_area_disp,2
+%def _sight_area_min_step,1
+%def _sight_area_max_step,3
 %def _sight_max_area_disp,253
 
 ;;; program ;;;
@@ -59,6 +61,8 @@
 %def !cur_y,[248]
 %def !cur_local_x,[247]
 %def !cur_local_y,[246]
+%def !tmp_x,[245]
+%def !tmp_y,[244]
 
 ; << fill with zero sight area
     mov a,_sight_area_size
@@ -126,6 +130,8 @@ area_check:
     jgt skip_analyze_point,[c],127
 
 ; << analyze current cell
+    int _debug
+
     mov !cur_counter,[c]
     mov d,c
     div d,_sight_area_size
@@ -139,7 +145,81 @@ area_check:
     mov !cur_y,e
     add !cur_y,!sight_corner_y
 
-    
+    ; up
+    jlt finish_up,!cur_local_y,_sight_area_min_step
+    mov d,c
+    dec d
+    jlt finish_up,[d],_unknown
+    mov !tmp_y,!cur_y
+    dec !tmp_y
+    mov _x_coor,!cur_x
+    mov _y_coor,!tmp_y
+    int _map_cont
+    jeq skip_wall_up,a,_m_wall
+    mov [d],[c]
+    inc [d]
+    jgt finish_up,[d],0
+    mov a,[d]
+skip_wall_up:
+    mov [d],254
+finish_up:
+
+    ; down
+    jgt finish_down,!cur_local_y,_sight_area_max_step
+    mov d,c
+    inc d
+    jlt finish_down,[d],_unknown
+    mov !tmp_y,!cur_y
+    inc !tmp_y
+    mov _x_coor,!cur_x
+    mov _y_coor,!tmp_y
+    int _map_cont
+    jeq skip_wall_down,a,_m_wall
+    mov [d],[c]
+    inc [d]
+    jgt finish_down,[d],0
+    mov a,[d]
+skip_wall_down:
+    mov [d],254
+finish_down:
+
+    ; right
+    jgt finish_right,!cur_local_x,_sight_area_max_step
+    mov d,c
+    add d,_sight_area_size
+    jlt finish_right,[d],_unknown
+    mov !tmp_x,!cur_x
+    inc !tmp_x
+    mov _x_coor,!tmp_x
+    mov _y_coor,!cur_y
+    int _map_cont
+    jeq skip_wall_right,a,_m_wall
+    mov [d],[c]
+    inc [d]
+    jgt finish_right,[d],0
+    mov a,[d]
+skip_wall_right:
+    mov [d],254
+finish_right:
+
+    ; left
+    jlt finish_left,!cur_local_x,_sight_area_min_step
+    mov d,c
+    sub d,_sight_area_size
+    jlt finish_left,[d],_unknown
+    mov !tmp_x,!cur_x
+    dec !tmp_x
+    mov _x_coor,!tmp_x
+    mov _y_coor,!cur_y
+    int _map_cont
+    jeq skip_wall_left,a,_m_wall
+    mov [d],[c]
+    inc [d]
+    jgt finish_left,[d],0
+    mov a,[d]
+skip_wall_left:
+    mov [d],254
+finish_left:
 
     or [c],128
     inc !replaces_count
@@ -150,33 +230,12 @@ skip_analyze_point:
     jgt area_check,b,0
     jgt area_cycle,!replaces_count,0
 
-;    add _x_coor,_sight_area_size
-;    dec _x_coor
-;    add _y_coor,_sight_area_size
-;    dec _y_coor
-;
-;    mov d,_x_coor ; x coordinate pointer on map
-;    mov f,_sight_area_size
-;row_map_fill:
-;    mov e,_y_coor ; y coordinate pointer on map
-;    mov g,_sight_area_size
-;col_map_fill:
-;    mov c,f
-;    dec c
-;    mul c,_sight_area_size
-;    add c,g
-;    dec c
-;    jgt skip_analyze_point,[c],128
-;
-
-;    int _map_cont
-;
-;    dec g
-;    dec e
-;    jgt col_map_fill,g,0
-;    dec f
-;    dec d
-;    jgt row_map_fill,f,0
+    mov b,0
+print:
+    mov a,[b]
+    int _debug
+    inc b
+    jeq print,b,25
 
 move:
 
