@@ -3,13 +3,15 @@
 (deftestsuite gcc-translator-core () ())
 
 (iter (for bin-op in '(:add :sub :mul :div :ceq :cgt :cgte :cons))
-      (for bin-op-lisp = (getf (list :add '+ 
-                                     :sub '- 
+      (for bin-op-lisp = (getf (list :add '+
+                                     :sub '-
                                      :mul '*
                                      :div '/
                                      :ceq '=
                                      :cgt '>
+				     :cgt '<
                                      :cgte '>=
+				     :cgte '<=
                                      :cons 'cons)
                                bin-op))
       
@@ -149,6 +151,34 @@
                  (:LDC 3) 
                  (:CONS)
                  (:CONS))))
+
+(addtest (gcc-translator-core)
+  comp-0
+  (ensure-same (translate '(< 1 2))
+	       '(((:LDC 2)
+		  (:LDC 1)
+		  (:CGT)))))
+
+(addtest (gcc-translator-core)
+  comp-1
+  (ensure-same (translate '(> 1 2))
+	       '(((:LDC 1)
+		  (:LDC 2)
+		  (:CGT)))))
+
+(addtest (gcc-translator-core)
+  comp-2
+  (ensure-same (translate '(>= 1 2))
+	       '(((:LDC 1)
+		  (:LDC 2)
+		  (:CGT)))))
+
+(addtest (gcc-translator-core)
+  comp-3
+  (ensure-same (translate '(<= 1 2))
+	       '(((:LDC 2)
+		  (:LDC 1)
+		  (:CGT)))))
 
 (addtest (gcc-translator-core)
   list-0
