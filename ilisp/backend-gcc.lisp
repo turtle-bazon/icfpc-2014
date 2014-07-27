@@ -78,6 +78,9 @@
     ((let ?bindings . ?body) (translate-let translator ?bindings ?body))
     ((letrec ?bindings . ?body) (translate-letrec translator ?bindings ?body))
 
+    ((setq ?name ?form) (translate-setq translator ?name ?form))
+    ((in-package ?name) (list))
+    ((declare . ?unused) (list))
     ((defun ?name ?lambda-list . ?body) (translate-defun translator ?name ?lambda-list ?body))
     ((defmacro ?name ?lambda-list . ?body) (translate-defmacro translator ?name ?lambda-list ?body))
 
@@ -241,14 +244,18 @@
  	(:label ,end-label))))
 
 (defmethod translate-defun ((translator gcc-translator) name lambda-list body*)
-  (setf (getf (functions translator)  name)
-        `(lambda ,lambda-list ,@body*))
-  nil)
+  (setf (getf (functions translator) name)
+        `(lambda ,lambda-list ,@body*))))
 
 (defmethod translate-defmacro ((translator gcc-translator) name lambda-list body*)
   (setf (getf (macros translator) name)
         (eval `(lambda ,lambda-list ,@body*)))
   nil)
+
+(defmethod translate-setq ((translator gcc-translator) name form)
+  (bind (((:values frame index) (scope-lookup-var-index translator name)))
+    `(,@(translate-walk translator form)
+        (:ST ,frame ,index))))
 
 ;; build system
 (defun pretty-print-gcc (gcc &key (stream *standard-output*) (minimize nil)
@@ -268,6 +275,37 @@
 			 (mapcar #'(lambda (x)
 				     (if (and (listp x) (eql (car x) :label))
 					(caddr x) x)) args))))))))
+
+(defun build-ai (input-files gcc-output-file entry-point &key (debug t))
+  (with-open-file (fo gcc-output-file 
+                      :direction :output 
+                      :if-exists :overwrite
+		      :if-does-not-exist :create)
+
+    (let ((top-level-forms (list))
+          (translator (make-instance 'gcc-translator)))
+      (with-scope (translator)
+
+        ;; For all the files...
+        (dolist (gcc-input-file input-files)
+          ;; Read top-level forms
+          (with-open-file (fi gcc-input-file)
+            (iter 
+              (for form in-stream fi)
+              (push (translate-walk translator form) top-level-forms))))
+        
+        (scope-add-var translator 'world-state)
+        (scope-add-var translator 'ghosts)
+
+        (pretty-print-gcc
+         
+         (translate translator
+                    `(letrec ,(iter (generating el in (functions translator))
+                                    (for fn-name = (next el)) (for fn-body = (next el))
+                                    (collect `(,fn-name ,fn-body)))
+                       (,entry-point world-state ghosts))
+                    :unlabel (not debug))
+         :stream fo)))))
 
 (defun build-ai-core (main-fn &key (debug t))
   (let ((translator (make-instance 'gcc-translator)))

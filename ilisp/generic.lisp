@@ -13,3 +13,4 @@
 (defgeneric translate-if (translator cond then else))
 (defgeneric translate-defun (translator name lambda-list body))
 (defgeneric translate-defmacro (translator name lambda-list body))
+(defgeneric translate-setq (translator name form))

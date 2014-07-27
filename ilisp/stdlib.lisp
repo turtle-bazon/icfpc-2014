@@ -1,9 +1,10 @@
-(in-package :ilisp)
+(defmacro list (&rest body)
+  (if body
+      `(cons ,(car body) (list . ,(cdr body)))
+      0))
 
-(defmacro list (cl:&rest body)
-  (cl:if body
-         `(cons ,(cl:car body) (list . ,(cl:cdr body)))
-         0))
+(defun cadr (x)
+  (car (cdr x)))
 
-
-
+(defun cddr (x)
+  (cdr (cdr x)))
