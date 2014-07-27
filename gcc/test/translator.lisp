@@ -155,30 +155,30 @@
 (addtest (gcc-translator-core)
   comp-0
   (ensure-same (translate '(< 1 2))
-	       '(((:LDC 2)
+	       '((:LDC 2)
 		  (:LDC 1)
-		  (:CGT)))))
+		  (:CGT))))
 
 (addtest (gcc-translator-core)
   comp-1
   (ensure-same (translate '(> 1 2))
-	       '(((:LDC 1)
+	       '((:LDC 1)
 		  (:LDC 2)
-		  (:CGT)))))
+		  (:CGT))))
 
 (addtest (gcc-translator-core)
   comp-2
   (ensure-same (translate '(>= 1 2))
-	       '(((:LDC 1)
+	       '((:LDC 1)
 		  (:LDC 2)
-		  (:CGT)))))
+		  (:CGT))))
 
 (addtest (gcc-translator-core)
   comp-3
   (ensure-same (translate '(<= 1 2))
-	       '(((:LDC 2)
+	       '((:LDC 2)
 		  (:LDC 1)
-		  (:CGT)))))
+		  (:CGT))))
 
 (addtest (gcc-translator-core)
   list-0
