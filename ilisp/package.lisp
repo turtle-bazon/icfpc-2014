@@ -1,3 +1,5 @@
+(cl:in-package #:cl-user)
+
 (defpackage #:ilisp
   (:use)
   (:nicknames #:il)
