@@ -1,6 +1,12 @@
 
 (in-package :ai)
 
+(defun il-nth (n lst)
+  (if (= n 0) (car lst) (il-nth (- n 1) (cdr lst))))
+
+(defun map-cell (cell map)
+  (il-nth (car cell) (il-nth (cdr cell) map)))
+
 (defun il-foldl (proc accumulator il-list)
   (let ((next-accumulator (funcall proc (car il-list) accumulator))
         (rest (cdr il-list)))
@@ -28,7 +34,6 @@
     (+ (* diff-x diff-x) (* diff-y diff-y))))
 
 (defun pop-nearest-object (my-x my-y objects)
-  (declare (optimize (debug 3)))
   (il-foldl (lambda (object acc)
               (let ((nearest-object (car acc))
                     (nearest-sq-dist (cadr acc))
@@ -45,3 +50,34 @@
             (cons 0 (cons 0 0))
             objects))
 
+(defun coords= (coord-a coord-b)
+  (and (= (car coord-a) (car coord-b))
+       (= (cdr coord-a) (cdr coord-b))))
+
+(defun find-object (object objects)
+  (if (integerp objects)
+      0
+      (let ((current (car objects)))
+        (if (coords= current object)
+            current
+            (find-object object (cdr objects))))))
+
+(defun filter-accessible (coords map visited)
+  (il-foldl (lambda (coord acc)
+              (if (and (> (map-cell coord map) 0)
+                       (integerp (find-object coord visited)))
+                  (cons coord acc)
+                  acc))
+            0
+            coords))
+
+(defun neighbours (source)
+  (let ((x (car source)) (y (cdr source)))
+    (cons (cons (- x 1) y)
+          (cons (cons x (- y 1))
+                (cons (cons (+ x 1) y)
+                      (cons (cons x (+ y 1))
+                            0))))))
+
+        
+    
