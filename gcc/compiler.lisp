@@ -25,6 +25,25 @@
 			     (cons :label label-place)
 			     op-code-part))))))
 
+(defun gcc-macro-fn-name (macro-name)
+  (intern (format nil "GCC-MACRO/~A" macro-name)))
+
+(defun gcc-macro-fn (macro-name)
+  (symbol-function (gcc-macro-fn-name macro-name)))
+
+(defun gcc-macro-p (sym)
+  (fboundp (gcc-macro-fn-name sym)))
+
+
+(defmacro defmacro/gcc (name (&rest arg-list) &body body*)
+  "Defines a macro in ILisp"
+  `(defun ,(gcc-macro-fn-name name) ,arg-list
+     ,@body*))
+
+;; Sample usage:
+;; (defmacro/gcc andd (&rest args)
+;;   `(and ,@args))
+
 (defmacro with-match ((ast proc) &rest clauses)
   (with-gensyms (assume form)
     `(flet ((,assume (,form) (return-from ,proc ,form)))
@@ -61,7 +80,9 @@
      (translate-when ?condition-form ?true-form env))
     ((cond . ?forms)
      (translate-cond ?forms env))
-    ((?proc-name . ?proc-args) (translate-proc-invocation ?proc-name ?proc-args env))
+    ((?proc-name . ?proc-args) (if (gcc-macro-p ?proc-name)
+                                   (translate-walker (apply (gcc-macro-fn ?proc-name) ?proc-args) env)
+                                   (translate-proc-invocation ?proc-name ?proc-args env)))
     (?atom (translate-atom ?atom env)))
   (error "Invalid AST: ~s" ast))
 
