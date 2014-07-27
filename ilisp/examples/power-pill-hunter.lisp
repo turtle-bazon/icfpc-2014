@@ -96,14 +96,16 @@
             (find-object object (cdr objects))))))
 
 (defun filter-accessible (coords map visited)
-  (il-foldl (lambda (coord acc)
-              (if (> (map-cell coord map) 0)
-                  (if (integerp (find-object coord visited))
-                      (cons coord acc)
-                      acc)
-                  acc))
-            0
-            coords))
+  (if (integerp coords)
+      0
+      (il-foldl (lambda (coord acc)
+                  (if (> (map-cell coord map) 0)
+                      (if (integerp (find-object coord visited))
+                          (cons coord acc)
+                          acc)
+                      acc))
+                0
+                coords)))
 
 (defun neighbours (source)
   (let ((x (car source)) (y (cdr source)))
