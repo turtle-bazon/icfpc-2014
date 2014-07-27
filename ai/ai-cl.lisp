@@ -104,15 +104,50 @@
                                path)))))))
         (try-moves (filter-accessible (neighbours source) map rev-path)))))
 
-(defun gcc-step (ai-state world-state)
-  (funcall ai-state world-state))
+(defun choose-dir (source target)
+  (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
+    (if (= ys yt)
+        (if (< xs xt) 1 3)
+        (if (< ys yt) 2 0))))
 
-;; (defun gcc-init (initial-world-state foreign-ghosts)
-;;   (declare (ignore foreign-ghosts))
-;;   (let ((map (car initial-world-state)))
-;;     (let ((pills (locate-objects 2 map))
-;;           (power-pills (locate-objects 3 map)))
-;;       (cons (lambda ()
+(defun make-ai-state (current-path power-pills)
+  (cons current-path (cons power-pills 0)))
+
+(defun game-loop (current-path power-pills map pacman ghosts fruits)
+  (if (integerp current-path)
+      (if (integerp power-pills)
+          (make-ai-state 0 0)
+          (let ((nearest-tuple (pop-nearest-object pacman power-pills)))
+            (let ((nearest-power-pill (car nearest-tuple))
+                  (rest-power-pills (cddr nearest-tuple)))
+              (game-loop (cdr (plan-route pacman nearest-power-pill map 0))
+                         rest-power-pills
+                         map
+                         pacman
+                         ghosts
+                         fruits))))
+      (cons (make-ai-state (cdr current-path) power-pills)
+            (choose-dir pacman (car current-path)))))
+
+(defun gcc-step (ai-state world-state)
+  (game-loop (car ai-state)
+             (cadr ai-state)
+             (car world-state)
+             (car (cdr (car (cdr world-state))))
+             (car (cdr (cdr world-state)))
+             (cdr (cdr (cdr world-state)))))
+             
+(defun gcc-init (initial-world-state foreign-ghosts)
+  (declare (ignore foreign-ghosts))
+  (let ((map (car initial-world-state))
+        (pacman (cadr (cadr initial-world-state))))
+    (let ((power-pills (locate-objects 3 map)))
+      (let ((nearest-tuple (pop-nearest-object pacman power-pills)))
+        (let ((nearest-power-pill (car nearest-tuple))
+              (rest-power-pills (cddr nearest-tuple)))
+          (let ((current-path (cdr (plan-route pacman nearest-power-pill map 0))))
+            (cons (make-ai-state current-path rest-power-pills)
+                  #'gcc-step)))))))
               
           
     
