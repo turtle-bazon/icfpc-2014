@@ -1,5 +1,6 @@
 (defpackage #:ilisp
   (:use)
+  (:nicknames #:il)
   (:shadowing-import-from :metatilities minimize finish)
   (:export #:let 
            #:letrec 
