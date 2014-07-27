@@ -111,7 +111,7 @@
                       (cons (cons x (+ y 1))
                             0))))))
 
-(defun plan-route (source target map rev-path)
+(defun plan-route (source target map rev-path forbidden)
   (if (coords= source target)
       (il-reverse (cons target rev-path))
       (labels ((try-moves (avail-moves)
@@ -120,11 +120,14 @@
                      (let ((next-move-plan (pop-nearest-object target avail-moves)))
                        (let ((best-move (car next-move-plan))
                              (rest-moves (cddr next-move-plan)))
-                         (let ((path (plan-route best-move target map (cons source rev-path))))
+                         (let ((path (plan-route best-move target map (cons source rev-path) forbidden)))
                            (if (integerp path)
                                (try-moves rest-moves)
                                path)))))))
-        (try-moves (filter-accessible (neighbours source) map rev-path)))))
+        (try-moves
+         (filter-accessible (filter-accessible (neighbours source) map rev-path)
+                            map
+                            forbidden)))))
 
 (defun choose-dir (source target)
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
@@ -138,20 +141,20 @@
 (defun call-with-ai-state (ai-state proc)
   (funcall proc ai-state))
 
-(defun choose-next-target-for (object map pacman)
+(defun choose-next-target-for (object map pacman angry-ghosts)
   (let ((objects (locate-objects object map)))
     (if (integerp objects)
         0
         (let ((nearest-object (car (pop-nearest-object pacman objects))))
-          (let ((path-to-object (cdr (plan-route pacman nearest-object map 0))))
+          (let ((path-to-object (cdr (plan-route pacman nearest-object map 0 angry-ghosts))))
             path-to-object)))))
 
-(defun choose-next-target (map pacman objects-by-priority)
+(defun choose-next-target (map pacman angry-ghosts objects-by-priority)
   (if (integerp objects-by-priority)
       0
-      (let ((path (choose-next-target-for (car objects-by-priority) map pacman)))
+      (let ((path (choose-next-target-for (car objects-by-priority) map pacman angry-ghosts)))
         (if (integerp path)
-            (choose-next-target map pacman (cdr objects-by-priority))
+            (choose-next-target map pacman angry-ghosts (cdr objects-by-priority))
             path))))
 
 (defun analyze-ghosts (ghosts)
@@ -168,7 +171,9 @@
             ghosts))
 
 (defun ghosts-coords (ghosts)
-  (il-foldl (lambda (ghost-info acc) (cons (car (cdr ghost-info)) acc)) 0 ghosts))
+  (if (integerp ghosts)
+      0
+      (il-foldl (lambda (ghost-info acc) (cons (car (cdr ghost-info)) acc)) 0 ghosts)))
   
 (defun nearest-ghost (pacman ghosts-coords)
   (pop-nearest-object pacman ghosts-coords))
@@ -187,42 +192,46 @@
   (lambda (nearest-ghost ghost-sq-dist rest-ghosts)
     (declare (ignore rest-ghosts))
     (if (>= 32 ghost-sq-dist)
-        (plan-route pacman nearest-ghost map 0)
+        (cdr (plan-route pacman nearest-ghost map 0 0))
         0)))
   
 (defun estimate-ghosts-threat (map pacman ghosts)
   (call-with-tuple/2
    (analyze-ghosts ghosts)
    (lambda (angry-ghosts cowardly-ghosts)
-     (if (integerp angry-ghosts)
-         (if (integerp cowardly-ghosts)
-             0
-             (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords cowardly-ghosts))
-                                (check-cowardly-ghost-close map pacman)))
-         (let ((flee-plan (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords angry-ghosts))
-                                             (check-angry-ghost-too-close map pacman))))
-           (if (integerp flee-plan)
+     (cons (if (integerp angry-ghosts)
                (if (integerp cowardly-ghosts)
                    0
                    (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords cowardly-ghosts))
                                       (check-cowardly-ghost-close map pacman)))
-               flee-plan))))))
+               (let ((flee-plan (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords angry-ghosts))
+                                                   (check-angry-ghost-too-close map pacman))))
+                 (if (integerp flee-plan)
+                     (if (integerp cowardly-ghosts)
+                         0
+                         (call-with-tuple/3 (nearest-ghost pacman (ghosts-coords cowardly-ghosts))
+                                            (check-cowardly-ghost-close map pacman)))
+                     flee-plan)))
+           (ghosts-coords angry-ghosts)))))
 
 (defun make-game-loop (ai-state)
+  (declare (optimize (debug 3)))
   (lambda (map pacman-info ghosts fruits)
     (call-with-ai-state
      ai-state
      (lambda (current-path)
-       (let ((pacman (cadr pacman-info)))
-         (let ((ghosts-threat (estimate-ghosts-threat map pacman ghosts)))
-           (if (integerp ghosts-threat)
-               (if (integerp current-path)
-                   (game-loop (make-ai-state (choose-next-target map pacman (cons 3 (cons 2 0))))
-                              map pacman ghosts fruits)
-                   (cons (make-ai-state (cdr current-path))
-                         (choose-dir pacman (car current-path))))
-               (cons (make-ai-state (cdr ghosts-threat))
-                     (choose-dir pacman (car ghosts-threat))))))))))
+       (let ((pacman (car (cdr pacman-info))))
+         (call-with-tuple/2
+          (estimate-ghosts-threat map pacman ghosts)
+          (lambda (ghosts-threat angry-ghosts)
+            (if (integerp ghosts-threat)
+                (if (integerp current-path)
+                    (game-loop (make-ai-state (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0))))
+                               map pacman ghosts fruits)
+                    (cons (make-ai-state (cdr current-path))
+                          (choose-dir pacman (car current-path))))
+                (cons (make-ai-state (cdr ghosts-threat))
+                      (choose-dir pacman (car ghosts-threat)))))))))))
 
 (defun gcc-step (ai-state world-state)
   (call-with-tuple/4 world-state (make-game-loop ai-state)))

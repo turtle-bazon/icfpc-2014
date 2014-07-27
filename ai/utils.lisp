@@ -17,3 +17,12 @@
                                  (6 #\=))))
               (format t "~c" obj))
         (format t "~%")))
+
+(defun run-simulator (initial-world-state &key (max-turns 10000))
+  (declare (optimize (debug 3)))
+  (let ((game (gcc-init initial-world-state nil)))
+    (iter (with ai-state = (car game))
+          (with step = (cdr game))
+          (for counter from 0 below max-turns)
+          (for (new-ai-state . direction) = (funcall step ai-state initial-world-state))
+          (setf ai-state new-ai-state))))
