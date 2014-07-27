@@ -1,7 +1,7 @@
 (in-package :ghc-assembler)
 
 (defun assemble-file (file-in file-out)
-  (with-open-file (fouts file-out :direction :output :if-exists :overwrite :if-does-not-exist :create)
+  (with-open-file (fouts file-out :direction :output :if-exists :supersede :if-does-not-exist :create)
     (with-open-file (fins file-in)
       (assemble fins fouts))))
 
