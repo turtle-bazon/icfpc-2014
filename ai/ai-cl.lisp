@@ -14,6 +14,15 @@
         next-accumulator
         (il-foldl proc next-accumulator rest))))
 
+(defun il-length (il-list)
+  (il-foldl (lambda (cell counter) (declare (ignore cell)) (+ counter 1)) 0 il-list))
+
+(defun il-reverse (il-list)
+  (il-foldl (lambda (cell reversed) (cons cell reversed)) 0 il-list))
+
+(defun map-size (map)
+  (cons (il-length (car map)) (il-length map)))
+
 (defun locate-objects (object map)
   (cdr (il-foldl (lambda (row acc)
                    (let ((y (car acc)) (objects (cdr acc)))
@@ -82,7 +91,7 @@
 
 (defun plan-route (source target map rev-path)
   (if (coords= source target)
-      (cons target rev-path)
+      (il-reverse (cons target rev-path))
       (labels ((try-moves (avail-moves)
                  (if (integerp avail-moves)
                      0
@@ -95,5 +104,15 @@
                                path)))))))
         (try-moves (filter-accessible (neighbours source) map rev-path)))))
 
-            
+(defun gcc-step (ai-state world-state)
+  (funcall ai-state world-state))
+
+;; (defun gcc-init (initial-world-state foreign-ghosts)
+;;   (declare (ignore foreign-ghosts))
+;;   (let ((map (car initial-world-state)))
+;;     (let ((pills (locate-objects 2 map))
+;;           (power-pills (locate-objects 3 map)))
+;;       (cons (lambda ()
+              
+          
     

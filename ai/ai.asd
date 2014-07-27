@@ -12,5 +12,6 @@
   :depends-on (:iterate :metatilities)
   :components ((:file "package")
                (:file "map" :depends-on ("package"))
-               (:file "ai-cl" :depends-on ("map")))))
+               (:file "ai-cl" :depends-on ("map"))
+               (:file "utils" :depends-on ("ai-cl"))))
 
