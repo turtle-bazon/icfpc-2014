@@ -1,6 +1,15 @@
 
 (in-package :ai)
 
+;; (defparameter *world-state* (cons (load-map #p"maps/emulator-00.txt") 
+;;                                   (cons (cons 0 (cons (cons 11 16) (cons 2 (cons 3 0))))
+;;                                         (cons (cons (cons 0 (cons (cons 11 8) 2))
+;;                                                     (cons (cons 0 (cons (cons 10 10) 2))
+;;                                                           (cons (cons 0 (cons (cons 11 10) 2))
+;;                                                                 (cons (cons 0 (cons (cons 12 10) 2))
+;;                                                                       0))))
+;;                                               0))))
+
 (defun il-nth (n lst)
   (if (= n 0) (car lst) (il-nth (- n 1) (cdr lst))))
 
@@ -131,7 +140,26 @@
         (if (integerp path)
             (choose-next-target map pacman (cdr objects-by-priority))
             path))))
+
+(defun analyze-ghosts (ghosts)
+  (il-foldl (lambda (ghost-info acc)
+              (let ((angry-ghosts (car acc))
+                    (cowardly-ghosts (cdr acc))
+                    (ghost-state (car ghost-info)))
+                (if (= ghost-state 0)
+                    (cons (cons ghost-info angry-ghosts) cowardly-ghosts)
+                    (if (= ghost-state 1)
+                        (cons angry-ghosts (cons ghost-info cowardly-ghosts))
+                        acc))))
+            (cons 0 0)
+            ghosts))
+
+(defun ghosts-coords (ghosts)
+  (il-foldl (lambda (ghost-info acc) (cons (car (cdr ghost-info)) acc)) 0 ghosts))
   
+(defun nearest-ghost (pacman ghosts-coords)
+  (car (pop-nearest-object pacman ghosts-coords)))
+
 (defun game-loop (ai-state map pacman ghosts fruits)
   (call-with-ai-state
    ai-state
