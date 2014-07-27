@@ -121,43 +121,47 @@
         (if (>= xt xs) 1 3)
         (if (>= yt ys) 2 0))))
 
-(defun make-ai-state (current-path power-pills)
-  (cons current-path (cons power-pills 0)))
+(defun make-ai-state (current-path)
+  current-path)
 
-(defun game-loop (current-path power-pills map pacman ghosts fruits)
-  (if (integerp current-path)
-      (if (integerp power-pills)
-          (make-ai-state 0 0)
-          (let ((nearest-tuple (pop-nearest-object pacman power-pills)))
-            (let ((nearest-power-pill (car nearest-tuple))
-                  (rest-power-pills (cdr (cdr nearest-tuple))))
-              (game-loop (cdr (plan-route pacman nearest-power-pill map 0))
-                         rest-power-pills
-                         map
-                         pacman
-                         ghosts
-                         fruits))))
-      (cons (make-ai-state (cdr current-path) power-pills)
-            (choose-dir pacman (car current-path)))))
+(defun call-with-ai-state (ai-state proc)
+  (proc ai-state))
+
+(defun choose-next-target-for (object map pacman)
+  (let ((objects (locate-objects object map)))
+    (if (integerp objects)
+        0
+        (let ((nearest-object (car (pop-nearest-object pacman objects))))
+          (let ((path-to-object (cdr (plan-route pacman nearest-object map 0))))
+            path-to-object)))))
+
+(defun choose-next-target (map pacman objects-by-priority)
+  (if (integerp objects-by-priority)
+      0
+      (let ((path (choose-next-target-for (car objects-by-priority) map pacman)))
+        (if (integerp path)
+            (choose-next-target map pacman (cdr objects-by-priority))
+            path))))
+  
+(defun game-loop (ai-state map pacman ghosts fruits)
+  (call-with-ai-state
+   ai-state
+   (lambda (current-path)
+     (if (integerp current-path)
+         (game-loop (make-ai-state (choose-next-target map pacman (cons 3 (cons 2 0))))
+                    map pacman ghosts fruits)
+         (cons (make-ai-state (cdr current-path))
+               (choose-dir pacman (car current-path)))))))
 
 (defun gcc-step (ai-state world-state)
-  (game-loop (car ai-state)
-             (car (cdr ai-state))
+  (game-loop ai-state
              (car world-state)
              (car (cdr (car (cdr world-state))))
              (car (cdr (cdr world-state)))
              (cdr (cdr (cdr world-state)))))
              
 (defun gcc-init (initial-world-state foreign-ghosts)
-  (let ((map (car initial-world-state))
-        (pacman (car (cdr (car (cdr initial-world-state))))))
-    (let ((power-pills (locate-objects 3 map)))
-      (let ((nearest-tuple (pop-nearest-object pacman power-pills)))
-        (let ((nearest-power-pill (car nearest-tuple))
-              (rest-power-pills (cdr (cdr nearest-tuple))))
-          (let ((current-path (cdr (plan-route pacman nearest-power-pill map 0))))
-            (cons (make-ai-state current-path rest-power-pills)
-                  gcc-step)))))))
+  (cons (make-ai-state 0) gcc-step))
 
 (ilisp.impl:build-ai-core 'gcc-init)
 
