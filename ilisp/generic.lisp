@@ -23,7 +23,7 @@
   "Defines library function for AI code. The all the functions will be
 linked into resulting AI GCC code."
   `(setf (gethash ',name *ilisp-fn-library*)
-         '(lambda ,lambda-list ,@body*)))
+         '(il:lambda ,lambda-list ,@body*)))
 
 ;; defmacro
 (defun gcc-macro-fn-name (sym)

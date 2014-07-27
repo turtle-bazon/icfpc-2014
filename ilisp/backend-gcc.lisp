@@ -252,8 +252,8 @@
 					(caddr x) x)) args))))))))
 (defun build-ai-core (ast &key (debug t))
   (translate-gcc
-   `(lambda (initial-state unknown)
-      (letrec ,(iter (for (fn-name fn-body) in-hashtable *ilisp-fn-library*)
+   `(il:lambda (initial-state unknown)
+      (il:letrec ,(iter (for (fn-name fn-body) in-hashtable *ilisp-fn-library*)
                      (collect `(,fn-name ,fn-body)))
         ,ast))
    :unlabel (not debug)))
