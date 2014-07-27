@@ -39,7 +39,38 @@
 
 ;;; program ;;;
 
-mov _my_newdir,_d_up
-int _chdir
+int _lm1_pos
+mov c,_x_coor
+mvo d,_y_coor
+int _my_index
+int _gh_cur_coor
+sub a,c
+sub b,d
+mov c,a
+mov d,b
+int _my_index
+int _gh_stat
+jeq check_up,_d_up,_gh_direction
+jeq check_down,_d_down,_gh_direction
+jeq check_left,_d_left,_gh_direction
+jeq check_right,_d_right,_gh_direction
+
+check_up:
+mov b,0
+jeq move,b,0
+
+check_down:
+mov b,0
+jeq move,b,0
+
+check_left:
+mov b,0
+jeq move,b,0
+
+check_right:
+mov b,0
+jeq move,b,0
+
+move:
 hlt
 

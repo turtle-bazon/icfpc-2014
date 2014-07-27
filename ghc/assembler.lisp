@@ -19,7 +19,7 @@
 		      (for pc from 0)
 		      (match prog-line
 			((list :label label-name) (progn
-						    (collect `(,label-name ,pc) into refs)
+						    (collect `(,label-name (:const ,pc)) into refs)
 						    (decf pc)))
 			((list :def def-name def-value) (progn
 							  (collect `(,def-name ,def-value) into refs)
