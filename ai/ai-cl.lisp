@@ -115,7 +115,7 @@
 
 (defun plan-route (source target map rev-path forbidden)
   (labels ((plan-route-rec (source rev-path limit)
-             (if (= limit 0)
+             (if (or (= limit 0))
                  (cons (il-reverse (cons target rev-path)) limit)
                  (if (coords= source target)
                      (cons (il-reverse (cons target rev-path)) limit)
@@ -134,7 +134,7 @@
                                            map
                                            forbidden)
                         (- limit 1)))))))
-  (car (plan-route-rec source rev-path 24))))
+  (car (plan-route-rec source rev-path 26))))
 
 (defun choose-dir (source target)
   (declare (optimize (debug 3)))
