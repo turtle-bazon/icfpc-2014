@@ -254,7 +254,7 @@
 (defun check-angry-ghost-too-close (map pacman)
   (lambda (nearest-ghost ghost-sq-dist rest-ghosts)
     (declare (ignore ghost-sq-dist))
-    (let ((possible-path (plan-route-limit pacman nearest-ghost map 0 0 5)))
+    (let ((possible-path (plan-route-limit pacman nearest-ghost map 0 0 6)))
       (if (integerp possible-path)
           0
           (let ((power-pills (locate-objects 3 map)))
