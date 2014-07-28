@@ -1,8 +1,3 @@
-(cl:defpackage #:ilisp-power-pills-hunter-ai
-  (:use :il))
-
-(cl:in-package :ilisp-power-pills-hunter-ai)
-
 (defun il-nth (n lst)
   (if (= n 0) (car lst) (il-nth (- n 1) (cdr lst))))
 
@@ -118,42 +113,25 @@
 (defun plan-route (source target map rev-path forbidden)
   (letrec ((plan-route-rec (lambda (source rev-path limit)
                              (if (= limit 0)
-                                 (il-reverse (cons target rev-path))
+                                 (cons (il-reverse (cons target rev-path)) limit)
                                  (if (coords= source target)
-                                     (il-reverse (cons target rev-path))
-                                     (letrec ((try-moves (lambda (avail-moves)
+                                     (cons (il-reverse (cons target rev-path)) limit)
+                                     (letrec ((try-moves (lambda (avail-moves limit)
                                                            (if (integerp avail-moves)
-                                                               0
+                                                               (cons 0 limit)
                                                                (let ((next-move-plan (pop-nearest-object target avail-moves)))
                                                                  (let ((best-move (car next-move-plan))
-                                                                       (rest-moves (cddr next-move-plan)))
-                                                                   (let ((path (plan-route-rec best-move (cons source rev-path) (- limit 1))))
-                                                                     (if (integerp path)
-                                                                         (try-moves rest-moves)
-                                                                         path))))))))
+                                                                       (rest-moves (cdr (cdr next-move-plan))))
+                                                                   (let ((path+new-limit (plan-route-rec best-move (cons source rev-path) limit)))
+                                                                     (if (integerp (car path+new-limit))
+                                                                         (try-moves rest-moves (- (cdr path+new-limit) 1))
+                                                                         (cons (car path+new-limit) (cdr path+new-limit))))))))))
                                        (try-moves
                                         (filter-accessible (filter-accessible (neighbours source) map rev-path)
                                                            map
-                                                           forbidden))))))))
-    (plan-route-rec source rev-path 256)))
-
-(defun plan-route (source target map rev-path forbidden)
-  (if (coords= source target)
-      (il-reverse (cons target rev-path))
-      (letrec ((try-moves (lambda (avail-moves)
-                            (if (integerp avail-moves)
-                                0
-                                (let ((next-move-plan (pop-nearest-object target avail-moves)))
-                                  (let ((best-move (car next-move-plan))
-                                        (rest-moves (cdr (cdr next-move-plan))))
-                                    (let ((path (plan-route best-move target map (cons source rev-path) forbidden)))
-                                      (if (integerp path)
-                                          (try-moves rest-moves)
-                                          path))))))))
-        (try-moves
-         (filter-accessible (filter-accessible (neighbours source) map rev-path)
-                            map
-                            forbidden)))))
+                                                           forbidden)
+                                        (- limit 1))))))))
+    (car (plan-route-rec source rev-path 24))))
 
 (defun choose-dir (source target)
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
@@ -172,8 +150,10 @@
     (if (integerp objects)
         0
         (let ((nearest-object (car (pop-nearest-object pacman objects))))
-          (let ((path-to-object (cdr (plan-route pacman nearest-object map 0 angry-ghosts))))
-            path-to-object)))))
+          (let ((path-to-object (plan-route pacman nearest-object map 0 angry-ghosts)))
+            (if (integerp path-to-object)
+                0
+                (cdr path-to-object)))))))
 
 (defun choose-next-target (map pacman angry-ghosts objects-by-priority)
   (if (integerp objects-by-priority)
@@ -213,10 +193,11 @@
         (cons (flee-point map pacman nearest-ghost) 0)
         0)))
 
-(defun check-cowardly-ghost-close (map pacman)
+(defun check-cowardly-ghost-close (map pacman) 
   (lambda (nearest-ghost ghost-sq-dist rest-ghosts)
     (if (>= 32 ghost-sq-dist)
-        (cdr (plan-route pacman nearest-ghost map 0 0))
+        (let ((route (plan-route pacman nearest-ghost map 0 0)))
+          (if (integerp route) 0 (cdr route)))
         0)))
 
 (defun estimate-ghosts-threat (map pacman ghosts)
@@ -249,8 +230,8 @@
           (lambda (ghosts-threat angry-ghosts)
             (if (integerp ghosts-threat)
                 (if (integerp current-path)
-                    (game-loop (make-ai-state (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0))))
-                               map pacman ghosts fruits)
+                    (let ((game-loop (make-game-loop (make-ai-state (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0)))))))
+                      (game-loop map pacman-info ghosts fruits))
                     (cons (make-ai-state (cdr current-path))
                           (choose-dir pacman (car current-path))))
                 (cons (make-ai-state (cdr ghosts-threat))
@@ -262,5 +243,4 @@
 (defun gcc-init (initial-world-state foreign-ghosts)
   (cons (make-ai-state 0) gcc-step))
 
-(ilisp.impl:build-ai-core 'gcc-init)
 

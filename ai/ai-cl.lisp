@@ -116,24 +116,25 @@
 (defun plan-route (source target map rev-path forbidden)
   (labels ((plan-route-rec (source rev-path limit)
              (if (= limit 0)
-                 (il-reverse (cons target rev-path))
+                 (cons (il-reverse (cons target rev-path)) limit)
                  (if (coords= source target)
-                     (il-reverse (cons target rev-path))
-                     (labels ((try-moves (avail-moves)
+                     (cons (il-reverse (cons target rev-path)) limit)
+                     (labels ((try-moves (avail-moves limit)
                                 (if (integerp avail-moves)
-                                    0
+                                    (cons 0 limit)
                                     (let ((next-move-plan (pop-nearest-object target avail-moves)))
                                       (let ((best-move (car next-move-plan))
                                             (rest-moves (cddr next-move-plan)))
-                                        (let ((path (plan-route-rec best-move (cons source rev-path) (- limit 1))))
-                                          (if (integerp path)
-                                              (try-moves rest-moves)
-                                              path)))))))
+                                        (let ((path+new-limit (plan-route-rec best-move (cons source rev-path) limit)))
+                                          (if (integerp (car path+new-limit))
+                                              (try-moves rest-moves (- (cdr path+new-limit) 1))
+                                              (cons (car path+new-limit) (cdr path+new-limit)))))))))
                        (try-moves
                         (filter-accessible (filter-accessible (neighbours source) map rev-path)
                                            map
-                                           forbidden)))))))
-    (plan-route-rec source rev-path 256)))
+                                           forbidden)
+                        (- limit 1)))))))
+  (car (plan-route-rec source rev-path 24))))
 
 (defun choose-dir (source target)
   (declare (optimize (debug 3)))
@@ -154,8 +155,10 @@
     (if (integerp objects)
         0
         (let ((nearest-object (car (pop-nearest-object pacman objects))))
-          (let ((path-to-object (cdr (plan-route pacman nearest-object map 0 angry-ghosts))))
-            path-to-object)))))
+          (let ((path-to-object (plan-route pacman nearest-object map 0 angry-ghosts)))
+            (if (integerp path-to-object)
+                0
+                (cdr path-to-object)))))))
 
 (defun choose-next-target (map pacman angry-ghosts objects-by-priority)
   (declare (optimize (debug 3)))
@@ -201,7 +204,8 @@
   (lambda (nearest-ghost ghost-sq-dist rest-ghosts)
     (declare (ignore rest-ghosts))
     (if (>= 32 ghost-sq-dist)
-        (cdr (plan-route pacman nearest-ghost map 0 0))
+        (let ((route (plan-route pacman nearest-ghost map 0 0)))
+          (if (integerp route) 0 (cdr route)))
         0)))
   
 (defun estimate-ghosts-threat (map pacman ghosts)
@@ -235,8 +239,10 @@
           (lambda (ghosts-threat angry-ghosts)
             (if (integerp ghosts-threat)
                 (if (integerp current-path)
-                    (game-loop (make-ai-state (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0))))
-                               map pacman ghosts fruits)
+                    (let ((next-path (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0)))))
+                      (if (integerp next-path)
+                          (cons (make-ai-state 0) 1)
+                          (funcall (make-game-loop (make-ai-state next-path)) map pacman-info ghosts fruits)))
                     (cons (make-ai-state (cdr current-path))
                           (choose-dir pacman (car current-path))))
                 (cons (make-ai-state (cdr ghosts-threat))
@@ -249,5 +255,3 @@
   (declare (ignore initial-world-state foreign-ghosts))
   (cons (make-ai-state 0) #'gcc-step))
               
-          
-    
