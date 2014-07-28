@@ -34,7 +34,7 @@
          `(let ((,x-var ,(first args)))
             (if ,x-var
                 ,x-var
-                (and ,@(cdr args))))))))
+                (or ,@(cdr args))))))))
 
 (defmacro labels (bindings &rest body)
   `(letrec ,(iter (for (name lambda-list . fn-body) in bindings)
