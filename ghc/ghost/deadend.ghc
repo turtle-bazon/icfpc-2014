@@ -57,7 +57,14 @@
 %def !right,[249]
 %def !up,[248]
 %def !down,[247]
-%def !exits,[246]
+%def !left_s,[246]
+%def !right_s,[245]
+%def !up_s,[244]
+%def !down_s,[243]
+%def !exits,[242]
+%def !d_x,[241]
+%def !d_y,[240]
+%def !d_sum,[239]
 
     int _my_index
     int _gh_cur_coor
@@ -71,17 +78,32 @@
     mov a,!gh_x
     mov b,!gh_y
     dec a
-    mov !i,0
-    mov c,!i
-    inc c
+    mov d,!lm_x
+    mov !d_x,a
+    jgt left_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+left_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt left_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+left_perform_d_y:
+    sub !d_y,e
+    mov !left_s,!d_x
+    add !left_s,!d_y
+    mov c,1
 left_cache_check:
-    jeq left_map_analyze,!i,!dead_ends_size
+    jgt left_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
     jeq left_check_y,[c],a
     jgt left_continue,c,0
 left_check_y:
-    jeq left_exist_de_end,[c],b
+    jeq left_exist_de_end,[d],b
 left_continue:
-    add !i,2
     add c,2
     jgt left_cache_check,c,0
 left_map_analyze:    
@@ -96,18 +118,32 @@ left_search_end:
     mov a,!gh_x
     mov b,!gh_y
     inc a
-    mov c,!i
-    inc c
+    mov d,!lm_x
+    mov !d_x,a
+    jgt right_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+right_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt right_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+right_perform_d_y:
+    sub !d_y,e
+    mov !right_s,!d_x
+    add !right_s,!d_y
+    mov c,1
 right_cache_check:
     jgt right_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
     jeq right_check_y,[c],a
-    inc c
     jgt right_continue,c,0
 right_check_y:
-    inc c
-    jeq right_exist_de_end,[c],b
+    jeq right_exist_de_end,[d],b
 right_continue:
-    add !i,2
     add c,2
     jgt right_cache_check,c,0
 right_map_analyze:    
@@ -122,17 +158,32 @@ right_search_end:
     mov a,!gh_x
     mov b,!gh_y
     dec b
-    mov !i,0
-    mov c,!i
-    inc c
+    mov d,!lm_x
+    mov !d_x,a
+    jgt up_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+up_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt up_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+up_perform_d_y:
+    sub !d_y,e
+    mov !up_s,!d_x
+    add !up_s,!d_y
+    mov c,1
 up_cache_check:
-    jeq up_map_analyze,!i,!dead_ends_size
+    jgt up_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
     jeq up_check_y,[c],a
     jgt up_continue,c,0
 up_check_y:
-    jeq up_exist_de_end,[c],b
+    jeq up_exist_de_end,[d],b
 up_continue:
-    add !i,2
     add c,2
     jgt up_cache_check,c,0
 up_map_analyze:    
@@ -147,17 +198,32 @@ up_search_end:
     mov a,!gh_x
     mov b,!gh_y
     inc b
-    mov !i,0
-    mov c,!i
-    inc c
+    mov d,!lm_x
+    mov !d_x,a
+    jgt down_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+down_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt down_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+down_perform_d_y:
+    sub !d_y,e
+    mov !down_s,!d_x
+    add !down_s,!d_y
+    mov c,1
 down_cache_check:
-    jeq down_map_analyze,!i,!dead_ends_size
+    jgt down_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
     jeq down_check_y,[c],a
     jgt down_continue,c,0
 down_check_y:
-    jeq down_exist_de_end,[c],b
+    jeq down_exist_de_end,[d],b
 down_continue:
-    add !i,2
     add c,2
     jgt down_cache_check,c,0
 down_map_analyze:    
@@ -182,12 +248,6 @@ cmp_3:
     inc a
 cmp_4:
     mov !exits,a
-    mov b,!left
-    mov c,!right
-    mov d,!up
-    mov e,!down
-    int _debug
-
     jgt non_deadend,!exits,1
     mov c,!dead_ends_size
     inc c
@@ -195,23 +255,66 @@ cmp_4:
     inc c
     mov [c],!gh_y
     mov !dead_ends_size,c
-    
-    mov a,!exits
-    mov b,!gh_x
-    mov c,!gh_y
-    int _debug
-    mov d,0
-    inc d
-pbegin:
-    jgt pend,d,!dead_ends_size
-    mov a,[d]
-    inc d
-    mov b,[d]
-    int _debug
-    inc d
-    jgt pbegin,d,0
-pend:
 non_deadend:
 
+    int _my_index
+    int _gh_stat
+
+    jeq fright_mode,a,1
+
+;;; in modes - a direction, b extremum value
+
+standard_mode:
+    mov a,b
+    mov b,255
+s_left:
+    jeq s_right,!left,0
+    jgt s_right,!left_s,b
+    mov a,_d_left
+    mov b,!left_s
+s_right:
+    jeq s_up,!right,0
+    jgt s_up,!right_s,b
+    mov a,_d_right
+    mov b,!right_s
+s_up:
+    jeq s_down,!up,0
+    jgt s_down,!up_s,b
+    mov a,_d_up
+    mov b,!up_s
+s_down:
+    jeq s_move,!down,0
+    jgt s_move,!down_s,b
+    mov a,_d_down
+    mov b,!down_s
+s_move:
+    int _chdir
+    hlt
+
+fright_mode:
+    mov a,b
+    mov b,0
+f_left:
+    jeq f_right,!left,0
+    jgt f_right,!left_s,b
+    mov a,_d_left
+    mov b,!left_s
+f_right:
+    jeq f_up,!right,0
+    jgt f_up,!right_s,b
+    mov a,_d_right
+    mov b,!right_s
+f_up:
+    jeq f_down,!up,0
+    jgt f_down,!up_s,b
+    mov a,_d_up
+    mov b,!up_s
+f_down:
+    jeq f_move,!down,0
+    jgt f_move,!down_s,b
+    mov a,_d_down
+    mov b,!down_s
+f_move:
+    int _chdir
     hlt
 
