@@ -1,8 +1,3 @@
-(cl:defpackage #:ilisp-power-pills-hunter-ai
-  (:use :il))
-
-(cl:in-package :ilisp-power-pills-hunter-ai)
-
 (defun il-nth (n lst)
   (if (= n 0) (car lst) (il-nth (- n 1) (cdr lst))))
 
@@ -245,5 +240,4 @@
 (defun gcc-init (initial-world-state foreign-ghosts)
   (cons (make-ai-state 0) gcc-step))
 
-(ilisp.impl:build-ai-core 'gcc-init)
 

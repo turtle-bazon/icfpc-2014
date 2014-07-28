@@ -2,7 +2,12 @@
 
 (defclass gcc-translator (translation-phase) 
   ((lambdas :initform (list) :accessor lambdas)
-   (scopes :initform (list) :accessor scopes)))
+   (scopes :initform (list) :accessor scopes)
+   (functions :initform (list) :accessor functions)
+   (macros :initform (list) :accessor macros)))
+
+(defun gcc-macro-fn (translator sym)
+  (getf (macros translator) sym))
 
 (defmacro with-scope ((translator) &body body)
   (with-gensyms (trans-var old-scope-var)
@@ -69,32 +74,40 @@
   (declare (optimize (debug 3))
            (ignore unused))
   (with-match (ast translate-walk)
-    ((ilisp:lambda ?proc-args . ?proc-body) (translate-lambda translator ?proc-args ?proc-body))
-    ((ilisp:let ?bindings . ?body) (translate-let translator ?bindings ?body))
-    ((ilisp:letrec ?bindings . ?body) (translate-letrec translator ?bindings ?body))
+    ((lambda ?proc-args . ?proc-body) (translate-lambda translator ?proc-args ?proc-body))
+    ((let ?bindings . ?body) (translate-let translator ?bindings ?body))
+    ((letrec ?bindings . ?body) (translate-letrec translator ?bindings ?body))
 
-    ((ilisp:+ ?form-a ?form-b) (translate-binop translator :add ?form-a ?form-b))
-    ((ilisp:- ?form-a ?form-b) (translate-binop translator :sub ?form-a ?form-b))
-    ((ilisp:* ?form-a ?form-b) (translate-binop translator :mul ?form-a ?form-b))
-    ((ilisp:/ ?form-a ?form-b) (translate-binop translator :div ?form-a ?form-b))
-    ((ilisp:= ?form-a ?form-b) (translate-binop translator :ceq ?form-a ?form-b))
-    ((ilisp:> ?form-a ?form-b) (translate-binop translator :cgt ?form-a ?form-b))
-    ((ilisp:>= ?form-a ?form-b) (translate-binop  translator :cgte ?form-a ?form-b))
-    ((ilisp:cons ?form-a ?form-b) (translate-binop translator :cons ?form-a ?form-b))
+    ((setq ?name ?form) (translate-setq translator ?name ?form))
+    ((in-package ?name) (list))
+    ((declare . ?unused) (list))
+    ((defun ?name ?lambda-list . ?body) (translate-defun translator ?name ?lambda-list ?body))
+    ((defmacro ?name ?lambda-list . ?body) (translate-defmacro translator ?name ?lambda-list ?body))
+    ((function ?obj) (translate-walk translator ?obj))
+    ;; ((funcall ?fn . ?args) (translate-walk translator `(,?fn ,?args)))
 
-    ((ilisp:car ?form) (translate-unop translator :car ?form))
-    ((ilisp:cdr ?form) (translate-unop translator :cdr ?form))
-    ((ilisp:integerp ?form) (translate-unop translator :atom ?form))
+    ((+ ?form-a ?form-b) (translate-binop translator :add ?form-a ?form-b))
+    ((- ?form-a ?form-b) (translate-binop translator :sub ?form-a ?form-b))
+    ((* ?form-a ?form-b) (translate-binop translator :mul ?form-a ?form-b))
+    ((/ ?form-a ?form-b) (translate-binop translator :div ?form-a ?form-b))
+    ((= ?form-a ?form-b) (translate-binop translator :ceq ?form-a ?form-b))
+    ((> ?form-a ?form-b) (translate-binop translator :cgt ?form-a ?form-b))
+    ((>= ?form-a ?form-b) (translate-binop  translator :cgte ?form-a ?form-b))
+    ((cons ?form-a ?form-b) (translate-binop translator :cons ?form-a ?form-b))
 
-    ((ilisp:if ?condition-form ?true-form ?false-form)
+    ((car ?form) (translate-unop translator :car ?form))
+    ((cdr ?form) (translate-unop translator :cdr ?form))
+    ((integerp ?form) (translate-unop translator :atom ?form))
+
+    ((if ?condition-form ?true-form ?false-form)
      (translate-if translator ?condition-form ?true-form ?false-form))
-    ((ilisp:when ?condition-form ?true-form)
+    ((when ?condition-form ?true-form)
      (translate-if translator ?condition-form ?true-form 0))
 
-    ;; ((?proc-name . ?proc-args) (translate-invoke translator ?proc-name ?proc-args))
-    ((?proc-name . ?proc-args) (if (gcc-macro-p ?proc-name)
-                                   (translate-walk translator (apply (gcc-macro-fn ?proc-name) ?proc-args))
-                                   (translate-invoke translator ?proc-name ?proc-args)))
+    ((?proc-name . ?proc-args) (let ((macro-fn (gcc-macro-fn translator ?proc-name)))
+                                 (if macro-fn
+                                     (translate-walk translator (apply macro-fn ?proc-args))
+                                     (translate-invoke translator ?proc-name ?proc-args))))
 
     ;; ((ilisp:list . ?forms) (translate-list translator ?forms))
     ;; ((ilisp:tuple . ?forms) (translate-tuple translator ?forms))
@@ -102,7 +115,6 @@
     ;; ((and . ?forms) (translate-and ?forms env))
     ;; ((or . ?forms) (translate-or ?forms env))
     ;; ((not ?form) (translate-not ?form env))
-
     ;; ((when ?condition-form ?true-form)
     ;;  (translate-when ?condition-form ?true-form env))
     ;; ((cond . ?forms)
@@ -233,6 +245,21 @@
         (:join)
  	(:label ,end-label))))
 
+(defmethod translate-defun ((translator gcc-translator) name lambda-list body*)
+  (setf (getf (functions translator) name)
+        `(lambda ,lambda-list ,@body*)))
+
+(defmethod translate-defmacro ((translator gcc-translator) name lambda-list body*)
+  (setf (getf (macros translator) name)
+        (eval `(lambda ,lambda-list ,@body*)))
+  nil)
+
+(defmethod translate-setq ((translator gcc-translator) name form)
+  (bind (((:values frame index) (scope-lookup-var-index translator name)))
+    `(,@(translate-walk translator form)
+        (:ST ,frame ,index))))
+
+;; build system
 (defun pretty-print-gcc (gcc &key (stream *standard-output*) (minimize nil)
 			       (pad t))
   (iter (for form in gcc)
@@ -250,27 +277,33 @@
 			 (mapcar #'(lambda (x)
 				     (if (and (listp x) (eql (car x) :label))
 					(caddr x) x)) args))))))))
-(defun build-ai-core (main-fn &key (debug t))
-  (let ((translator (make-instance 'gcc-translator)))
-    (with-scope (translator)
-      (scope-add-var translator 'il::world-state)
-      (scope-add-var translator 'il::ghosts)
 
-      (pretty-print-gcc
-       (translate translator
-                  `(il:letrec ,(iter (for (fn-name fn-body) in-hashtable *ilisp-fn-library*)
-                                     (collect `(,fn-name ,fn-body)))
-                              (,main-fn il::world-state il::ghosts))
-                  :unlabel (not debug))))))
-  
-
-
-(defun compile-gcc (gcc-input-file gcc-output-file)
-  (with-open-file (fo gcc-output-file :direction :output :if-exists :overwrite
+(defun build-ai (input-files gcc-output-file entry-point &key (debug t))
+  (with-open-file (fo gcc-output-file 
+                      :direction :output 
+                      :if-exists :supersede
 		      :if-does-not-exist :create)
-    (pretty-print-gcc
-     (translate-gcc
-      (with-open-file (fi gcc-input-file)
-	(read fi))
-      :unlabel t)
-     :stream fo)))
+
+    (let ((top-level-forms (list))
+          (translator (make-instance 'gcc-translator)))
+        (with-scope (translator)
+          (scope-add-var translator 'world-state)
+          (scope-add-var translator 'ghosts)
+
+          ;; For all the files...
+          (dolist (gcc-input-file input-files)
+            ;; Read top-level forms
+            (with-open-file (fi gcc-input-file)
+              (iter 
+                (for form in-stream fi)
+                (push (translate-walk translator form) top-level-forms))))
+          
+          (pretty-print-gcc
+           (translate translator
+                      `(letrec ,(iter (generating el in (functions translator))
+                                      (for fn-name = (next el)) (for fn-body = (next el))
+                                      (collect `(,fn-name ,fn-body)))
+                         (,entry-point world-state ghosts))
+                      :unlabel (not debug))
+           :stream fo)))))
+

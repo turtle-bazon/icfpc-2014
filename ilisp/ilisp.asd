@@ -12,7 +12,6 @@
   :depends-on (:iterate :metatilities)
   :components ((:file "package")
                (:file "generic" :depends-on ("package"))
-               (:file "stdlib" :depends-on ("generic"))
                (:file "backend-gcc" :depends-on ("generic")))
 
   :in-order-to ((test-op (load-op ilisp-test)))
