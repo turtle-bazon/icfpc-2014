@@ -134,7 +134,7 @@
                                            map
                                            forbidden)
                         (- limit 1)))))))
-  (car (plan-route-rec source rev-path 1024))))
+  (car (plan-route-rec source rev-path 24))))
 
 (defun choose-dir (source target)
   (declare (optimize (debug 3)))
