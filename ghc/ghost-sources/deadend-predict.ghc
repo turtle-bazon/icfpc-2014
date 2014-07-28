@@ -83,6 +83,14 @@
     mov !cur_x,a
     mov !cur_y,b
 
+    jgt skip_check_prev_lm_x,!prev_lm_x,0
+    mov !prev_lm_x,!cur_x
+skip_check_prev_lm_x:
+
+    jgt skip_check_prev_lm_y,!prev_lm_y,0
+    mov !prev_lm_y,!cur_y
+skip_check_prev_lm_y:
+
     jeq skip_predict,!vitality,1
 
     jgt x_diff_reverse_order,!cur_x,!gh_x
