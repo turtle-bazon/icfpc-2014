@@ -249,6 +249,10 @@ cmp_3:
 cmp_4:
     mov !exits,a
     jgt non_deadend,!exits,1
+    jgt preserve_state,!exits,0
+    mov !dead_ends_size,0
+    hlt
+preserve_state:
     mov c,!dead_ends_size
     inc c
     mov [c],!gh_x
