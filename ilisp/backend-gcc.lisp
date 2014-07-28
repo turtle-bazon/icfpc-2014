@@ -84,7 +84,7 @@
     ((defun ?name ?lambda-list . ?body) (translate-defun translator ?name ?lambda-list ?body))
     ((defmacro ?name ?lambda-list . ?body) (translate-defmacro translator ?name ?lambda-list ?body))
     ((function ?obj) (translate-walk translator ?obj))
-    ((funcall ?fn . ?args) (translate-walk translator `(,?fn ,?args)))
+    ;; ((funcall ?fn . ?args) (translate-walk translator `(,?fn ,?args)))
 
     ((+ ?form-a ?form-b) (translate-binop translator :add ?form-a ?form-b))
     ((- ?form-a ?form-b) (translate-binop translator :sub ?form-a ?form-b))
@@ -247,7 +247,7 @@
 
 (defmethod translate-defun ((translator gcc-translator) name lambda-list body*)
   (setf (getf (functions translator) name)
-        `(lambda ,lambda-list ,@body*))))
+        `(lambda ,lambda-list ,@body*)))
 
 (defmethod translate-defmacro ((translator gcc-translator) name lambda-list body*)
   (setf (getf (macros translator) name)
@@ -281,60 +281,29 @@
 (defun build-ai (input-files gcc-output-file entry-point &key (debug t))
   (with-open-file (fo gcc-output-file 
                       :direction :output 
-                      :if-exists :overwrite
+                      :if-exists :supersede
 		      :if-does-not-exist :create)
 
     (let ((top-level-forms (list))
           (translator (make-instance 'gcc-translator)))
-      (with-scope (translator)
+        (with-scope (translator)
+          (scope-add-var translator 'world-state)
+          (scope-add-var translator 'ghosts)
 
-        ;; For all the files...
-        (dolist (gcc-input-file input-files)
-          ;; Read top-level forms
-          (with-open-file (fi gcc-input-file)
-            (iter 
-              (for form in-stream fi)
-              (push (translate-walk translator form) top-level-forms))))
-        
-        (scope-add-var translator 'world-state)
-        (scope-add-var translator 'ghosts)
+          ;; For all the files...
+          (dolist (gcc-input-file input-files)
+            ;; Read top-level forms
+            (with-open-file (fi gcc-input-file)
+              (iter 
+                (for form in-stream fi)
+                (push (translate-walk translator form) top-level-forms))))
+          
+          (pretty-print-gcc
+           (translate translator
+                      `(letrec ,(iter (generating el in (functions translator))
+                                      (for fn-name = (next el)) (for fn-body = (next el))
+                                      (collect `(,fn-name ,fn-body)))
+                         (,entry-point world-state ghosts))
+                      :unlabel (not debug))
+           :stream fo)))))
 
-        (format t "~a" `(letrec ,(iter (generating el in (functions translator))
-                                    (for fn-name = (next el)) (for fn-body = (next el))
-                                    (collect `(,fn-name ,fn-body)))
-                       (,entry-point world-state ghosts)))
-
-        (pretty-print-gcc
-         
-         (translate translator
-                    `(letrec ,(iter (generating el in (functions translator))
-                                    (for fn-name = (next el)) (for fn-body = (next el))
-                                    (collect `(,fn-name ,fn-body)))
-                       (,entry-point world-state ghosts))
-                    :unlabel (not debug))
-         :stream fo)))))
-
-(defun build-ai-core (main-fn &key (debug t))
-  (let ((translator (make-instance 'gcc-translator)))
-    (with-scope (translator)
-      (scope-add-var translator 'world-state)
-      (scope-add-var translator 'ghosts)
-
-      (pretty-print-gcc
-       (translate translator
-                  `(il:letrec ,(iter (for (fn-name fn-body) in-hashtable *ilisp-fn-library*)
-                                     (collect `(,fn-name ,fn-body)))
-                              (,main-fn world-state ghosts))
-                  :unlabel (not debug))))))
-  
-
-
-(defun compile-gcc (gcc-input-file gcc-output-file)
-  (with-open-file (fo gcc-output-file :direction :output :if-exists :overwrite
-		      :if-does-not-exist :create)
-    (pretty-print-gcc
-     (translate-gcc
-      (with-open-file (fi gcc-input-file)
-	(read fi))
-      :unlabel t)
-     :stream fo)))
