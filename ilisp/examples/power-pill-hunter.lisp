@@ -116,22 +116,26 @@
                             0))))))
 
 (defun plan-route (source target map rev-path forbidden)
-  (if (coords= source target)
-      (il-reverse (cons target rev-path))
-      (letrec ((try-moves (lambda (avail-moves)
-                            (if (integerp avail-moves)
-                                0
-                                (let ((next-move-plan (pop-nearest-object target avail-moves)))
-                                  (let ((best-move (car next-move-plan))
-                                        (rest-moves (cdr (cdr next-move-plan))))
-                                    (let ((path (plan-route best-move target map (cons source rev-path) forbidden)))
-                                      (if (integerp path)
-                                          (try-moves rest-moves)
-                                          path))))))))
-        (try-moves
-         (filter-accessible (filter-accessible (neighbours source) map rev-path)
-                            map
-                            forbidden)))))
+  (letrec ((plan-route-rec (lambda (source rev-path limit)
+                             (if (= limit 0)
+                                 (il-reverse (cons target rev-path))
+                                 (if (coords= source target)
+                                     (il-reverse (cons target rev-path))
+                                     (letrec ((try-moves (lambda (avail-moves)
+                                                           (if (integerp avail-moves)
+                                                               0
+                                                               (let ((next-move-plan (pop-nearest-object target avail-moves)))
+                                                                 (let ((best-move (car next-move-plan))
+                                                                       (rest-moves (cdr (cdr next-move-plan))))
+                                                                   (let ((path (plan-route-rec best-move (cons source rev-path) (- limit 1))))
+                                                                     (if (integerp path)
+                                                                         (try-moves rest-moves)
+                                                                         path))))))))
+                                       (try-moves
+                                        (filter-accessible (filter-accessible (neighbours source) map rev-path)
+                                                           map
+                                                           forbidden))))))))
+    (plan-route-rec source rev-path 256)))
 
 (defun choose-dir (source target)
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
@@ -227,8 +231,8 @@
           (lambda (ghosts-threat angry-ghosts)
             (if (integerp ghosts-threat)
                 (if (integerp current-path)
-                    (game-loop (make-ai-state (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0))))
-                               map pacman ghosts fruits)
+                    (let ((game-loop (make-game-loop (make-ai-state (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0)))))))
+                      (game-loop map pacman-info ghosts fruits))
                     (cons (make-ai-state (cdr current-path))
                           (choose-dir pacman (car current-path))))
                 (cons (make-ai-state (cdr ghosts-threat))

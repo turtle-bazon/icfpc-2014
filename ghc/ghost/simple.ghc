@@ -63,6 +63,15 @@
 %def !cur_local_y,[246]
 %def !tmp_x,[245]
 %def !tmp_y,[244]
+%def !finished_map,[243]
+%def !in_process,[242]
+
+    int _my_index
+    int _gh_cur_coor
+    int _chdir
+
+    jgt back_analyze,!finished_map,0
+    jgt skip_init,!in_process,0
 
 ; << fill with zero sight area
     mov a,_sight_area_size
@@ -117,6 +126,9 @@ skip_as_is_gh_coor_y:
     add c,e
     mov [c],0
 ; << mark ghost cell as 0
+    
+    mov !in_process,255
+skip_init:
 
 area_cycle:
     mov !replaces_count,0
@@ -130,8 +142,6 @@ area_check:
     jgt skip_analyze_point,[c],127
 
 ; << analyze current cell
-    int _debug
-
     mov !cur_counter,[c]
     mov d,c
     div d,_sight_area_size
@@ -159,9 +169,8 @@ area_check:
     mov [d],[c]
     inc [d]
     jgt finish_up,[d],0
-    mov a,[d]
 skip_wall_up:
-    mov [d],254
+    mov [d],_no_way
 finish_up:
 
     ; down
@@ -178,7 +187,6 @@ finish_up:
     mov [d],[c]
     inc [d]
     jgt finish_down,[d],0
-    mov a,[d]
 skip_wall_down:
     mov [d],254
 finish_down:
@@ -197,7 +205,6 @@ finish_down:
     mov [d],[c]
     inc [d]
     jgt finish_right,[d],0
-    mov a,[d]
 skip_wall_right:
     mov [d],254
 finish_right:
@@ -216,26 +223,24 @@ finish_right:
     mov [d],[c]
     inc [d]
     jgt finish_left,[d],0
-    mov a,[d]
 skip_wall_left:
     mov [d],254
 finish_left:
 
     or [c],128
     inc !replaces_count
+
 ; >> analyze current cell
 
 skip_analyze_point:
     dec b
     jgt area_check,b,0
     jgt area_cycle,!replaces_count,0
+    mov !in_process,0
 
-    mov b,0
-print:
-    mov a,[b]
-    int _debug
-    inc b
-    jeq print,b,25
+back_analyze:
+
+    mov !finished_map,255
 
 move:
 
