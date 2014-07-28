@@ -113,9 +113,9 @@
                       (cons (cons x (+ y 1))
                             0))))))
 
-(defun plan-route-limit (source target map rev-path forbidden depth-limit)
-  (labels ((plan-route-rec (source rev-path limit depth-limit)
-             (if (or (= depth-limit 0) (= limit 0))
+(defun plan-route (source target map rev-path forbidden)
+  (labels ((plan-route-rec (source rev-path limit)
+             (if (or (= limit 0))
                  (cons (il-reverse (cons target rev-path)) limit)
                  (if (coords= source target)
                      (cons (il-reverse (cons target rev-path)) limit)
@@ -125,7 +125,7 @@
                                     (let ((next-move-plan (pop-nearest-object target avail-moves)))
                                       (let ((best-move (car next-move-plan))
                                             (rest-moves (cddr next-move-plan)))
-                                        (let ((path+new-limit (plan-route-rec best-move (cons source rev-path) limit (- depth-limit 1))))
+                                        (let ((path+new-limit (plan-route-rec best-move (cons source rev-path) limit)))
                                           (if (integerp (car path+new-limit))
                                               (try-moves rest-moves (- (cdr path+new-limit) 1))
                                               (cons (car path+new-limit) (cdr path+new-limit)))))))))
@@ -134,10 +134,7 @@
                                            map
                                            forbidden)
                         (- limit 1)))))))
-  (car (plan-route-rec source rev-path 24 depth-limit))))
-
-(defun plan-route (source target map rev-path forbidden)
-  (plan-route-limit source target map rev-path forbidden 256))
+  (car (plan-route-rec source rev-path 26))))
 
 (defun choose-dir (source target)
   (declare (optimize (debug 3)))
