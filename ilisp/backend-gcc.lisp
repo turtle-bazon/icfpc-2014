@@ -84,6 +84,8 @@
     ((defun ?name ?lambda-list . ?body) (translate-defun translator ?name ?lambda-list ?body))
     ((defmacro ?name ?lambda-list . ?body) (translate-defmacro translator ?name ?lambda-list ?body))
     ((function ?obj) (translate-walk translator ?obj))
+    ((trace ?obj) (translate-trace translator ?obj))
+    ((break) `((:BRK)))
     ;; ((funcall ?fn . ?args) (translate-walk translator `(,?fn ,?args)))
 
     ((+ ?form-a ?form-b) (translate-binop translator :add ?form-a ?form-b))
@@ -258,6 +260,10 @@
   (bind (((:values frame index) (scope-lookup-var-index translator name)))
     `(,@(translate-walk translator form)
         (:ST ,frame ,index))))
+
+(defmethod translate-trace ((translator gcc-translator) obj)
+  `(,@(translate-walk translator obj)
+      (:DBUG)))
 
 ;; build system
 (defun pretty-print-gcc (gcc &key (stream *standard-output*) (minimize nil)
