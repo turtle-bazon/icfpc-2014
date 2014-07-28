@@ -10,19 +10,19 @@
   (cdr (cdr x)))
 
 (defmacro not (x)
-  `(> ,x 1 ))
+  `(if ,x 0 1))
 
 (defmacro < (a b)
-  `(not (>= ,a ,b)))
+  `(>= ,b ,a))
 
 (defmacro <= (a b)
-  `(not (> ,a ,b)))
+  `(> ,b ,a))
 
 (defmacro and (&rest args)
   (case (length args)
     (0 0)
     (1 (first args))
-    (t `(if ,(first args) 
+    (t `(if ,(first args)
             (and ,@(cdr args))
             0))))
 
