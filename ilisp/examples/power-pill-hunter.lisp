@@ -131,7 +131,7 @@
                                                            map
                                                            forbidden)
                                         (- limit 1))))))))
-    (car (plan-route-rec source rev-path 24))))
+    (car (plan-route-rec source rev-path 26))))
 
 (defun choose-dir (source target)
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
