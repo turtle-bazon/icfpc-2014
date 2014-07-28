@@ -1,0 +1,1543 @@
+    DUM 42
+    LDF 1290
+    LDF 1283
+    LDF 1155
+    LDF 1105
+    LDF 1023
+    LDF 992
+    LDF 963
+    LDF 951
+    LDF 946
+    LDF 926
+    LDF 881
+    LDF 847
+    LDF 804
+    LDF 793
+    LDF 789
+    LDF 749
+    LDF 740
+    LDF 561
+    LDF 550
+    LDF 544
+    LDF 513
+    LDF 480
+    LDF 439
+    LDF 410
+    LDF 393
+    LDF 378
+    LDF 372
+    LDF 289
+    LDF 272
+    LDF 254
+    LDF 190
+    LDF 170
+    LDF 155
+    LDF 144
+    LDF 135
+    LDF 125
+    LDF 115
+    LDF 87
+    LDF 77
+    LDF 59
+    LDF 55
+    LDF 51
+    LDF 46
+    RAP 42
+    RTN
+;(LABEL LAMBDA22902 46):
+    LD 1 0
+    LD 1 1
+    LD 0 0
+    AP 2
+    RTN
+;(LABEL LAMBDA22901 51):
+    LD 0 0
+    CDR
+    CAR
+    RTN
+;(LABEL LAMBDA22900 55):
+    LD 0 0
+    CDR
+    CDR
+    RTN
+;(LABEL LAMBDA22896 59):
+    LD 0 0
+    LDC 0
+    CEQ
+    SEL 65 68
+    LDC 1
+    TSEL 76 76
+;(LABEL TRUE22897 65):
+    LD 0 1
+    CAR
+    JOIN
+;(LABEL FALSE22898 68):
+    LD 0 0
+    LDC 1
+    SUB
+    LD 0 1
+    CDR
+    LD 1 39
+    AP 2
+    JOIN
+;(LABEL END22899 76):
+    RTN
+;(LABEL LAMBDA22895 77):
+    LD 0 0
+    CAR
+    LD 0 0
+    CDR
+    LD 0 1
+    LD 1 39
+    AP 2
+    LD 1 39
+    AP 2
+    RTN
+;(LABEL LAMBDA22888 87):
+    LD 0 0
+    LDF 109
+    AP 1
+    LD 0 2
+    CDR
+    LDF 95
+    AP 2
+    RTN
+;(LABEL LAMBDA22891 95):
+    LD 0 1
+    ATOM
+    SEL 100 102
+    LDC 1
+    TSEL 108 108
+;(LABEL TRUE22892 100):
+    LD 0 0
+    JOIN
+;(LABEL FALSE22893 102):
+    LD 1 0
+    LD 0 0
+    LD 0 1
+    LD 2 37
+    AP 3
+    JOIN
+;(LABEL END22894 108):
+    RTN
+;(LABEL LAMBDA22890 109):
+    LD 1 2
+    CAR
+    LD 1 1
+    LD 0 0
+    AP 2
+    RTN
+;(LABEL LAMBDA22886 115):
+    LDF 121
+    LDC 0
+    LD 0 0
+    LD 1 37
+    AP 3
+    RTN
+;(LABEL LAMBDA22887 121):
+    LD 0 1
+    LDC 1
+    ADD
+    RTN
+;(LABEL LAMBDA22884 125):
+    LDF 131
+    LDC 0
+    LD 0 0
+    LD 1 37
+    AP 3
+    RTN
+;(LABEL LAMBDA22885 131):
+    LD 0 0
+    LD 0 1
+    CONS
+    RTN
+;(LABEL LAMBDA22883 135):
+    LD 0 0
+    CAR
+    LD 1 36
+    AP 1
+    LD 0 0
+    LD 1 36
+    AP 1
+    CONS
+    RTN
+;(LABEL LAMBDA22880 144):
+    LD 0 1
+    LDF 148
+    AP 1
+    RTN
+;(LABEL LAMBDA22882 148):
+    LD 1 0
+    CAR
+    LD 1 0
+    CDR
+    LD 0 0
+    AP 2
+    RTN
+;(LABEL LAMBDA22877 155):
+    LD 0 1
+    LDF 159
+    AP 1
+    RTN
+;(LABEL LAMBDA22879 159):
+    LD 1 0
+    CAR
+    LD 1 0
+    CDR
+    CAR
+    LD 1 0
+    CDR
+    CDR
+    LD 0 0
+    AP 3
+    RTN
+;(LABEL LAMBDA22874 170):
+    LD 0 1
+    LDF 174
+    AP 1
+    RTN
+;(LABEL LAMBDA22876 174):
+    LD 1 0
+    CAR
+    LD 1 0
+    CDR
+    CAR
+    LD 1 0
+    CDR
+    CDR
+    CAR
+    LD 1 0
+    CDR
+    CDR
+    CDR
+    LD 0 0
+    AP 4
+    RTN
+;(LABEL LAMBDA22863 190):
+    LDF 199
+    LDC 0
+    LDC 0
+    CONS
+    LD 0 1
+    LD 1 37
+    AP 3
+    CDR
+    RTN
+;(LABEL LAMBDA22864 199):
+    LD 0 1
+    CAR
+    LD 0 1
+    CDR
+    LDF 206
+    AP 2
+    RTN
+;(LABEL LAMBDA22865 206):
+    LD 0 0
+    LDC 1
+    ADD
+    LDF 219
+    LDC 0
+    LD 0 1
+    CONS
+    LD 1 0
+    LD 3 37
+    AP 3
+    CDR
+    CONS
+    RTN
+;(LABEL LAMBDA22866 219):
+    LD 0 1
+    CAR
+    LD 0 1
+    CDR
+    LDF 226
+    AP 2
+    RTN
+;(LABEL LAMBDA22867 226):
+    LD 0 0
+    LDC 1
+    ADD
+    LD 4 0
+    LDF 248
+    AP 1
+    LDF 236
+    AP 1
+    CONS
+    RTN
+;(LABEL LAMBDA22870 236):
+    LD 0 0
+    ATOM
+    SEL 241 243
+    LDC 1
+    TSEL 247 247
+;(LABEL TRUE22871 241):
+    LD 1 1
+    JOIN
+;(LABEL FALSE22872 243):
+    LD 0 0
+    LD 1 1
+    CONS
+    JOIN
+;(LABEL END22873 247):
+    RTN
+;(LABEL LAMBDA22869 248):
+    LD 2 0
+    LD 1 0
+    LD 3 0
+    LD 0 0
+    AP 3
+    RTN
+;(LABEL LAMBDA22858 254):
+    LDF 259
+    LD 0 1
+    LD 1 30
+    AP 2
+    RTN
+;(LABEL LAMBDA22859 259):
+    LD 0 0
+    LD 1 0
+    CEQ
+    SEL 265 269
+    LDC 1
+    TSEL 271 271
+;(LABEL TRUE22860 265):
+    LD 0 1
+    LD 0 2
+    CONS
+    JOIN
+;(LABEL FALSE22861 269):
+    LDC 0
+    JOIN
+;(LABEL END22862 271):
+    RTN
+;(LABEL LAMBDA22856 272):
+    LD 0 0
+    LD 0 2
+    SUB
+    LD 0 1
+    LD 0 3
+    SUB
+    LDF 281
+    AP 2
+    RTN
+;(LABEL LAMBDA22857 281):
+    LD 0 0
+    LD 0 0
+    MUL
+    LD 0 1
+    LD 0 1
+    MUL
+    ADD
+    RTN
+;(LABEL LAMBDA22839 289):
+    LD 0 1
+    CAR
+    LD 0 1
+    CDR
+    LDF 296
+    AP 2
+    RTN
+;(LABEL LAMBDA22840 296):
+    LDF 306
+    LDC 0
+    LDC 0
+    LDC 0
+    CONS
+    CONS
+    LD 1 2
+    LD 2 37
+    AP 3
+    RTN
+;(LABEL LAMBDA22841 306):
+    LD 0 1
+    CAR
+    LD 0 1
+    LD 3 41
+    AP 1
+    LD 0 1
+    LD 3 40
+    AP 1
+    LD 2 0
+    LDF 363
+    AP 1
+    LDF 320
+    AP 4
+    RTN
+;(LABEL LAMBDA22844 320):
+    LD 0 0
+    ATOM
+    LDF 352
+    AP 1
+    SEL 327 343
+    LDC 1
+    TSEL 351 351
+;(LABEL TRUE22845 327):
+    LD 1 0
+    LD 0 3
+    LD 0 0
+    ATOM
+    SEL 334 336
+    LDC 1
+    TSEL 340 340
+;(LABEL TRUE22853 334):
+    LD 0 2
+    JOIN
+;(LABEL FALSE22854 336):
+    LD 0 0
+    LD 0 2
+    CONS
+    JOIN
+;(LABEL END22855 340):
+    CONS
+    CONS
+    JOIN
+;(LABEL FALSE22846 343):
+    LD 0 0
+    LD 0 1
+    LD 1 0
+    LD 0 2
+    CONS
+    CONS
+    CONS
+    JOIN
+;(LABEL END22847 351):
+    RTN
+;(LABEL LAMBDA22849 352):
+    LD 0 0
+    SEL 356 358
+    LDC 1
+    TSEL 362 362
+;(LABEL TRUE22850 356):
+    LD 0 0
+    JOIN
+;(LABEL FALSE22851 358):
+    LD 1 1
+    LD 1 3
+    CGTE
+    JOIN
+;(LABEL END22852 362):
+    RTN
+;(LABEL LAMBDA22843 363):
+    LD 2 0
+    LD 2 1
+    LD 1 0
+    CAR
+    LD 1 0
+    CDR
+    LD 0 0
+    AP 4
+    RTN
+;(LABEL LAMBDA22838 372):
+    LD 1 28
+    LD 0 0
+    LD 0 1
+    LD 1 27
+    AP 3
+    RTN
+;(LABEL LAMBDA22836 378):
+    LDF 384
+    LD 0 0
+    LD 0 1
+    LD 1 27
+    AP 3
+    RTN
+;(LABEL LAMBDA22837 384):
+    LDC 0
+    LD 0 0
+    LD 0 1
+    LD 0 2
+    LD 0 3
+    LD 2 28
+    AP 4
+    SUB
+    RTN
+;(LABEL LAMBDA22832 393):
+    LD 0 0
+    CAR
+    LD 0 1
+    CAR
+    CEQ
+    SEL 401 407
+    LDC 1
+    TSEL 409 409
+;(LABEL TRUE22833 401):
+    LD 0 0
+    CDR
+    LD 0 1
+    CDR
+    CEQ
+    JOIN
+;(LABEL FALSE22834 407):
+    LDC 0
+    JOIN
+;(LABEL END22835 409):
+    RTN
+;(LABEL LAMBDA22824 410):
+    LD 0 1
+    ATOM
+    SEL 415 417
+    LDC 1
+    TSEL 422 422
+;(LABEL TRUE22825 415):
+    LDC 0
+    JOIN
+;(LABEL FALSE22826 417):
+    LD 0 1
+    CAR
+    LDF 423
+    AP 1
+    JOIN
+;(LABEL END22827 422):
+    RTN
+;(LABEL LAMBDA22828 423):
+    LD 0 0
+    LD 1 0
+    LD 2 24
+    AP 2
+    SEL 430 432
+    LDC 1
+    TSEL 438 438
+;(LABEL TRUE22829 430):
+    LD 0 0
+    JOIN
+;(LABEL FALSE22830 432):
+    LD 1 0
+    LD 1 1
+    CDR
+    LD 2 23
+    AP 2
+    JOIN
+;(LABEL END22831 438):
+    RTN
+;(LABEL LAMBDA22813 439):
+    LD 0 0
+    ATOM
+    SEL 444 446
+    LDC 1
+    TSEL 452 452
+;(LABEL TRUE22814 444):
+    LDC 0
+    JOIN
+;(LABEL FALSE22815 446):
+    LDF 453
+    LDC 0
+    LD 0 0
+    LD 1 37
+    AP 3
+    JOIN
+;(LABEL END22816 452):
+    RTN
+;(LABEL LAMBDA22817 453):
+    LD 0 0
+    LD 1 1
+    LD 2 38
+    AP 2
+    LDC 0
+    CGT
+    SEL 462 468
+    LDC 1
+    TSEL 470 470
+;(LABEL TRUE22821 462):
+    LD 0 0
+    LD 1 2
+    LD 2 23
+    AP 2
+    ATOM
+    JOIN
+;(LABEL FALSE22822 468):
+    LDC 0
+    JOIN
+;(LABEL END22823 470):
+    SEL 473 477
+    LDC 1
+    TSEL 479 479
+;(LABEL TRUE22818 473):
+    LD 0 0
+    LD 0 1
+    CONS
+    JOIN
+;(LABEL FALSE22819 477):
+    LD 0 1
+    JOIN
+;(LABEL END22820 479):
+    RTN
+;(LABEL LAMBDA22811 480):
+    LD 0 0
+    CAR
+    LD 0 0
+    CDR
+    LDF 487
+    AP 2
+    RTN
+;(LABEL LAMBDA22812 487):
+    LD 0 0
+    LDC 1
+    SUB
+    LD 0 1
+    CONS
+    LD 0 0
+    LD 0 1
+    LDC 1
+    SUB
+    CONS
+    LD 0 0
+    LDC 1
+    ADD
+    LD 0 1
+    CONS
+    LD 0 0
+    LD 0 1
+    LDC 1
+    ADD
+    CONS
+    LDC 0
+    CONS
+    CONS
+    CONS
+    CONS
+    RTN
+;(LABEL LAMBDA22803 513):
+    LD 0 0
+    ATOM
+    SEL 518 520
+    LDC 1
+    TSEL 525 525
+;(LABEL TRUE22804 518):
+    LDC 0
+    JOIN
+;(LABEL FALSE22805 520):
+    LD 0 0
+    CAR
+    LDF 526
+    AP 1
+    JOIN
+;(LABEL END22806 525):
+    RTN
+;(LABEL LAMBDA22807 526):
+    LD 0 0
+    CDR
+    LD 1 1
+    LD 2 24
+    AP 2
+    SEL 534 537
+    LDC 1
+    TSEL 543 543
+;(LABEL TRUE22808 534):
+    LD 0 0
+    CAR
+    JOIN
+;(LABEL FALSE22809 537):
+    LD 1 0
+    CDR
+    LD 1 1
+    LD 2 20
+    AP 2
+    JOIN
+;(LABEL END22810 543):
+    RTN
+;(LABEL LAMBDA22802 544):
+    LD 0 2
+    LD 0 1
+    CONS
+    LD 0 0
+    CONS
+    RTN
+;(LABEL LAMBDA22800 550):
+    LDF 556
+    LD 0 1
+    LD 0 0
+    LD 1 37
+    AP 3
+    RTN
+;(LABEL LAMBDA22801 556):
+    LD 0 0
+    CDR
+    LD 0 1
+    CONS
+    RTN
+;(LABEL LAMBDA22764 561):
+    LDC 0
+    LD 0 0
+    LDC 1
+    LD 1 19
+    AP 3
+    LDF 569
+    AP 1
+    RTN
+;(LABEL LAMBDA22765 569):
+    DUM 1
+    LDF 666
+    LDF 574
+    RAP 1
+    RTN
+;(LABEL LAMBDA22780 574):
+    DUM 1
+    LDF 588
+    LDF 579
+    RAP 1
+    RTN
+;(LABEL LAMBDA22799 579):
+    LD 2 0
+    LD 3 5
+    LD 1 0
+    AP 2
+    LD 3 1
+    LDC 0
+    LD 0 0
+    AP 3
+    RTN
+;(LABEL LAMBDA22781 588):
+    LD 0 1
+    LD 4 0
+    LD 5 24
+    AP 2
+    SEL 595 597
+    LDC 1
+    TSEL 604 604
+;(LABEL TRUE22782 595):
+    LD 0 2
+    JOIN
+;(LABEL FALSE22783 597):
+    LD 0 0
+    LD 0 1
+    LD 5 20
+    AP 2
+    LDF 605
+    AP 1
+    JOIN
+;(LABEL END22784 604):
+    RTN
+;(LABEL LAMBDA22785 605):
+    DUM 1
+    LDF 634
+    LDF 628
+    RAP 1
+    LDF 612
+    AP 1
+    RTN
+;(LABEL LAMBDA22795 612):
+    LD 0 0
+    ATOM
+    SEL 617 619
+    LDC 1
+    TSEL 627 627
+;(LABEL TRUE22796 617):
+    LDC 0
+    JOIN
+;(LABEL FALSE22797 619):
+    LD 2 0
+    LD 0 0
+    LD 2 1
+    LD 2 2
+    CONS
+    LD 3 0
+    AP 3
+    JOIN
+;(LABEL END22798 627):
+    RTN
+;(LABEL LAMBDA22794 628):
+    LD 2 1
+    LD 7 21
+    AP 1
+    LD 0 0
+    AP 1
+    RTN
+;(LABEL LAMBDA22786 634):
+    LD 0 0
+    ATOM
+    SEL 639 641
+    LDC 1
+    TSEL 646 646
+;(LABEL TRUE22787 639):
+    LDC 0
+    JOIN
+;(LABEL FALSE22788 641):
+    LD 0 0
+    CAR
+    LDF 647
+    AP 1
+    JOIN
+;(LABEL END22789 646):
+    RTN
+;(LABEL LAMBDA22790 647):
+    LD 3 0
+    LD 4 0
+    LD 0 0
+    LD 9 20
+    AP 2
+    SUB
+    LDC 1
+    CEQ
+    SEL 658 660
+    LDC 1
+    TSEL 665 665
+;(LABEL TRUE22791 658):
+    LD 0 0
+    JOIN
+;(LABEL FALSE22792 660):
+    LD 1 0
+    CDR
+    LD 2 0
+    AP 1
+    JOIN
+;(LABEL END22793 665):
+    RTN
+;(LABEL LAMBDA22766 666):
+    LD 0 1
+    LDC 0
+    CEQ
+    SEL 672 674
+    LDC 1
+    TSEL 697 697
+;(LABEL TRUE22767 672):
+    LD 0 0
+    JOIN
+;(LABEL FALSE22768 674):
+    LD 0 0
+    LD 3 1
+    LD 4 20
+    AP 2
+    LDC 0
+    CEQ
+    SEL 683 694
+    LDC 1
+    TSEL 696 696
+;(LABEL TRUE22770 683):
+    LDF 698
+    LD 0 0
+    LD 0 0
+    LD 4 37
+    AP 3
+    LD 0 1
+    LDC 1
+    SUB
+    LD 1 0
+    AP 2
+    JOIN
+;(LABEL FALSE22771 694):
+    LD 0 0
+    JOIN
+;(LABEL END22772 696):
+    JOIN
+;(LABEL END22769 697):
+    RTN
+;(LABEL LAMBDA22773 698):
+    LD 0 0
+    CAR
+    LD 0 0
+    CDR
+    LDF 705
+    AP 2
+    RTN
+;(LABEL LAMBDA22774 705):
+    LD 0 1
+    LD 6 21
+    AP 1
+    LD 5 2
+    LD 1 1
+    LD 5 4
+    LD 6 18
+    AP 2
+    LD 6 22
+    AP 3
+    LDF 718
+    AP 1
+    RTN
+;(LABEL LAMBDA22775 718):
+    LD 0 0
+    ATOM
+    SEL 723 725
+    LDC 1
+    TSEL 731 731
+;(LABEL TRUE22776 723):
+    LD 2 1
+    JOIN
+;(LABEL FALSE22777 725):
+    LDF 732
+    LD 2 1
+    LD 0 0
+    LD 7 37
+    AP 3
+    JOIN
+;(LABEL END22778 731):
+    RTN
+;(LABEL LAMBDA22779 732):
+    LD 0 1
+    LD 0 0
+    LD 2 0
+    LDC 1
+    ADD
+    LD 8 19
+    AP 3
+    RTN
+;(LABEL LAMBDA22763 740):
+    LD 0 0
+    LD 0 1
+    LD 0 2
+    LD 0 3
+    LD 0 4
+    LDC 32
+    LD 1 17
+    AP 6
+    RTN
+;(LABEL LAMBDA22752 749):
+    LD 0 0
+    CAR
+    LD 0 0
+    CDR
+    LD 0 1
+    CAR
+    LD 0 1
+    CDR
+    LDF 760
+    AP 4
+    RTN
+;(LABEL LAMBDA22753 760):
+    LD 0 1
+    LD 0 3
+    CEQ
+    SEL 766 777
+    LDC 1
+    TSEL 788 788
+;(LABEL TRUE22754 766):
+    LD 0 2
+    LD 0 0
+    CGTE
+    SEL 772 774
+    LDC 1
+    TSEL 776 776
+;(LABEL TRUE22757 772):
+    LDC 1
+    JOIN
+;(LABEL FALSE22758 774):
+    LDC 3
+    JOIN
+;(LABEL END22759 776):
+    JOIN
+;(LABEL FALSE22755 777):
+    LD 0 3
+    LD 0 1
+    CGTE
+    SEL 783 785
+    LDC 1
+    TSEL 787 787
+;(LABEL TRUE22760 783):
+    LDC 2
+    JOIN
+;(LABEL FALSE22761 785):
+    LDC 0
+    JOIN
+;(LABEL END22762 787):
+    JOIN
+;(LABEL END22756 788):
+    RTN
+;(LABEL LAMBDA22751 789):
+    LD 0 0
+    LD 0 1
+    CONS
+    RTN
+;(LABEL LAMBDA22748 793):
+    LD 0 1
+    LDF 797
+    AP 1
+    RTN
+;(LABEL LAMBDA22750 797):
+    LD 1 0
+    CAR
+    LD 1 0
+    CDR
+    LD 0 0
+    AP 2
+    RTN
+;(LABEL LAMBDA22738 804):
+    LD 0 0
+    LD 0 1
+    LD 1 29
+    AP 2
+    LDF 811
+    AP 1
+    RTN
+;(LABEL LAMBDA22739 811):
+    LD 0 0
+    ATOM
+    SEL 816 818
+    LDC 1
+    TSEL 826 826
+;(LABEL TRUE22740 816):
+    LDC 0
+    JOIN
+;(LABEL FALSE22741 818):
+    LD 1 2
+    LD 0 0
+    LD 2 26
+    AP 2
+    CAR
+    LDF 827
+    AP 1
+    JOIN
+;(LABEL END22742 826):
+    RTN
+;(LABEL LAMBDA22743 827):
+    LD 2 2
+    LD 0 0
+    LD 2 1
+    LDC 0
+    LD 2 3
+    LD 3 16
+    AP 5
+    LDF 837
+    AP 1
+    RTN
+;(LABEL LAMBDA22744 837):
+    LD 0 0
+    ATOM
+    SEL 842 844
+    LDC 1
+    TSEL 846 846
+;(LABEL TRUE22745 842):
+    LDC 0
+    JOIN
+;(LABEL FALSE22746 844):
+    LD 0 0
+    JOIN
+;(LABEL END22747 846):
+    RTN
+;(LABEL LAMBDA22730 847):
+    LD 0 3
+    ATOM
+    SEL 852 854
+    LDC 1
+    TSEL 864 864
+;(LABEL TRUE22731 852):
+    LDC 0
+    JOIN
+;(LABEL FALSE22732 854):
+    LD 0 3
+    CAR
+    LD 0 0
+    LD 0 1
+    LD 0 2
+    LD 1 12
+    AP 4
+    LDF 865
+    AP 1
+    JOIN
+;(LABEL END22733 864):
+    RTN
+;(LABEL LAMBDA22734 865):
+    LD 0 0
+    ATOM
+    SEL 870 878
+    LDC 1
+    TSEL 880 880
+;(LABEL TRUE22735 870):
+    LD 1 0
+    LD 1 1
+    LD 1 2
+    LD 1 3
+    CDR
+    LD 2 11
+    AP 4
+    JOIN
+;(LABEL FALSE22736 878):
+    LD 0 0
+    JOIN
+;(LABEL END22737 880):
+    RTN
+;(LABEL LAMBDA22721 881):
+    LDF 889
+    LDC 0
+    LDC 0
+    CONS
+    LD 0 0
+    LD 1 37
+    AP 3
+    RTN
+;(LABEL LAMBDA22722 889):
+    LD 0 1
+    CAR
+    LD 0 1
+    CDR
+    LD 0 0
+    CAR
+    LDF 898
+    AP 3
+    RTN
+;(LABEL LAMBDA22723 898):
+    LD 0 2
+    LDC 0
+    CEQ
+    SEL 904 910
+    LDC 1
+    TSEL 925 925
+;(LABEL TRUE22724 904):
+    LD 1 0
+    LD 0 0
+    CONS
+    LD 0 1
+    CONS
+    JOIN
+;(LABEL FALSE22725 910):
+    LD 0 2
+    LDC 1
+    CEQ
+    SEL 916 922
+    LDC 1
+    TSEL 924 924
+;(LABEL TRUE22727 916):
+    LD 0 0
+    LD 1 0
+    LD 0 1
+    CONS
+    CONS
+    JOIN
+;(LABEL FALSE22728 922):
+    LD 1 1
+    JOIN
+;(LABEL END22729 924):
+    JOIN
+;(LABEL END22726 925):
+    RTN
+;(LABEL LAMBDA22716 926):
+    LD 0 0
+    ATOM
+    SEL 931 933
+    LDC 1
+    TSEL 939 939
+;(LABEL TRUE22717 931):
+    LDC 0
+    JOIN
+;(LABEL FALSE22718 933):
+    LDF 940
+    LDC 0
+    LD 0 0
+    LD 1 37
+    AP 3
+    JOIN
+;(LABEL END22719 939):
+    RTN
+;(LABEL LAMBDA22720 940):
+    LD 0 0
+    CDR
+    CAR
+    LD 0 1
+    CONS
+    RTN
+;(LABEL LAMBDA22715 946):
+    LD 0 0
+    LD 0 1
+    LD 1 26
+    AP 2
+    RTN
+;(LABEL LAMBDA22714 951):
+    LD 0 2
+    LD 0 1
+    LD 1 21
+    AP 1
+    LD 0 0
+    LDC 0
+    LD 1 22
+    AP 3
+    LD 1 25
+    AP 2
+    CAR
+    RTN
+;(LABEL LAMBDA22708 963):
+    LDF 965
+    RTN
+;(LABEL LAMBDA22709 965):
+    LD 1 1
+    LD 0 0
+    LD 1 0
+    LDC 0
+    LDC 0
+    LDC 3
+    LD 2 17
+    AP 6
+    LDF 976
+    AP 1
+    RTN
+;(LABEL LAMBDA22710 976):
+    LD 0 0
+    ATOM
+    SEL 981 983
+    LDC 1
+    TSEL 991 991
+;(LABEL TRUE22711 981):
+    LDC 0
+    JOIN
+;(LABEL FALSE22712 983):
+    LD 2 0
+    LD 2 1
+    LD 1 0
+    LD 3 7
+    AP 3
+    LDC 0
+    CONS
+    JOIN
+;(LABEL END22713 991):
+    RTN
+;(LABEL LAMBDA22699 992):
+    LDF 994
+    RTN
+;(LABEL LAMBDA22700 994):
+    LDC 32
+    LD 0 1
+    CGTE
+    SEL 1000 1010
+    LDC 1
+    TSEL 1012 1012
+;(LABEL TRUE22701 1000):
+    LD 1 1
+    LD 0 0
+    LD 1 0
+    LDC 0
+    LDC 0
+    LD 2 16
+    AP 5
+    LDF 1013
+    AP 1
+    JOIN
+;(LABEL FALSE22702 1010):
+    LDC 0
+    JOIN
+;(LABEL END22703 1012):
+    RTN
+;(LABEL LAMBDA22704 1013):
+    LD 0 0
+    ATOM
+    SEL 1018 1020
+    LDC 1
+    TSEL 1022 1022
+;(LABEL TRUE22705 1018):
+    LDC 0
+    JOIN
+;(LABEL FALSE22706 1020):
+    LD 0 0
+    JOIN
+;(LABEL END22707 1022):
+    RTN
+;(LABEL LAMBDA22684 1023):
+    LD 0 2
+    LD 1 10
+    AP 1
+    LDF 1030
+    LD 1 33
+    AP 2
+    RTN
+;(LABEL LAMBDA22685 1030):
+    LD 0 0
+    ATOM
+    SEL 1035 1056
+    LDC 1
+    TSEL 1071 1071
+;(LABEL TRUE22686 1035):
+    LD 0 1
+    ATOM
+    SEL 1040 1042
+    LDC 1
+    TSEL 1055 1055
+;(LABEL TRUE22689 1040):
+    LDC 0
+    JOIN
+;(LABEL FALSE22690 1042):
+    LD 1 1
+    LD 0 1
+    LD 2 9
+    AP 1
+    LD 2 8
+    AP 2
+    LD 1 0
+    LD 1 1
+    LD 2 5
+    AP 2
+    LD 2 32
+    AP 2
+    JOIN
+;(LABEL END22691 1055):
+    JOIN
+;(LABEL FALSE22687 1056):
+    LD 1 1
+    LD 0 0
+    LD 2 9
+    AP 1
+    LD 2 8
+    AP 2
+    LD 1 0
+    LD 1 1
+    LD 2 6
+    AP 2
+    LD 2 32
+    AP 2
+    LDF 1076
+    AP 1
+    JOIN
+;(LABEL END22688 1071):
+    LD 0 0
+    LD 2 9
+    AP 1
+    CONS
+    RTN
+;(LABEL LAMBDA22692 1076):
+    LD 0 0
+    ATOM
+    SEL 1081 1102
+    LDC 1
+    TSEL 1104 1104
+;(LABEL TRUE22693 1081):
+    LD 1 1
+    ATOM
+    SEL 1086 1088
+    LDC 1
+    TSEL 1101 1101
+;(LABEL TRUE22696 1086):
+    LDC 0
+    JOIN
+;(LABEL FALSE22697 1088):
+    LD 2 1
+    LD 1 1
+    LD 3 9
+    AP 1
+    LD 3 8
+    AP 2
+    LD 2 0
+    LD 2 1
+    LD 3 5
+    AP 2
+    LD 3 32
+    AP 2
+    JOIN
+;(LABEL END22698 1101):
+    JOIN
+;(LABEL FALSE22694 1102):
+    LD 0 0
+    JOIN
+;(LABEL END22695 1104):
+    RTN
+;(LABEL LAMBDA22670 1105):
+    LD 0 3
+    LDC 0
+    CEQ
+    LDF 1144
+    AP 1
+    SEL 1113 1115
+    LDC 1
+    TSEL 1123 1123
+;(LABEL TRUE22671 1113):
+    LDC 0
+    JOIN
+;(LABEL FALSE22672 1115):
+    LDC 4
+    LD 0 0
+    LD 1 29
+    AP 2
+    CAR
+    LDF 1124
+    AP 1
+    JOIN
+;(LABEL END22673 1123):
+    RTN
+;(LABEL LAMBDA22679 1124):
+    LD 1 1
+    LD 0 0
+    LD 1 0
+    LDC 0
+    LD 1 2
+    LD 2 16
+    AP 5
+    LDF 1134
+    AP 1
+    RTN
+;(LABEL LAMBDA22680 1134):
+    LD 0 0
+    ATOM
+    SEL 1139 1141
+    LDC 1
+    TSEL 1143 1143
+;(LABEL TRUE22681 1139):
+    LDC 0
+    JOIN
+;(LABEL FALSE22682 1141):
+    LD 0 0
+    JOIN
+;(LABEL END22683 1143):
+    RTN
+;(LABEL LAMBDA22675 1144):
+    LD 0 0
+    SEL 1148 1150
+    LDC 1
+    TSEL 1154 1154
+;(LABEL TRUE22676 1148):
+    LD 0 0
+    JOIN
+;(LABEL FALSE22677 1150):
+    LD 1 4
+    LDC 1
+    CEQ
+    JOIN
+;(LABEL END22678 1154):
+    RTN
+;(LABEL LAMBDA22649 1155):
+    LDF 1157
+    RTN
+;(LABEL LAMBDA22650 1157):
+    LD 1 0
+    LDF 1162
+    LD 2 13
+    AP 2
+    RTN
+;(LABEL LAMBDA22651 1162):
+    LD 1 1
+    CDR
+    CAR
+    LDF 1168
+    AP 1
+    RTN
+;(LABEL LAMBDA22652 1168):
+    LD 2 0
+    LD 0 0
+    LD 2 2
+    LD 4 4
+    AP 3
+    LDF 1177
+    LD 4 33
+    AP 2
+    RTN
+;(LABEL LAMBDA22653 1177):
+    LD 0 0
+    ATOM
+    SEL 1182 1192
+    LDC 1
+    TSEL 1204 1204
+;(LABEL TRUE22654 1182):
+    LD 3 0
+    LD 1 0
+    LD 0 1
+    LD 3 3
+    LD 2 1
+    LD 5 3
+    AP 5
+    LDF 1205
+    AP 1
+    JOIN
+;(LABEL FALSE22655 1192):
+    LD 0 0
+    CDR
+    LD 2 1
+    LD 5 14
+    AP 2
+    LD 1 0
+    LD 0 0
+    CAR
+    LD 5 15
+    AP 2
+    CONS
+    JOIN
+;(LABEL END22656 1204):
+    RTN
+;(LABEL LAMBDA22657 1205):
+    LD 0 0
+    ATOM
+    SEL 1210 1241
+    LDC 1
+    TSEL 1253 1253
+;(LABEL TRUE22658 1210):
+    LD 3 0
+    ATOM
+    SEL 1215 1228
+    LDC 1
+    TSEL 1240 1240
+;(LABEL TRUE22661 1215):
+    LD 4 0
+    LD 2 0
+    LD 1 1
+    LDC 3
+    LDC 2
+    LDC 0
+    CONS
+    CONS
+    LD 6 11
+    AP 4
+    LDF 1254
+    AP 1
+    JOIN
+;(LABEL FALSE22662 1228):
+    LD 3 0
+    CDR
+    LD 3 1
+    LD 6 14
+    AP 2
+    LD 2 0
+    LD 3 0
+    CAR
+    LD 6 15
+    AP 2
+    CONS
+    JOIN
+;(LABEL END22663 1240):
+    JOIN
+;(LABEL FALSE22659 1241):
+    LD 0 0
+    CDR
+    LDC 1
+    LD 6 14
+    AP 2
+    LD 2 0
+    LD 0 0
+    CAR
+    LD 6 15
+    AP 2
+    CONS
+    JOIN
+;(LABEL END22660 1253):
+    RTN
+;(LABEL LAMBDA22664 1254):
+    LD 0 0
+    ATOM
+    SEL 1259 1266
+    LDC 1
+    TSEL 1275 1275
+;(LABEL TRUE22665 1259):
+    LDC 0
+    LDC 0
+    LD 7 14
+    AP 2
+    LDC 1
+    CONS
+    JOIN
+;(LABEL FALSE22666 1266):
+    LD 0 0
+    LDC 0
+    LD 7 14
+    AP 2
+    LD 7 2
+    AP 1
+    LDF 1276
+    AP 1
+    JOIN
+;(LABEL END22667 1275):
+    RTN
+;(LABEL LAMBDA22669 1276):
+    LD 6 0
+    LD 6 1
+    LD 6 2
+    LD 6 3
+    LD 0 0
+    AP 4
+    RTN
+;(LABEL LAMBDA22648 1283):
+    LD 0 1
+    LD 0 0
+    LD 1 2
+    AP 1
+    LD 1 31
+    AP 2
+    RTN
+;(LABEL LAMBDA22647 1290):
+    LDC 0
+    LDC 0
+    LD 1 14
+    AP 2
+    LD 1 1
+    CONS
+    RTN

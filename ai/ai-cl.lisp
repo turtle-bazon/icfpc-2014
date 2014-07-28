@@ -115,59 +115,53 @@
                       (cons (cons x (+ y 1))
                             0))))))
 
-(defun copy/modify-map (map modificator)
-  (il-reverse
-   (car (il-foldl (lambda (row acc)
-                    (let ((y (cdr acc)))
-                      (cons (cons (il-reverse
-                                   (car (il-foldl (lambda (cell acc)
-                                                    (let ((x (cdr acc)))
-                                                      (cons (cons (funcall modificator cell x y)
-                                                                  (car acc))
-                                                            (+ x 1))))
-                                                  (cons 0 0)
-                                                  row)))
-                                  (car acc))
-                            (+ y 1))))
-                  (cons 0 0)
-                  map))))
+(defun get-patch (patches coord)
+  (if (integerp patches)
+      0
+      (let ((patch (car patches)))
+        (if (coords= (cdr patch) coord)
+            (car patch)
+            (get-patch (cdr patches) coord)))))
+
+(defun set-patch (patches coord value)
+  (cons (cons value coord) patches))
+
+(defun patches-coords/append (patches lst)
+  (il-foldl (lambda (patch acc) (cons (cdr patch) acc)) lst patches))
 
 (defun plan-route-limit (source target map rev-path forbidden depth-limit)
   (declare (ignore rev-path)
            (optimize (debug 3)))
-  (let ((zero-counters (copy/modify-map map (lambda (cell x y)
-                                              (declare (ignore cell))
-                                              (if (and (= x (car source)) (= y (cdr source))) 1 0)))))
+  (let ((zero-counters (set-patch 0 source 1)))
     (labels ((wave-spread (counters depth-limit)
                (if (= depth-limit 0)
                    counters
-                   (if (= (map-cell target counters) 0)
+                   (if (= (get-patch counters target) 0)
                        (wave-spread (il-foldl (lambda (not-marked-point counters)
                                                 (let ((my-mark (car not-marked-point))
                                                       (source (cdr not-marked-point)))
-                                                  (il-foldl (lambda (point counters)
-                                                              (copy/modify-map counters
-                                                                               (lambda (cell x y)
-                                                                                 (if (and (= cell 0)
-                                                                                          (= x (car point))
-                                                                                          (= y (cdr point)))
-                                                                                     (+ my-mark 1)
-                                                                                     cell))))
-                                                            counters
-                                                            (filter-accessible (neighbours source) map forbidden))))
+                                                  (let ((accessible (filter-accessible (neighbours source)
+                                                                                       map
+                                                                                       (patches-coords/append counters forbidden))))
+                                                    (if (integerp accessible)
+                                                        counters
+                                                        (il-foldl (lambda (point counters)
+                                                                    (set-patch counters point (+ my-mark 1)))
+                                                                  counters
+                                                                  accessible)))))
                                               counters
-                                              (locate-objects-if (lambda (cell x y) (if (> cell 0) (cons cell (cons x y)) 0)) counters))
+                                              counters)
                                     (- depth-limit 1))
                        counters))))
-      (labels ((backtrack (counters point path)
+      (labels ((backtrack (counters point path) 
                  (if (coords= point source)
                      path
-                     (let ((my-mark (map-cell point counters)))
+                     (let ((my-mark (get-patch counters point)))
                        (let ((next-point (labels ((find-next (avail-neighbours)
                                                     (if (integerp avail-neighbours)
                                                         0
                                                         (let ((checkpoint (car avail-neighbours)))
-                                                          (if (= (- my-mark (map-cell checkpoint counters)) 1)
+                                                          (if (= (- my-mark (get-patch counters checkpoint)) 1)
                                                               checkpoint
                                                               (find-next (cdr avail-neighbours)))))))
                                            (find-next (neighbours point)))))
