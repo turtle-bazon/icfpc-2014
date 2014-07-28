@@ -1,0 +1,329 @@
+; directions
+%def _d_up,0
+%def _d_right,1
+%def _d_down,2
+%def _d_left,3
+
+; vitality modes
+%def _v_standard,0
+%def _v_fright_mode,1
+%def _v_invisible,2
+
+; map contents
+%def _m_wall,0
+%def _m_empty,1
+%def _m_pill,2
+%def _m_power_pill,3
+%def _m_fruti,4
+%def _m_lm_start,5
+%def _m_gh_start,6
+
+; defaults from int's
+%def _x_coor,a
+%def _y_coor,b
+%def _my_newdir,a
+%def _gh_vitality,a
+%def _gh_direction,b
+%def _gh_index,a
+
+; int aliases
+%def _chdir,0
+%def _lm1_pos,1
+%def _lm2_pos,2
+%def _my_index,3
+%def _gh_start_coor,4
+%def _gh_cur_coor,5
+%def _gh_stat,6
+%def _map_cont,7
+%def _debug,8
+
+; some constants
+%def _sight_area_size,5
+%def _sight_min_area_disp,2
+%def _sight_area_min_step,1
+%def _sight_area_max_step,3
+%def _sight_max_area_disp,253
+
+;;; program ;;;
+
+; variables
+%def !dead_ends_size,[0]
+%def !gh_x,[255]
+%def !gh_y,[254]
+%def !lm_x,[253]
+%def !lm_y,[252]
+%def !left,[251]
+%def !right,[250]
+%def !up,[249]
+%def !down,[248]
+%def !left_s,[247]
+%def !right_s,[246]
+%def !up_s,[245]
+%def !down_s,[244]
+%def !exits,[243]
+%def !d_x,[242]
+%def !d_y,[241]
+%def !d_sum,[240]
+%def !cur_dir,[239]
+
+    int _my_index
+    int _gh_cur_coor
+    mov !gh_x,a
+    mov !gh_y,b
+    int _lm1_pos
+    mov !lm_x,a
+    mov !lm_y,b
+
+    ; left
+    mov a,!gh_x
+    mov b,!gh_y
+    dec a
+    mov d,!lm_x
+    mov !d_x,a
+    jgt left_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+left_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt left_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+left_perform_d_y:
+    sub !d_y,e
+    mov !left_s,!d_x
+    add !left_s,!d_y
+    mov c,1
+left_cache_check:
+    jgt left_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
+    jeq left_check_y,[c],a
+    jgt left_continue,c,0
+left_check_y:
+    jeq left_exist_de_end,[d],b
+left_continue:
+    add c,2
+    jgt left_cache_check,c,0
+left_map_analyze:    
+    int _map_cont
+    mov !left,a
+    jgt left_search_end,a,_m_wall
+left_exist_de_end:
+    mov !left,0
+left_search_end:
+    
+    ; right
+    mov a,!gh_x
+    mov b,!gh_y
+    inc a
+    mov d,!lm_x
+    mov !d_x,a
+    jgt right_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+right_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt right_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+right_perform_d_y:
+    sub !d_y,e
+    mov !right_s,!d_x
+    add !right_s,!d_y
+    mov c,1
+right_cache_check:
+    jgt right_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
+    jeq right_check_y,[c],a
+    jgt right_continue,c,0
+right_check_y:
+    jeq right_exist_de_end,[d],b
+right_continue:
+    add c,2
+    jgt right_cache_check,c,0
+right_map_analyze:    
+    int _map_cont
+    mov !right,a
+    jgt right_search_end,a,_m_wall
+right_exist_de_end:
+    mov !right,0
+right_search_end:
+
+    ; up
+    mov a,!gh_x
+    mov b,!gh_y
+    dec b
+    mov d,!lm_x
+    mov !d_x,a
+    jgt up_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+up_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt up_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+up_perform_d_y:
+    sub !d_y,e
+    mov !up_s,!d_x
+    add !up_s,!d_y
+    mov c,1
+up_cache_check:
+    jgt up_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
+    jeq up_check_y,[c],a
+    jgt up_continue,c,0
+up_check_y:
+    jeq up_exist_de_end,[d],b
+up_continue:
+    add c,2
+    jgt up_cache_check,c,0
+up_map_analyze:    
+    int _map_cont
+    mov !up,a
+    jgt up_search_end,a,_m_wall
+up_exist_de_end:
+    mov !up,0
+up_search_end:
+
+    ; down
+    mov a,!gh_x
+    mov b,!gh_y
+    inc b
+    mov d,!lm_x
+    mov !d_x,a
+    jgt down_perform_d_x,a,!lm_x
+    mov !d_x,!lm_x
+    mov d,a
+down_perform_d_x:
+    sub !d_x,d
+    mov e,!lm_y
+    mov !d_y,b
+    jgt down_perform_d_y,b,!lm_y
+    mov !d_y,!lm_y
+    mov e,b
+down_perform_d_y:
+    sub !d_y,e
+    mov !down_s,!d_x
+    add !down_s,!d_y
+    mov c,1
+down_cache_check:
+    jgt down_map_analyze,c,!dead_ends_size
+    mov d,c
+    inc d
+    jeq down_check_y,[c],a
+    jgt down_continue,c,0
+down_check_y:
+    jeq down_exist_de_end,[d],b
+down_continue:
+    add c,2
+    jgt down_cache_check,c,0
+down_map_analyze:    
+    int _map_cont
+    mov !down,a
+    jgt down_search_end,a,_m_wall
+down_exist_de_end:
+    mov !down,0
+down_search_end:
+
+    mov a,0
+    jeq cmp_1,!left,0
+    inc a
+cmp_1:
+    jeq cmp_2,!right,0
+    inc a
+cmp_2:
+    jeq cmp_3,!up,0
+    inc a
+cmp_3:
+    jeq cmp_4,!down,0
+    inc a
+cmp_4:
+    mov !exits,a
+    jgt non_deadend,!exits,1
+    mov c,!dead_ends_size
+    inc c
+    mov [c],!gh_x
+    inc c
+    mov [c],!gh_y
+    mov !dead_ends_size,c
+non_deadend:
+
+    int _my_index
+    int _gh_stat
+    mov !cur_dir,b
+
+    jeq fright_mode,a,1
+
+;;; in modes - a direction, b extremum value
+
+standard_mode:
+    mov a,b
+    mov b,255
+s_left:
+    jeq s_right,!cur_dir,_d_right
+    jeq s_right,!left,0
+    jgt s_right,!left_s,b
+    mov a,_d_left
+    mov b,!left_s
+s_right:
+    jeq s_up,!cur_dir,_d_left
+    jeq s_up,!right,0
+    jgt s_up,!right_s,b
+    mov a,_d_right
+    mov b,!right_s
+s_up:
+    jeq s_down,!cur_dir,_d_down
+    jeq s_down,!up,0
+    jgt s_down,!up_s,b
+    mov a,_d_up
+    mov b,!up_s
+s_down:
+    jeq s_move,!cur_dir,_d_up
+    jeq s_move,!down,0
+    jgt s_move,!down_s,b
+    mov a,_d_down
+    mov b,!down_s
+s_move:
+    int _chdir
+    hlt
+
+fright_mode:
+    mov a,b
+    mov b,0
+f_left:
+    jeq f_right,!cur_dir,_d_right
+    jeq f_right,!left,0
+    jgt f_right,!left_s,b
+    mov a,_d_left
+    mov b,!left_s
+f_right:
+    jeq f_up,!cur_dir,_d_left
+    jeq f_up,!right,0
+    jgt f_up,!right_s,b
+    mov a,_d_right
+    mov b,!right_s
+f_up:
+    jeq f_down,!cur_dir,_d_down
+    jeq f_down,!up,0
+    jgt f_down,!up_s,b
+    mov a,_d_up
+    mov b,!up_s
+f_down:
+    jeq f_move,!cur_dir,_d_up
+    jeq f_move,!down,0
+    jgt f_move,!down_s,b
+    mov a,_d_down
+    mov b,!down_s
+f_move:
+    int _chdir
+    hlt
+

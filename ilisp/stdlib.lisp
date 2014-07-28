@@ -37,7 +37,7 @@
                 (and ,@(cdr args))))))))
 
 (defmacro labels (bindings &rest body)
-  `(letrec ,(iter (for (name lambda-list &rest fn-body) in bindings)
+  `(letrec ,(iter (for (name lambda-list . fn-body) in bindings)
                   (collect `(,name (lambda ,lambda-list ,@fn-body))))
      ,@body))
 
