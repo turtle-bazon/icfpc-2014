@@ -1,7 +1,7 @@
 #!/bin/sh
 
-SOLUTION_DIR=/tmp/icfpc-2014-solution
-SOLUTION_FILE=skobochka-icfpc-2014-solution.tar.gz
+SOLUTION_DIR=/tmp/icfpc-2014-solution-full
+SOLUTION_FILE=skobochka-icfpc-2014-solution-full.tar.gz
 
 rm -rf $SOLUTION_DIR
 rm -f $SOLUTION_FILE
