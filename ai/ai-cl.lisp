@@ -216,9 +216,9 @@
 (defun call-with-ai-state (ai-state proc)
   (funcall proc (car ai-state) (cdr ai-state)))
 
-(defun choose-next-target-for (object map pacman angry-ghosts)
-  (declare (optimize (debug 3)))
-  (let ((objects (locate-objects object map)))
+(defun choose-next-target (map pacman angry-ghosts objects-by-priority)
+  (declare (ignore objects-by-priority) (optimize (debug 3)))
+  (let ((objects (locate-objects-if (lambda (cell x y) (if (or (= cell 2) (= cell 3))  (cons x y) 0)) map)))
     (if (integerp objects)
         0
         (let ((nearest-object (car (pop-nearest-object pacman objects))))
@@ -226,15 +226,6 @@
             (if (integerp path-to-object)
                 0
                 path-to-object))))))
-
-(defun choose-next-target (map pacman angry-ghosts objects-by-priority)
-  (declare (optimize (debug 3)))
-  (if (integerp objects-by-priority)
-      0
-      (let ((path (choose-next-target-for (car objects-by-priority) map pacman angry-ghosts)))
-        (if (integerp path)
-            (choose-next-target map pacman angry-ghosts (cdr objects-by-priority))
-            path))))
 
 (defun analyze-ghosts (ghosts)
   (il-foldl (lambda (ghost-info acc)
