@@ -155,8 +155,10 @@
     (if (integerp objects)
         0
         (let ((nearest-object (car (pop-nearest-object pacman objects))))
-          (let ((path-to-object (cdr (plan-route pacman nearest-object map 0 angry-ghosts))))
-            path-to-object)))))
+          (let ((path-to-object (plan-route pacman nearest-object map 0 angry-ghosts)))
+            (if (integerp path-to-object)
+                0
+                (cdr path-to-object)))))))
 
 (defun choose-next-target (map pacman angry-ghosts objects-by-priority)
   (declare (optimize (debug 3)))

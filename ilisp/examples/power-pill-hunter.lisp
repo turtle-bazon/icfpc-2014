@@ -131,7 +131,7 @@
                                                            map
                                                            forbidden)
                                         (- limit 1))))))))
-    (car (plan-route-rec source rev-path 256))))
+    (car (plan-route-rec source rev-path 64))))
 
 (defun choose-dir (source target)
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
@@ -150,8 +150,10 @@
     (if (integerp objects)
         0
         (let ((nearest-object (car (pop-nearest-object pacman objects))))
-          (let ((path-to-object (cdr (plan-route pacman nearest-object map 0 angry-ghosts))))
-            path-to-object)))))
+          (let ((path-to-object (plan-route pacman nearest-object map 0 angry-ghosts)))
+            (if (integerp path-to-object)
+                0
+                (cdr path-to-object)))))))
 
 (defun choose-next-target (map pacman angry-ghosts objects-by-priority)
   (if (integerp objects-by-priority)
