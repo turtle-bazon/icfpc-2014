@@ -198,7 +198,8 @@
 (defun check-cowardly-ghost-close (map pacman)
   (lambda (nearest-ghost ghost-sq-dist rest-ghosts)
     (if (>= 32 ghost-sq-dist)
-        (cdr (plan-route pacman nearest-ghost map 0 0))
+        (let ((route (plan-route pacman nearest-ghost map 0 0)))
+          (if (integerp route) 0 (cdr route)))
         0)))
 
 (defun estimate-ghosts-threat (map pacman ghosts)
