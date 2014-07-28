@@ -1,8 +1,3 @@
-(cl:defpackage #:ilisp-power-pills-hunter-ai
-  (:use :il))
-
-(cl:in-package :ilisp-power-pills-hunter-ai)
-
 (defun il-nth (n lst)
   (if (= n 0) (car lst) (il-nth (- n 1) (cdr lst))))
 
@@ -249,8 +244,11 @@
           (lambda (ghosts-threat angry-ghosts)
             (if (integerp ghosts-threat)
                 (if (integerp current-path)
-                    (game-loop (make-ai-state (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0))))
-                               map pacman ghosts fruits)
+                    (let ((next-path (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0)))))
+                      (if (integerp next-path)
+                          (cons (make-ai-state 0) 1)
+                          (let ((game-loop-proc-unique-name (make-game-loop ai-state)))
+                            (game-loop-proc-unique-name map pacman ghosts fruits))))
                     (cons (make-ai-state (cdr current-path))
                           (choose-dir pacman (car current-path))))
                 (cons (make-ai-state (cdr ghosts-threat))
@@ -262,5 +260,4 @@
 (defun gcc-init (initial-world-state foreign-ghosts)
   (cons (make-ai-state 0) gcc-step))
 
-(ilisp.impl:build-ai-core 'gcc-init)
 
