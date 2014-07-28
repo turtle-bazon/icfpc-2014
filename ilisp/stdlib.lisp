@@ -13,10 +13,10 @@
   `(if ,x 0 1))
 
 (defmacro < (a b)
-  `(>= ,b ,a))
+  `(> ,b ,a))
 
 (defmacro <= (a b)
-  `(> ,b ,a))
+  `(>= ,b ,a))
 
 (defmacro and (&rest args)
   (case (length args)
