@@ -39,20 +39,22 @@
 (defun call-with-tuple/4 (tuple proc)
   (funcall proc (car tuple) (car (cdr tuple)) (car (cdr (cdr tuple))) (cdr (cdr (cdr tuple)))))
 
-(defun locate-objects (object map)
+(defun locate-objects-if (test map)
   (cdr (il-foldl (lambda (row acc)
                    (let ((y (car acc)) (objects (cdr acc)))
                      (cons (+ y 1)
                            (cdr (il-foldl (lambda (cell acc)
                                             (let ((x (car acc)) (objects (cdr acc)))
                                               (cons (+ x 1)
-                                                    (if (= cell object)
-                                                        (cons (cons x y) objects)
-                                                        objects))))
+                                                    (let ((probe (funcall test cell x y)))
+                                                      (if (integerp probe) objects (cons probe objects))))))
                                           (cons 0 objects)
                                           row)))))
                  (cons 0 0)
                  map)))
+
+(defun locate-objects (object map)
+  (locate-objects-if (lambda (cell x y) (if (= cell object) (cons x y) 0)) map))
 
 (defun sq-dist (x-a y-a x-b y-b)
   (let ((diff-x (- x-a x-b)) (diff-y (- y-a y-b)))
@@ -113,34 +115,70 @@
                       (cons (cons x (+ y 1))
                             0))))))
 
+(defun copy/modify-map (map modificator)
+  (il-reverse
+   (car (il-foldl (lambda (row acc)
+                    (let ((y (cdr acc)))
+                      (cons (cons (il-reverse
+                                   (car (il-foldl (lambda (cell acc)
+                                                    (let ((x (cdr acc)))
+                                                      (cons (cons (funcall modificator cell x y)
+                                                                  (car acc))
+                                                            (+ x 1))))
+                                                  (cons 0 0)
+                                                  row)))
+                                  (car acc))
+                            (+ y 1))))
+                  (cons 0 0)
+                  map))))
+
 (defun plan-route-limit (source target map rev-path forbidden depth-limit)
-  (labels ((plan-route-rec (source rev-path limit depth-limit)
-             (if (= depth-limit 0)
-                 (cons 0 limit)
-                 (if (= limit 0)
-                     (cons (il-reverse (cons target rev-path)) limit)
-                     (if (coords= source target)
-                         (cons (il-reverse (cons target rev-path)) limit)
-                         (labels ((try-moves (avail-moves limit)
-                                    (if (integerp avail-moves)
-                                        (cons 0 limit)
-                                        (let ((next-move-plan (pop-nearest-object target avail-moves)))
-                                          (let ((best-move (car next-move-plan))
-                                                (rest-moves (cddr next-move-plan)))
-                                            (let ((path+new-limit (plan-route-rec best-move (cons source rev-path) limit (- depth-limit 1))))
-                                              (if (integerp (car path+new-limit))
-                                                  (try-moves rest-moves (- (cdr path+new-limit) 1))
-                                                  (cons (car path+new-limit) (cdr path+new-limit)))))))))
-                           (try-moves
-                            (filter-accessible (filter-accessible (neighbours source) map rev-path)
-                                               map
-                                               forbidden)
-                            (- limit 1))))))))
-  (car (plan-route-rec source rev-path 24 depth-limit))))
+  (declare (ignore rev-path)
+           (optimize (debug 3)))
+  (let ((zero-counters (copy/modify-map map (lambda (cell x y)
+                                              (declare (ignore cell))
+                                              (if (and (= x (car source)) (= y (cdr source))) 1 0)))))
+    (labels ((wave-spread (counters depth-limit)
+               (if (= depth-limit 0)
+                   counters
+                   (if (= (map-cell target counters) 0)
+                       (wave-spread (il-foldl (lambda (not-marked-point counters)
+                                                (let ((my-mark (car not-marked-point))
+                                                      (source (cdr not-marked-point)))
+                                                  (il-foldl (lambda (point counters)
+                                                              (copy/modify-map counters
+                                                                               (lambda (cell x y)
+                                                                                 (if (and (= cell 0)
+                                                                                          (= x (car point))
+                                                                                          (= y (cdr point)))
+                                                                                     (+ my-mark 1)
+                                                                                     cell))))
+                                                            counters
+                                                            (filter-accessible (neighbours source) map forbidden))))
+                                              counters
+                                              (locate-objects-if (lambda (cell x y) (if (> cell 0) (cons cell (cons x y)) 0)) counters))
+                                    (- depth-limit 1))
+                       counters))))
+      (labels ((backtrack (counters point path)
+                 (if (coords= point source)
+                     path
+                     (let ((my-mark (map-cell point counters)))
+                       (let ((next-point (labels ((find-next (avail-neighbours)
+                                                    (if (integerp avail-neighbours)
+                                                        0
+                                                        (let ((checkpoint (car avail-neighbours)))
+                                                          (if (= (- my-mark (map-cell checkpoint counters)) 1)
+                                                              checkpoint
+                                                              (find-next (cdr avail-neighbours)))))))
+                                           (find-next (neighbours point)))))
+                         (if (integerp next-point)
+                             0
+                             (backtrack counters next-point (cons point path))))))))
+        (backtrack (wave-spread zero-counters depth-limit) target 0)))))
 
 (defun plan-route (source target map rev-path forbidden)
-  (plan-route-limit source target map rev-path forbidden 1024))
-
+  (plan-route-limit source target map rev-path forbidden 32))
+  
 (defun choose-dir (source target)
   (declare (optimize (debug 3)))
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
@@ -163,7 +201,7 @@
           (let ((path-to-object (plan-route pacman nearest-object map 0 angry-ghosts)))
             (if (integerp path-to-object)
                 0
-                (cdr path-to-object)))))))
+                path-to-object))))))
 
 (defun choose-next-target (map pacman angry-ghosts objects-by-priority)
   (declare (optimize (debug 3)))
@@ -211,7 +249,7 @@
     (declare (ignore rest-ghosts))
     (if (>= 32 ghost-sq-dist)
         (let ((route (plan-route pacman nearest-ghost map 0 0)))
-          (if (integerp route) 0 (cdr route)))
+          (if (integerp route) 0 route))
         0)))
   
 (defun estimate-ghosts-threat (map pacman ghosts)
@@ -240,7 +278,7 @@
         (let ((path-to-fruit (plan-route pacman fruit-position map 0 angry-ghosts)))
           (if (integerp path-to-fruit)
               0
-              (cdr path-to-fruit))))))
+              path-to-fruit)))))
 
 (defun make-game-loop (ai-state)
   (declare (optimize (debug 3)))
