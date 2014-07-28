@@ -170,9 +170,39 @@
                              (backtrack counters next-point (cons point path))))))))
         (backtrack (wave-spread zero-counters depth-limit) target 0)))))
 
+(defun greedy-plan-route (source target map rev-path forbidden)
+  (labels ((plan-route-rec (source rev-path limit)
+             (if (or (= limit 0))
+                 (cons (il-reverse (cons target rev-path)) limit)
+                 (if (coords= source target)
+                     (cons (il-reverse (cons target rev-path)) limit)
+                     (labels ((try-moves (avail-moves limit)
+                                (if (integerp avail-moves)
+                                    (cons 0 limit)
+                                    (let ((next-move-plan (pop-nearest-object target avail-moves)))
+                                      (let ((best-move (car next-move-plan))
+                                            (rest-moves (cddr next-move-plan)))
+                                        (let ((path+new-limit (plan-route-rec best-move (cons source rev-path) limit)))
+                                          (if (integerp (car path+new-limit))
+                                              (try-moves rest-moves (- (cdr path+new-limit) 1))
+                                              (cons (car path+new-limit) (cdr path+new-limit)))))))))
+                       (try-moves
+                        (filter-accessible (filter-accessible (neighbours source) map rev-path)
+                                           map
+                                           forbidden)
+                        (- limit 1)))))))
+  (car (plan-route-rec source rev-path 26))))
+
 (defun plan-route (source target map rev-path forbidden)
-  (plan-route-limit source target map rev-path forbidden 32))
-  
+  (let ((wave-plan (plan-route-limit source target map rev-path forbidden 7)))
+    (if (integerp wave-plan)
+        (let ((greedy-plan (greedy-plan-route source target map rev-path forbidden)))
+          (break)
+          (if (integerp greedy-plan)
+              0
+              (cdr greedy-plan)))
+        wave-plan)))
+
 (defun choose-dir (source target)
   (declare (optimize (debug 3)))
   (let ((xs (car source)) (ys (cdr source)) (xt (car target)) (yt (cdr target)))
