@@ -143,11 +143,11 @@
         (if (< xs xt) 1 3)
         (if (< ys yt) 2 0))))
 
-(defun make-ai-state (current-path)
-  current-path)
+(defun make-ai-state (current-path i-see-fruit)
+  (cons current-path i-see-fruit))
 
 (defun call-with-ai-state (ai-state proc)
-  (funcall proc ai-state))
+  (funcall proc (car ai-state) (cdr ai-state)))
 
 (defun choose-next-target-for (object map pacman angry-ghosts)
   (declare (optimize (debug 3)))
@@ -227,25 +227,38 @@
                      flee-plan)))
            (ghosts-coords angry-ghosts)))))
 
+(defun maybe-hunt-for-fruit (map pacman angry-ghosts fruit i-see-fruit)
+  (if (or (= fruit 0) (= i-see-fruit 1))
+      0
+      (let ((fruit-position (car (locate-objects 4 map))))
+        (let ((path-to-fruit (plan-route pacman fruit-position map 0 angry-ghosts)))
+          (if (integerp path-to-fruit)
+              0
+              (cdr path-to-fruit))))))
+
 (defun make-game-loop (ai-state)
   (declare (optimize (debug 3)))
-  (lambda (map pacman-info ghosts fruits)
+  (lambda (map pacman-info ghosts fruit)
     (call-with-ai-state
      ai-state
-     (lambda (current-path)
+     (lambda (current-path i-see-fruit)
        (let ((pacman (car (cdr pacman-info))))
          (call-with-tuple/2
           (estimate-ghosts-threat map pacman ghosts)
           (lambda (ghosts-threat angry-ghosts)
             (if (integerp ghosts-threat)
-                (if (integerp current-path)
-                    (let ((next-path (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0)))))
-                      (if (integerp next-path)
-                          (cons (make-ai-state 0) 1)
-                          (funcall (make-game-loop (make-ai-state next-path)) map pacman-info ghosts fruits)))
-                    (cons (make-ai-state (cdr current-path))
-                          (choose-dir pacman (car current-path))))
-                (cons (make-ai-state (cdr ghosts-threat))
+                (let ((fruit-path (maybe-hunt-for-fruit map pacman angry-ghosts fruit i-see-fruit)))
+                  (if (integerp fruit-path)
+                      (if (integerp current-path)
+                          (let ((next-path (choose-next-target map pacman angry-ghosts (cons 3 (cons 2 0)))))
+                            (if (integerp next-path)
+                                (cons (make-ai-state 0 0) 1)
+                                (funcall (make-game-loop (make-ai-state next-path 0)) map pacman-info ghosts fruit)))
+                          (cons (make-ai-state (cdr current-path) i-see-fruit)
+                                (choose-dir pacman (car current-path))))
+                      (cons (make-ai-state (cdr fruit-path) 1)
+                            (choose-dir pacman (car fruit-path)))))
+                (cons (make-ai-state (cdr ghosts-threat) i-see-fruit)
                       (choose-dir pacman (car ghosts-threat)))))))))))
 
 (defun gcc-step (ai-state world-state)
@@ -253,5 +266,5 @@
              
 (defun gcc-init (initial-world-state foreign-ghosts)
   (declare (ignore initial-world-state foreign-ghosts))
-  (cons (make-ai-state 0) #'gcc-step))
+  (cons (make-ai-state 0 0) #'gcc-step))
               
