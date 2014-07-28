@@ -83,7 +83,7 @@
     ((declare . ?unused) (list))
     ((defun ?name ?lambda-list . ?body) (translate-defun translator ?name ?lambda-list ?body))
     ((defmacro ?name ?lambda-list . ?body) (translate-defmacro translator ?name ?lambda-list ?body))
-    ((function ?obj) (translate-walk translator ?obj))
+    ;; ((function ?obj) (translate-walk translator ?obj))
     ((trace ?obj) (translate-trace translator ?obj))
     ((break) `((:BRK)))
     ;; ((funcall ?fn . ?args) (translate-walk translator `(,?fn ,?args)))
