@@ -52,19 +52,19 @@
 %def !gh_y,[254]
 %def !lm_x,[253]
 %def !lm_y,[252]
-%def !i,[251]
-%def !left,[250]
-%def !right,[249]
-%def !up,[248]
-%def !down,[247]
-%def !left_s,[246]
-%def !right_s,[245]
-%def !up_s,[244]
-%def !down_s,[243]
-%def !exits,[242]
-%def !d_x,[241]
-%def !d_y,[240]
-%def !d_sum,[239]
+%def !left,[251]
+%def !right,[250]
+%def !up,[249]
+%def !down,[248]
+%def !left_s,[247]
+%def !right_s,[246]
+%def !up_s,[245]
+%def !down_s,[244]
+%def !exits,[243]
+%def !d_x,[242]
+%def !d_y,[241]
+%def !d_sum,[240]
+%def !cur_dir,[239]
 
     int _my_index
     int _gh_cur_coor
@@ -259,6 +259,7 @@ non_deadend:
 
     int _my_index
     int _gh_stat
+    mov !cur_dir,b
 
     jeq fright_mode,a,1
 
@@ -268,21 +269,25 @@ standard_mode:
     mov a,b
     mov b,255
 s_left:
+    jeq s_right,!cur_dir,_d_right
     jeq s_right,!left,0
     jgt s_right,!left_s,b
     mov a,_d_left
     mov b,!left_s
 s_right:
+    jeq s_up,!cur_dir,_d_left
     jeq s_up,!right,0
     jgt s_up,!right_s,b
     mov a,_d_right
     mov b,!right_s
 s_up:
+    jeq s_down,!cur_dir,_d_down
     jeq s_down,!up,0
     jgt s_down,!up_s,b
     mov a,_d_up
     mov b,!up_s
 s_down:
+    jeq s_move,!cur_dir,_d_up
     jeq s_move,!down,0
     jgt s_move,!down_s,b
     mov a,_d_down
@@ -295,21 +300,25 @@ fright_mode:
     mov a,b
     mov b,0
 f_left:
+    jeq f_right,!cur_dir,_d_right
     jeq f_right,!left,0
     jgt f_right,!left_s,b
     mov a,_d_left
     mov b,!left_s
 f_right:
+    jeq f_up,!cur_dir,_d_left
     jeq f_up,!right,0
     jgt f_up,!right_s,b
     mov a,_d_right
     mov b,!right_s
 f_up:
+    jeq f_down,!cur_dir,_d_down
     jeq f_down,!up,0
     jgt f_down,!up_s,b
     mov a,_d_up
     mov b,!up_s
 f_down:
+    jeq f_move,!cur_dir,_d_up
     jeq f_move,!down,0
     jgt f_move,!down_s,b
     mov a,_d_down
